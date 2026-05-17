@@ -1,0 +1,215 @@
+"use client";
+
+import { useMemo, useState } from "react";
+import { Calendar, Compass, Filter } from "lucide-react";
+import type {
+  AnyEvent,
+  CannesEvent,
+  CustomEvent,
+  EventStatus,
+  EventStatusRecord,
+  StatusMap,
+} from "@/types";
+import { STORAGE_KEYS, useLocalStorage } from "@/lib/storage";
+import {
+  DEFAULT_FILTERS,
+  filterEvents,
+  groupEventsByDay,
+  sortEventsByDate,
+  type FilterState,
+} from "@/lib/filters";
+import { EventCard } from "./event-card";
+import { EventFilters } from "./event-filters";
+import { EventDetailDialog } from "./event-detail-dialog";
+import { AddEventDialog } from "./add-event-dialog";
+import { EmptyState } from "./empty-state";
+import { DashboardStats } from "./dashboard-stats";
+import { LastUpdated } from "./last-updated";
+import { resolveStatus } from "@/lib/filters";
+
+type Props = {
+  seedEvents: CannesEvent[];
+  refreshMeta: { iso: string; count: number };
+};
+
+export function Dashboard({ seedEvents, refreshMeta }: Props) {
+  const [statusMap, setStatusMap] = useLocalStorage<StatusMap>(
+    STORAGE_KEYS.statuses,
+    {}
+  );
+  const [customEvents, setCustomEvents] = useLocalStorage<CustomEvent[]>(
+    STORAGE_KEYS.customEvents,
+    []
+  );
+  const [filters, setFilters] = useState<FilterState>(DEFAULT_FILTERS);
+  const [openId, setOpenId] = useState<string | null>(null);
+
+  const allEvents: AnyEvent[] = useMemo(
+    () => sortEventsByDate([...customEvents, ...seedEvents]),
+    [customEvents, seedEvents]
+  );
+
+  const visible = useMemo(
+    () => filterEvents(allEvents, filters, statusMap),
+    [allEvents, filters, statusMap]
+  );
+
+  const grouped = useMemo(() => groupEventsByDay(visible), [visible]);
+
+  const setStatus = (eventId: string, status: EventStatus) => {
+    setStatusMap((prev) => {
+      const next: StatusMap = { ...prev };
+      const record: EventStatusRecord = {
+        eventId,
+        status,
+        notes: prev[eventId]?.notes,
+        updatedAt: new Date().toISOString(),
+      };
+      next[eventId] = record;
+      return next;
+    });
+  };
+
+  const setNote = (eventId: string, note: string) => {
+    setStatusMap((prev) => {
+      const next: StatusMap = { ...prev };
+      const existing = prev[eventId];
+      next[eventId] = {
+        eventId,
+        status: existing?.status ?? "not-registered",
+        notes: note,
+        updatedAt: new Date().toISOString(),
+      };
+      return next;
+    });
+  };
+
+  const addCustom = (event: CustomEvent) => {
+    setCustomEvents((prev) => [event, ...prev]);
+    setOpenId(event.id);
+  };
+
+  const deleteCustom = (id: string) => {
+    setCustomEvents((prev) => prev.filter((e) => e.id !== id));
+    setStatusMap((prev) => {
+      const next = { ...prev };
+      delete next[id];
+      return next;
+    });
+  };
+
+  const openEvent = openId
+    ? allEvents.find((e) => e.id === openId) ?? null
+    : null;
+
+  return (
+    <div className="space-y-8">
+      {/* Hero ----------------------------------------------------------- */}
+      <section className="relative overflow-hidden rounded-3xl border border-[color:var(--hairline)] bg-teal-900 px-6 py-10 text-sand-50 sm:px-10 sm:py-14">
+        <div className="hero-gradient-teal pointer-events-none absolute inset-0 opacity-90" />
+        <div className="relative">
+          <div className="flex flex-wrap items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-sand-100/85">
+            <span className="rounded-full bg-white/10 px-2.5 py-0.5">Cannes Lions 2026</span>
+            <span>22–26 June · Croisette</span>
+          </div>
+          <h1 className="mt-3 max-w-3xl font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl">
+            Your <span className="text-coral-500">command center</span> for Cannes Lions 2026.
+          </h1>
+          <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-sand-100/90 sm:text-base">
+            Discover beach clubs, parties, panels, and yacht dinners. Track which
+            ones you&apos;re registered for. Add your own meetings. See who else is
+            on the Croisette. Your data stays in your browser — nothing is sent to
+            us.
+          </p>
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <a
+              href="#events"
+              className="rounded-full bg-coral-500 px-4 py-2 text-sm font-semibold text-white hover:bg-coral-600"
+            >
+              Browse events
+            </a>
+            <AddEventDialog onAdd={addCustom} />
+            <LastUpdated
+              iso={refreshMeta.iso}
+              count={refreshMeta.count}
+              noun="events"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Stats ---------------------------------------------------------- */}
+      <section id="events" className="space-y-4">
+        <DashboardStats events={allEvents} statusMap={statusMap} />
+      </section>
+
+      {/* Filters -------------------------------------------------------- */}
+      <EventFilters
+        filters={filters}
+        setFilters={setFilters}
+        totalCount={allEvents.length}
+        visibleCount={visible.length}
+      />
+
+      {/* Grid / grouped ------------------------------------------------- */}
+      {visible.length === 0 ? (
+        <EmptyState
+          icon={Filter}
+          title="No events match these filters"
+          description="Try widening the date range, clearing categories, or removing a status filter."
+        />
+      ) : (
+        <div className="space-y-10">
+          {grouped.map((group) => (
+            <section key={group.dayKey}>
+              <div className="mb-4 flex items-end justify-between gap-3 border-b border-[color:var(--hairline)] pb-2">
+                <h2 className="flex items-baseline gap-3 font-display text-2xl font-semibold text-teal-900">
+                  <Calendar className="h-4 w-4 self-center text-teal-700" />
+                  {group.label}
+                </h2>
+                <span className="text-[12px] uppercase tracking-widest text-[color:var(--muted)]">
+                  {group.events.length}{" "}
+                  {group.events.length === 1 ? "event" : "events"}
+                </span>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {group.events.map((e) => (
+                  <EventCard
+                    key={e.id}
+                    event={e}
+                    status={resolveStatus(e, statusMap)}
+                    onOpen={() => setOpenId(e.id)}
+                  />
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+      )}
+
+      {/* Tip strip ------------------------------------------------------ */}
+      <section className="rounded-2xl border border-[color:var(--hairline)] bg-sand-100 px-5 py-4 text-[13px] leading-relaxed text-[color:var(--ink-soft)]">
+        <div className="flex items-start gap-3">
+          <Compass className="mt-0.5 h-4 w-4 shrink-0 text-teal-700" />
+          <p>
+            <strong className="text-teal-900">First Cannes?</strong> Sign up for
+            the open-RSVP ones first (FQ Beach, Sport Beach, Pinterest, Ad Age
+            Lawn Party). Email your platform reps this week for the invite-only
+            beaches — Microsoft, Google, Meta, TikTok and Spotify all fill by
+            mid-May.
+          </p>
+        </div>
+      </section>
+
+      <EventDetailDialog
+        event={openEvent}
+        open={!!openEvent}
+        onOpenChange={(o) => !o && setOpenId(null)}
+        statusMap={statusMap}
+        setStatus={setStatus}
+        setNote={setNote}
+        onDeleteCustom={(id) => deleteCustom(id)}
+      />
+    </div>
+  );
+}
