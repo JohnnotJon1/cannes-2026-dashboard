@@ -283,7 +283,7 @@ function ProfileStep({
     { key: "email" as const, label: "Work email", placeholder: "jane@yourcompany.com", type: "email", autoComplete: "email" },
     { key: "company" as const, label: "Company", placeholder: "Your Company", type: "text", autoComplete: "organization" },
     { key: "title" as const, label: "Title", placeholder: "CMO / Founder / Head of Brand", type: "text", autoComplete: "organization-title" },
-    { key: "linkedinUrl" as const, label: "LinkedIn URL", placeholder: "https://linkedin.com/in/…", type: "url", autoComplete: "url" },
+    { key: "linkedinUrl" as const, label: "LinkedIn URL (optional)", placeholder: "https://linkedin.com/in/…", type: "url", autoComplete: "url" },
     { key: "phone" as const, label: "Phone (optional)", placeholder: "+1 415 …", type: "tel", autoComplete: "tel" },
   ];
 

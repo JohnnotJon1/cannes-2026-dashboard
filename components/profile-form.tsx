@@ -143,7 +143,7 @@ export function ProfileForm() {
             autoComplete="organization-title"
           />
         </Field>
-        <Field label="LinkedIn URL">
+        <Field label="LinkedIn URL (optional)">
           <input
             type="url"
             value={profile.linkedinUrl ?? ""}
