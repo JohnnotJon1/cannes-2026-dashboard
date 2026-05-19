@@ -1,0 +1,44 @@
+name: "Takedown request"
+description: "Ask to be removed from the public Who's going feed."
+title: "Takedown: [your name]"
+labels: ["takedown"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        We add publicly-confirmed Cannes Lions 2026 attendees (jury presidents,
+        announced speakers, people who publicly posted about going) to the
+        **Who's going** feed at cannes-2026-dashboard.vercel.app/people. Every
+        card links back to its source.
+
+        If you want to be removed, file this issue. We'll remove the entry from
+        `data/people.json` and add your URL to `data/people-blocklist.json`
+        so future scrape refreshes never re-include you.
+
+        You can also email **john@airpost.ai** with the same info if you'd
+        rather not open a public issue.
+
+  - type: input
+    id: name
+    attributes:
+      label: Name as it appears in the feed
+      placeholder: e.g. Jane Doe
+    validations:
+      required: true
+
+  - type: input
+    id: linkedin
+    attributes:
+      label: Your LinkedIn URL (or X handle)
+      description: The URL that's currently on your card. Helps us match exactly.
+      placeholder: https://www.linkedin.com/in/janedoe/
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else? (optional)
+      description: If you're requesting removal on behalf of someone else, say so here.
+    validations:
+      required: false

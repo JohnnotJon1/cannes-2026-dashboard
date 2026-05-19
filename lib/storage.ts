@@ -6,7 +6,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 //
 // Privacy note: every key written here stays in the user's browser.
 // Nothing in this file touches the network. If you find yourself
-// adding a fetch/post in this module, stop — that breaks the
+// adding a fetch/post in this module, stop. That breaks the
 // privacy promise on the landing page.
 
 export const STORAGE_NAMESPACE = "ccc:v1";
@@ -17,6 +17,8 @@ export const STORAGE_KEYS = {
   customEvents: `${STORAGE_NAMESPACE}:customEvents`,
   notes: `${STORAGE_NAMESPACE}:notes`,
   privacyBannerDismissed: `${STORAGE_NAMESPACE}:privacy-banner-dismissed`,
+  onboardingCompleted: `${STORAGE_NAMESPACE}:onboarding-completed`,
+  extensionBannerDismissed: `${STORAGE_NAMESPACE}:extension-banner-dismissed`,
 } as const;
 
 export function isStorageAvailable(): boolean {
@@ -47,7 +49,7 @@ function writeRaw<T>(key: string, value: T) {
   try {
     window.localStorage.setItem(key, JSON.stringify(value));
   } catch {
-    // swallow quota / privacy mode errors silently — UI handles via banner
+    // swallow quota / privacy mode errors silently. UI handles via banner.
   }
 }
 

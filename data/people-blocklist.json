@@ -1,0 +1,4 @@
+{
+  "comment": "URLs (or substrings) the scrape script must skip. One per line in the urls array. When someone emails to be removed, drop their LinkedIn URL or X handle in here. The script in scripts/scrape-cannes-signals.mjs reads this file before writing data/people.json.",
+  "urls": []
+}

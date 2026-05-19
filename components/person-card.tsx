@@ -90,8 +90,8 @@ export function PersonCard({ person }: { person: PersonSignal }) {
             <LinkedInLogo /> LinkedIn
           </a>
         ) : (
-          <span className="inline-flex items-center gap-1 text-[12px] text-[color:var(--muted)]" title="Sample data — no real link">
-            <LinkedInLogo /> —
+          <span className="inline-flex items-center gap-1 text-[12px] text-[color:var(--muted)]" title="Sample data, no real link">
+            <LinkedInLogo /> …
           </span>
         )}
         {linkValid(person.twitterUrl) ? (
@@ -117,7 +117,7 @@ export function PersonCard({ person }: { person: PersonSignal }) {
         ) : (
           <span
             className="ml-auto text-[11px] text-[color:var(--muted)]"
-            title="Sample data — no real source link"
+            title="Sample data, no real source link"
           >
             Sample source
           </span>

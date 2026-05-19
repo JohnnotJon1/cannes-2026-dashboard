@@ -1,9 +1,39 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Lock, Check, Trash2, Eye, EyeOff } from "lucide-react";
+import { Lock, Check, Trash2 } from "lucide-react";
 import { STORAGE_KEYS, useLocalStorage } from "@/lib/storage";
 import { EMPTY_PROFILE, type UserProfile } from "@/types";
+
+// One-time migrations for older localStorage shapes:
+//  1. An earlier build masked sensitive fields with the bullet character (•)
+//     for display. Typing into a masked input wrote those bullets into
+//     storage, corrupting the saved value. Strip any field that is entirely
+//     bullets so the user can re-enter it cleanly.
+//  2. A previous schema had `bio` and `dietary` fields on UserProfile.
+//     Those are gone now. When registering event RSVPs, we default to
+//     `N/A` and "No food preferences" automatically. Drop any leftover
+//     values from old browsers.
+type LegacyProfile = UserProfile & { bio?: unknown; dietary?: unknown };
+
+function cleanCorruptedProfile(p: UserProfile): UserProfile {
+  const onlyBullets = (v?: string) => !!v && /^•+$/.test(v);
+  const legacy = p as LegacyProfile;
+  const hasLegacyKeys = "bio" in legacy || "dietary" in legacy;
+  const hasBullets =
+    onlyBullets(p.name) || onlyBullets(p.email) || onlyBullets(p.phone);
+  if (!hasBullets && !hasLegacyKeys) return p;
+  const next: UserProfile = {
+    name: onlyBullets(p.name) ? "" : p.name,
+    email: onlyBullets(p.email) ? "" : p.email,
+    company: p.company,
+    title: p.title,
+    linkedinUrl: p.linkedinUrl,
+    phone: onlyBullets(p.phone) ? "" : p.phone,
+    updatedAt: p.updatedAt,
+  };
+  return next;
+}
 
 export function ProfileForm() {
   const [profile, setProfile, hydrated] = useLocalStorage<UserProfile>(
@@ -11,13 +41,18 @@ export function ProfileForm() {
     EMPTY_PROFILE
   );
   const [savedTick, setSavedTick] = useState(false);
-  const [reveal, setReveal] = useState(false);
 
-  // Reveal sensitive fields like phone/email by default? We default to hidden.
-  const tickFor = (next: UserProfile) => {
-    setProfile({ ...next, updatedAt: new Date().toISOString() });
-    setSavedTick(true);
-  };
+  // Run the bullet-cleanup once profile has hydrated from localStorage.
+  useEffect(() => {
+    if (!hydrated) return;
+    const cleaned = cleanCorruptedProfile(profile);
+    if (cleaned !== profile) {
+      setProfile({ ...cleaned, updatedAt: new Date().toISOString() });
+    }
+    // We intentionally run this only once on hydration. Subsequent writes
+    // can't reintroduce bullets, the masking UI is gone.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hydrated]);
 
   useEffect(() => {
     if (!savedTick) return;
@@ -25,8 +60,15 @@ export function ProfileForm() {
     return () => clearTimeout(t);
   }, [savedTick]);
 
-  const update = <K extends keyof UserProfile>(k: K, v: UserProfile[K]) =>
-    tickFor({ ...profile, [k]: v });
+  // Updater form avoids stale-closure drops when typing fast across renders.
+  const update = <K extends keyof UserProfile>(k: K, v: UserProfile[K]) => {
+    setProfile((prev) => ({
+      ...prev,
+      [k]: v,
+      updatedAt: new Date().toISOString(),
+    }));
+    setSavedTick(true);
+  };
 
   const clear = () => {
     if (
@@ -45,9 +87,6 @@ export function ProfileForm() {
     );
   }
 
-  const masked = (v: string) =>
-    !v ? "" : reveal ? v : v.replace(/./g, "•");
-
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-teal-700/30 bg-teal-100 px-4 py-3 text-[13px] text-teal-900">
@@ -57,21 +96,11 @@ export function ProfileForm() {
             <strong>Stored in this browser only.</strong> Nothing on this page is sent to a server.
           </span>
         </div>
-        <div className="flex items-center gap-2">
-          {savedTick && (
-            <span className="inline-flex items-center gap-1 text-[12px] font-medium text-teal-700">
-              <Check className="h-3.5 w-3.5" /> Saved
-            </span>
-          )}
-          <button
-            type="button"
-            onClick={() => setReveal((v) => !v)}
-            className="inline-flex items-center gap-1 rounded-full border border-teal-700/30 bg-white px-2.5 py-1 text-[12px] font-medium text-teal-800 hover:bg-sand-50"
-          >
-            {reveal ? <EyeOff className="h-3.5 w-3.5" /> : <Eye className="h-3.5 w-3.5" />}
-            {reveal ? "Hide values" : "Reveal values"}
-          </button>
-        </div>
+        {savedTick && (
+          <span className="inline-flex items-center gap-1 text-[12px] font-medium text-teal-700">
+            <Check className="h-3.5 w-3.5" /> Saved
+          </span>
+        )}
       </div>
 
       <form
@@ -81,7 +110,7 @@ export function ProfileForm() {
         <Field label="Full name">
           <input
             type="text"
-            value={reveal ? profile.name : masked(profile.name)}
+            value={profile.name}
             onChange={(e) => update("name", e.target.value)}
             placeholder="Jane Doe"
             autoComplete="name"
@@ -90,7 +119,7 @@ export function ProfileForm() {
         <Field label="Work email">
           <input
             type="email"
-            value={reveal ? profile.email : masked(profile.email)}
+            value={profile.email}
             onChange={(e) => update("email", e.target.value)}
             placeholder="jane@yourcompany.com"
             autoComplete="email"
@@ -125,25 +154,10 @@ export function ProfileForm() {
         <Field label="Phone (optional)">
           <input
             type="tel"
-            value={reveal ? (profile.phone ?? "") : masked(profile.phone ?? "")}
+            value={profile.phone ?? ""}
             onChange={(e) => update("phone", e.target.value)}
             placeholder="+1 415 …"
             autoComplete="tel"
-          />
-        </Field>
-        <Field label="Bio / reason for attending" className="sm:col-span-2">
-          <textarea
-            value={profile.bio ?? ""}
-            onChange={(e) => update("bio", e.target.value)}
-            placeholder="One paragraph you can paste into event registration forms."
-          />
-        </Field>
-        <Field label="Dietary restrictions" className="sm:col-span-2">
-          <input
-            type="text"
-            value={profile.dietary ?? ""}
-            onChange={(e) => update("dietary", e.target.value)}
-            placeholder="Pescatarian, gluten-free, none, …"
           />
         </Field>
       </form>
@@ -153,7 +167,7 @@ export function ProfileForm() {
           {profile.updatedAt ? (
             <>Last saved {new Date(profile.updatedAt).toLocaleString()}</>
           ) : (
-            <>Not saved yet — start typing to autosave.</>
+            <>Not saved yet. Start typing to autosave.</>
           )}
         </div>
         <button

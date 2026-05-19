@@ -25,60 +25,66 @@ export function SiteHeader() {
           className="group flex items-center gap-2.5 text-teal-900"
           onClick={() => setOpen(false)}
         >
-          <span className="relative grid h-9 w-9 place-items-center rounded-full bg-teal-800 text-sand-50 shadow-sm">
-            <span className="font-display text-lg leading-none">C</span>
+          <span className="relative grid h-10 w-10 place-items-center rounded-full bg-teal-800 text-sand-50 shadow-sm">
+            <span className="font-display text-xl leading-none">C</span>
             <span className="absolute -bottom-0.5 -right-0.5 grid h-3.5 w-3.5 place-items-center rounded-full bg-coral-500 text-[7px] font-bold text-white">
               26
             </span>
           </span>
-          <span className="flex flex-col leading-tight">
-            <span className="font-display text-[17px] font-semibold tracking-tight">
-              Cannes Command Center
+          <span className="hidden flex-col leading-tight sm:flex">
+            <span className="text-[11px] uppercase tracking-[0.16em] text-[color:var(--muted)]">
+              Cannes Lions 2026
             </span>
             <span className="text-[11px] uppercase tracking-[0.16em] text-[color:var(--muted)]">
-              Lions 2026 · Jun 22–26
+              22 to 26 June
             </span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex">
-          {NAV.map((item) => {
-            const active =
-              item.href === "/"
-                ? pathname === "/"
-                : pathname?.startsWith(item.href);
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={[
-                  "rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors",
-                  active
-                    ? "bg-teal-800 text-sand-50"
-                    : "text-[color:var(--ink-soft)] hover:bg-sand-100 hover:text-teal-900",
-                ].join(" ")}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
+        <div className="flex items-center gap-2">
+          <nav className="hidden items-center gap-1 lg:flex">
+            {NAV.map((item) => {
+              const active =
+                item.href === "/"
+                  ? pathname === "/"
+                  : pathname?.startsWith(item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={[
+                    "rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors",
+                    active
+                      ? "bg-teal-800 text-sand-50"
+                      : "text-[color:var(--ink-soft)] hover:bg-sand-100 hover:text-teal-900",
+                  ].join(" ")}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* Subtle privacy pill. Visible at every viewport, doubles as a
+              tooltip-style explainer on hover. Replaces the old full-width
+              "Local-first by design" banner. */}
           <span
-            className="ml-2 inline-flex items-center gap-1.5 rounded-full border border-[color:var(--hairline)] bg-white/70 px-2.5 py-1 text-[11px] font-medium uppercase tracking-wider text-teal-800"
-            title="All personal data stays in your browser. Nothing is sent to a server."
+            className="inline-flex items-center gap-1.5 rounded-full border border-[color:var(--hairline)] bg-white/80 px-2.5 py-1 text-[11px] font-medium uppercase tracking-wider text-teal-800 shadow-[0_1px_0_rgba(13,61,58,0.04)]"
+            title="Your profile, statuses, and notes are stored in this browser only. Nothing is sent to us or to a server."
           >
             <Lock className="h-3 w-3" />
             Local only
           </span>
-        </nav>
 
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--hairline)] text-teal-900 lg:hidden"
-          aria-label={open ? "Close menu" : "Open menu"}
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--hairline)] text-teal-900 lg:hidden"
+            aria-label={open ? "Close menu" : "Open menu"}
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
 
       {open && (
@@ -107,10 +113,6 @@ export function SiteHeader() {
               );
             })}
           </ul>
-          <div className="mt-3 flex items-center gap-2 px-1 text-[12px] text-[color:var(--muted)]">
-            <Lock className="h-3.5 w-3.5 text-teal-700" />
-            Personal data stays in your browser.
-          </div>
         </nav>
       )}
     </header>

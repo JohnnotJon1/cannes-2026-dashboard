@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Your profile",
   description:
-    "The information you most often paste into Cannes event registration forms. Stored locally in your browser only — never sent to a server.",
+    "The information you most often paste into Cannes event registration forms. Stored locally in your browser only. Never sent to a server.",
 };
 
 export default function ProfilePage() {
@@ -24,7 +24,7 @@ export default function ProfilePage() {
             Most Cannes event forms ask for the same six fields. Save them here once
             and pull them up when registering. Everything you type stays in this browser&apos;s
             <code className="mx-1 rounded bg-sand-100 px-1.5 py-0.5 text-[12.5px] text-teal-900">localStorage</code>
-            — there&apos;s no backend writing it anywhere.
+            . There&apos;s no backend writing it anywhere.
           </p>
         </section>
 

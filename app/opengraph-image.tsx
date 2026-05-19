@@ -2,8 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt =
-  "Cannes Command Center — your privacy-first Cannes Lions 2026 dashboard";
+export const alt = "Your privacy-first Cannes Lions 2026 dashboard";
 
 export default function OpengraphImage() {
   return new ImageResponse(
@@ -73,7 +72,7 @@ export default function OpengraphImage() {
               display: "flex",
             }}
           >
-            Cannes Command Center
+            Cannes Lions 2026 dashboard
           </div>
         </div>
 

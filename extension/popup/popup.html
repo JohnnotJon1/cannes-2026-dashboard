@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Cannes 2026 RSVP Auto-Fill</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo" aria-hidden="true">
+        <span class="logo-c">C</span><span class="logo-26">26</span>
+      </div>
+      <div>
+        <h1>RSVP Auto-Fill</h1>
+        <p class="sub">Companion for the Cannes 2026 dashboard</p>
+      </div>
+    </header>
+
+    <section id="state-loading">
+      <p class="muted">Checking your profile…</p>
+    </section>
+
+    <section id="state-not-connected" hidden>
+      <h2>Not connected yet</h2>
+      <p>
+        Open your Cannes 2026 dashboard and save your registration info.
+        The extension will pick it up automatically.
+      </p>
+      <a class="primary" id="open-dashboard-cta" href="#" target="_blank" rel="noopener">
+        Open the dashboard
+      </a>
+    </section>
+
+    <section id="state-connected" hidden>
+      <div class="row">
+        <span class="check">✓</span>
+        <div>
+          <h2 id="connected-name">Connected</h2>
+          <p class="muted" id="connected-email"></p>
+        </div>
+      </div>
+      <p class="muted small" id="synced-at"></p>
+      <div class="fields">
+        <div class="field"><span>Name</span><strong id="f-name"></strong></div>
+        <div class="field"><span>Email</span><strong id="f-email"></strong></div>
+        <div class="field"><span>Company</span><strong id="f-company"></strong></div>
+        <div class="field"><span>Title</span><strong id="f-title"></strong></div>
+      </div>
+      <a class="secondary" id="open-dashboard-edit" href="#" target="_blank" rel="noopener">
+        Edit your profile
+      </a>
+    </section>
+
+    <footer>
+      <p class="muted small">
+        Your profile lives in your browser only. We never send it anywhere.
+      </p>
+    </footer>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

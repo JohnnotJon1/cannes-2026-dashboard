@@ -1,0 +1,135 @@
+{
+  "_comment": "Per-event field selectors. Each entry maps a URL (matched as exact -> prefix -> hostname) to a set of canonical profile keys -> CSS selector(s). The content script also runs a heuristic fallback pass to catch fields the playbook missed, so a missing entry just degrades gracefully.",
+
+  "https://www.sportbeach.com/register": {
+    "platform": "hubspot-or-custom",
+    "fields": {
+      "firstName": ["input[name='firstname']", "input[name='first_name']"],
+      "lastName": ["input[name='lastname']", "input[name='last_name']"],
+      "email": ["input[type='email']", "input[name='email']"],
+      "company": ["input[name='company']", "input[name='organization']"],
+      "title": ["input[name='jobtitle']", "input[name='job_title']", "input[name='title']"]
+    }
+  },
+
+  "https://pinterestcannes.com/": {
+    "platform": "hubspot-or-custom",
+    "fields": {
+      "firstName": ["input[name='firstname']"],
+      "lastName": ["input[name='lastname']"],
+      "email": ["input[type='email']"],
+      "company": ["input[name='company']"],
+      "title": ["input[name='jobtitle']"]
+    }
+  },
+
+  "https://www.freewheelcannes.com/registration": {
+    "platform": "hubspot-or-custom",
+    "fields": {
+      "firstName": ["input[name='firstname']"],
+      "lastName": ["input[name='lastname']"],
+      "email": ["input[type='email']"],
+      "company": ["input[name='company']"],
+      "title": ["input[name='jobtitle']"]
+    }
+  },
+
+  "https://event.adweek.com/awh-cannes-2026/begin": {
+    "platform": "cvent-or-custom",
+    "fields": {
+      "firstName": ["input[name*='First' i]", "input[id*='First' i]"],
+      "lastName": ["input[name*='Last' i]", "input[id*='Last' i]"],
+      "email": ["input[type='email']"],
+      "company": ["input[name*='Company' i]", "input[name*='Organization' i]"],
+      "title": ["input[name*='Title' i]"]
+    }
+  },
+
+  "https://www.thefemalequotient.com/events/": {
+    "platform": "custom",
+    "fields": {
+      "firstName": ["input[name='firstname']", "input[name='first_name']"],
+      "lastName": ["input[name='lastname']", "input[name='last_name']"],
+      "email": ["input[type='email']"],
+      "company": ["input[name='company']"],
+      "title": ["input[name='jobtitle']", "input[name='title']"]
+    }
+  },
+
+  "https://adage.com/events-awards/cannes-lions/aa-cannes-lions-2026-ad-age-lounge-lawn-party/": {
+    "platform": "hubspot-or-custom",
+    "fields": {
+      "firstName": ["input[name='firstname']"],
+      "lastName": ["input[name='lastname']"],
+      "email": ["input[type='email']"],
+      "company": ["input[name='company']"],
+      "title": ["input[name='jobtitle']"]
+    }
+  },
+
+  "https://events.tubi.tv/tubicabana2026/SavetheDate": {
+    "platform": "save-the-date",
+    "fields": {
+      "firstName": ["input[name*='first' i]"],
+      "lastName": ["input[name*='last' i]"],
+      "email": ["input[type='email']"],
+      "company": ["input[name='company']"],
+      "title": ["input[name='title']"]
+    }
+  },
+
+  "https://digiday.com/events/cannes-brand-leaders-dinner/": {
+    "platform": "hubspot",
+    "fields": {
+      "firstName": ["input[name='firstname']"],
+      "lastName": ["input[name='lastname']"],
+      "email": ["input[type='email']"],
+      "company": ["input[name='company']"],
+      "title": ["input[name='jobtitle']"]
+    }
+  },
+
+  "https://digiday.com/events/cannes-marketing-leaders-brunch/": {
+    "platform": "hubspot",
+    "fields": {
+      "firstName": ["input[name='firstname']"],
+      "lastName": ["input[name='lastname']"],
+      "email": ["input[type='email']"],
+      "company": ["input[name='company']"],
+      "title": ["input[name='jobtitle']"]
+    }
+  },
+
+  "https://digiday.com/events/cannes-panel-cocktail-reception/": {
+    "platform": "hubspot",
+    "fields": {
+      "firstName": ["input[name='firstname']"],
+      "lastName": ["input[name='lastname']"],
+      "email": ["input[type='email']"],
+      "company": ["input[name='company']"],
+      "title": ["input[name='jobtitle']"]
+    }
+  },
+
+  "https://cannes.dentsu.com/": {
+    "platform": "custom",
+    "fields": {
+      "firstName": ["input[name='firstname']", "input[name='first_name']"],
+      "lastName": ["input[name='lastname']", "input[name='last_name']"],
+      "email": ["input[type='email']"],
+      "company": ["input[name='company']"],
+      "title": ["input[name='jobtitle']", "input[name='title']"]
+    }
+  },
+
+  "https://www.canneslions.com/cannes-lions-2026-register-your-interest": {
+    "platform": "salesforce-or-custom",
+    "fields": {
+      "firstName": ["input[name*='first' i]", "input[id*='first' i]"],
+      "lastName": ["input[name*='last' i]", "input[id*='last' i]"],
+      "email": ["input[type='email']"],
+      "company": ["input[name*='company' i]", "input[name*='organization' i]"],
+      "title": ["input[name*='title' i]", "input[name*='jobtitle' i]"]
+    }
+  }
+}

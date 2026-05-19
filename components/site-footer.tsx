@@ -7,16 +7,16 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-8 px-5 py-12 sm:grid-cols-2 lg:grid-cols-4 lg:px-8">
         <div>
           <div className="flex items-center gap-2">
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-teal-800 text-sand-50">
-              <span className="font-display text-base leading-none">C</span>
+            <span className="grid h-9 w-9 place-items-center rounded-full bg-teal-800 text-sand-50">
+              <span className="font-display text-lg leading-none">C</span>
             </span>
-            <span className="font-display text-base font-semibold text-teal-900">
-              Cannes Command Center
+            <span className="text-[11px] uppercase tracking-[0.16em] text-teal-900">
+              Cannes Lions 2026
             </span>
           </div>
           <p className="mt-3 max-w-xs text-sm leading-6 text-[color:var(--muted)]">
-            A privacy-first command center for Cannes Lions 2026.
-            Discover events, track your status, see who&apos;s going.
+            A privacy-first companion for Cannes Lions 2026. Discover events,
+            track your status, see who&apos;s going.
           </p>
         </div>
 
@@ -41,9 +41,17 @@ export function SiteFooter() {
             <span className="font-medium text-teal-900">localStorage</span>.
             They&apos;re never sent to a server. We can&apos;t see them.
           </p>
-          <div className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-[color:var(--hairline)] bg-white/80 px-2.5 py-1 text-[11px] font-medium uppercase tracking-wider text-teal-800">
-            <Lock className="h-3 w-3" />
-            Local only
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-[color:var(--hairline)] bg-white/80 px-2.5 py-1 text-[11px] font-medium uppercase tracking-wider text-teal-800">
+              <Lock className="h-3 w-3" />
+              Local only
+            </span>
+            <Link
+              href="/privacy"
+              className="text-[12px] font-medium text-teal-800 underline-offset-2 hover:text-teal-900 hover:underline"
+            >
+              Full privacy policy →
+            </Link>
           </div>
         </div>
 
@@ -66,8 +74,8 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-[color:var(--hairline)] py-4 text-center text-[11px] text-[color:var(--muted)]">
-        Built as an open, private alternative to the spreadsheet of doom.
-        Not affiliated with Cannes Lions.
+        Built as an open, private alternative to the spreadsheet of doom. Not
+        affiliated with Cannes Lions.
       </div>
     </footer>
   );

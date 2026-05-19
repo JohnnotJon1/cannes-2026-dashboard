@@ -1,4 +1,4 @@
-// Cannes Command Center — shared types
+// Cannes Lions 2026 dashboard. Shared types.
 //
 // Two clean data tiers:
 //  1. Public, ships in repo (CannesEvent, PersonSignal, RefreshMetadata)
@@ -72,6 +72,14 @@ export interface CannesEvent {
   confidence: ConfidenceLevel;
   tags?: string[];
   defaultStatus?: EventStatus; // suggestion until user marks one
+  /**
+   * Optional URL template for prefilling the registration form via query
+   * params. Supports {{name}}, {{firstName}}, {{lastName}}, {{email}},
+   * {{company}}, {{title}}, {{linkedinUrl}}, {{phone}}. If absent, the
+   * raw registrationUrl is opened (browser autofill still handles common
+   * name/email fields for most forms).
+   */
+  prefillUrl?: string;
 }
 
 export interface CustomEvent extends CannesEvent {
@@ -88,8 +96,6 @@ export interface UserProfile {
   title: string;
   linkedinUrl?: string;
   phone?: string;
-  bio?: string;
-  dietary?: string;
   updatedAt: string;
 }
 
@@ -100,10 +106,17 @@ export const EMPTY_PROFILE: UserProfile = {
   title: "",
   linkedinUrl: "",
   phone: "",
-  bio: "",
-  dietary: "",
   updatedAt: "",
 };
+
+// When the app eventually auto-fills event registration forms (future
+// integration work), use these defaults instead of asking the user for
+// bio or dietary preferences. Per John: always N/A on bios, always
+// "No food preferences" on dietary fields.
+export const REGISTRATION_DEFAULTS = {
+  bio: "N/A",
+  dietary: "No food preferences",
+} as const;
 
 export interface EventStatusRecord {
   eventId: string;

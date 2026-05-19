@@ -3,7 +3,7 @@ import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { PrivacyBanner } from "@/components/privacy-banner";
+import { OnboardingOverlay } from "@/components/onboarding/onboarding-overlay";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -18,15 +18,15 @@ const fraunces = Fraunces({
   axes: ["SOFT", "WONK", "opsz"],
 });
 
-const siteUrl = "https://cannes-command-center.vercel.app";
+const siteUrl = "https://cannes-2026.vercel.app";
 
 export const metadata: Metadata = {
   title: {
-    default: "Cannes Command Center — Your Cannes Lions 2026 dashboard",
-    template: "%s — Cannes Command Center",
+    default: "Your Cannes Lions 2026 dashboard",
+    template: "%s · Cannes Lions 2026",
   },
   description:
-    "A privacy-first dashboard for Cannes Lions 2026: discover beach clubs, parties, panels and yacht dinners — track which ones you're registered for, and see who's going. Built for first-timers and veterans.",
+    "A privacy-first dashboard for Cannes Lions 2026: discover beach clubs, parties, panels, and yacht dinners. Track which ones you're registered for. See who else is going. Built for first-timers and veterans.",
   keywords: [
     "Cannes Lions 2026",
     "Cannes advertising festival",
@@ -36,16 +36,16 @@ export const metadata: Metadata = {
   ],
   metadataBase: new URL(siteUrl),
   openGraph: {
-    title: "Cannes Command Center — Your Cannes Lions 2026 dashboard",
+    title: "Your Cannes Lions 2026 dashboard",
     description:
-      "Discover events, track registrations, see who's going. Privacy-first — your data never leaves your browser.",
+      "Discover events, track registrations, see who's going. Privacy-first. Your data never leaves your browser.",
     type: "website",
     url: siteUrl,
-    siteName: "Cannes Command Center",
+    siteName: "Cannes Lions 2026 dashboard",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cannes Command Center",
+    title: "Cannes Lions 2026 dashboard",
     description:
       "Your privacy-first Cannes Lions 2026 dashboard. Events, status tracking, who's going.",
   },
@@ -66,10 +66,10 @@ export default function RootLayout({
       className={`${inter.variable} ${fraunces.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-sand-50 text-[color:var(--ink)]">
-        <PrivacyBanner />
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />
+        <OnboardingOverlay />
       </body>
     </html>
   );

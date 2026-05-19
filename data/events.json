@@ -13,8 +13,12 @@
     "nextAction": "Register your interest on canneslions.com so you unlock partner-event RSVPs.",
     "source": "canneslions.com",
     "confidence": "verified",
-    "tags": ["official", "must-have"],
-    "defaultStatus": "action-needed"
+    "tags": [
+      "official",
+      "must-have"
+    ],
+    "defaultStatus": "action-needed",
+    "prefillUrl": "https://www.canneslions.com/cannes-lions-2026-register-your-interest?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
   },
   {
     "id": "dentsu-beach-house",
@@ -30,8 +34,12 @@
     "nextAction": "Submit RSVP and select sessions you want to attend.",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "verified",
-    "tags": ["holding-co", "open-rsvp"],
-    "defaultStatus": "action-needed"
+    "tags": [
+      "holding-co",
+      "open-rsvp"
+    ],
+    "defaultStatus": "action-needed",
+    "prefillUrl": "https://cannes.dentsu.com/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
   },
   {
     "id": "sport-beach-stagwell",
@@ -41,14 +49,19 @@
     "startDate": "2026-06-22T08:00:00Z",
     "endDate": "2026-06-26T20:00:00Z",
     "location": "Plage Macé, Croisette",
-    "description": "Athlete-driven activation with celebrity drop-ins, fitness classes, and one of the densest exec attendee lists at the festival. Open RSVP — easy yes for first-timers.",
+    "description": "Athlete-driven activation with celebrity drop-ins, fitness classes, and one of the densest exec attendee lists at the festival. Open RSVP. Easy yes for first-timers.",
     "registrationUrl": "https://www.sportbeach.com/register",
     "registrationType": "open",
-    "nextAction": "Submit RSVP — usually approved within 48h.",
+    "nextAction": "Submit RSVP. Usually approved within 48h.",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "verified",
-    "tags": ["open-rsvp", "exec-density", "recommended"],
-    "defaultStatus": "action-needed"
+    "tags": [
+      "open-rsvp",
+      "exec-density",
+      "recommended"
+    ],
+    "defaultStatus": "action-needed",
+    "prefillUrl": "https://www.sportbeach.com/register?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
   },
   {
     "id": "pinterest-manifestival",
@@ -61,11 +74,15 @@
     "description": "Open programming aimed at brand decision-makers. Talks, workshops, and an evening reception slate. Pinterest is unusually open relative to peer platforms.",
     "registrationUrl": "https://pinterestcannes.com/",
     "registrationType": "open",
-    "nextAction": "Submit RSVP — pick a featured session.",
+    "nextAction": "Submit RSVP. Pick a featured session.",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "verified",
-    "tags": ["open-rsvp", "platform"],
-    "defaultStatus": "action-needed"
+    "tags": [
+      "open-rsvp",
+      "platform"
+    ],
+    "defaultStatus": "action-needed",
+    "prefillUrl": "https://pinterestcannes.com/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
   },
   {
     "id": "freewheel-beach",
@@ -81,8 +98,12 @@
     "nextAction": "Submit RSVP, pre-book a meeting via the form.",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "verified",
-    "tags": ["adtech", "ctv"],
-    "defaultStatus": "action-needed"
+    "tags": [
+      "adtech",
+      "ctv"
+    ],
+    "defaultStatus": "action-needed",
+    "prefillUrl": "https://www.freewheelcannes.com/registration?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
   },
   {
     "id": "adweek-house",
@@ -92,14 +113,18 @@
     "startDate": "2026-06-22T09:00:00Z",
     "endDate": "2026-06-26T22:00:00Z",
     "location": "Croisette (TBD)",
-    "description": "Adweek's editorial hub — full week of stages, interviews, and an evening party slate. The press lounge becomes an unofficial co-working spot.",
+    "description": "Adweek's editorial hub. Full week of stages, interviews, and an evening party slate. The press lounge becomes an unofficial co-working spot.",
     "registrationUrl": "https://event.adweek.com/awh-cannes-2026/begin",
     "registrationType": "open",
     "nextAction": "RSVP and apply for press/exec lounge access if relevant.",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "verified",
-    "tags": ["press", "open-rsvp"],
-    "defaultStatus": "action-needed"
+    "tags": [
+      "press",
+      "open-rsvp"
+    ],
+    "defaultStatus": "action-needed",
+    "prefillUrl": "https://event.adweek.com/awh-cannes-2026/begin?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
   },
   {
     "id": "fq-beach",
@@ -109,14 +134,18 @@
     "startDate": "2026-06-22T08:30:00Z",
     "endDate": "2026-06-26T20:00:00Z",
     "location": "Hôtel Martinez",
-    "description": "New for 2026. CMO-heavy programming and an Equality Lounge open to all attendees. Pre-register early — capacity is real.",
+    "description": "New for 2026. CMO-heavy programming and an Equality Lounge open to all attendees. Pre-register early. Capacity is real.",
     "registrationUrl": "https://www.thefemalequotient.com/events/",
     "registrationType": "open",
     "nextAction": "Pre-register; CMO Roundtable slots fill fast.",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "verified",
-    "tags": ["cmo", "new-2026"],
-    "defaultStatus": "action-needed"
+    "tags": [
+      "cmo",
+      "new-2026"
+    ],
+    "defaultStatus": "action-needed",
+    "prefillUrl": "https://www.thefemalequotient.com/events/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
   },
   {
     "id": "propeller-fringe-events",
@@ -132,7 +161,10 @@
     "nextAction": "Subscribe to daily digest and shortlist fringe events that match your goals.",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "verified",
-    "tags": ["directory", "fringe"],
+    "tags": [
+      "directory",
+      "fringe"
+    ],
     "defaultStatus": "action-needed"
   },
   {
@@ -146,11 +178,14 @@
     "description": "Tubi's beach-side cabana. Strong ad-supported streaming exec mix. Save the date now; full RSVP opens closer to the festival.",
     "registrationUrl": "https://events.tubi.tv/tubicabana2026/SavetheDate",
     "registrationType": "open",
-    "nextAction": "Add to your save-the-date list — full RSVP opens later.",
+    "nextAction": "Add to your save-the-date list. Full RSVP opens later.",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "verified",
-    "tags": ["streaming"],
-    "defaultStatus": "pending"
+    "tags": [
+      "streaming"
+    ],
+    "defaultStatus": "pending",
+    "prefillUrl": "https://events.tubi.tv/tubicabana2026/SavetheDate?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
   },
   {
     "id": "ad-age-lounge-lawn-party",
@@ -160,14 +195,19 @@
     "startDate": "2026-06-23T17:00:00Z",
     "endDate": "2026-06-23T22:00:00Z",
     "location": "Hôtel Martinez Lawn",
-    "description": "Ad Age's CMO Roundtable, List Lounge, and the Tuesday-evening Lawn Party — one of the festival's defining trade-press parties.",
+    "description": "Ad Age's CMO Roundtable, List Lounge, and the Tuesday-evening Lawn Party. One of the festival's defining trade-press parties.",
     "registrationUrl": "https://adage.com/events-awards/cannes-lions/aa-cannes-lions-2026-ad-age-lounge-lawn-party/",
     "registrationType": "open",
-    "nextAction": "Register for Lawn Party — Lounge is application-only.",
+    "nextAction": "Register for Lawn Party. Lounge is application-only.",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "verified",
-    "tags": ["press", "party", "recommended"],
-    "defaultStatus": "action-needed"
+    "tags": [
+      "press",
+      "party",
+      "recommended"
+    ],
+    "defaultStatus": "action-needed",
+    "prefillUrl": "https://adage.com/events-awards/cannes-lions/aa-cannes-lions-2026-ad-age-lounge-lawn-party/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
   },
   {
     "id": "microsoft-beach-house",
@@ -177,13 +217,17 @@
     "startDate": "2026-06-22T09:00:00Z",
     "endDate": "2026-06-26T22:00:00Z",
     "location": "Croisette beach (TBD)",
-    "description": "Heavy Copilot / AI programming throughout the week. One of the top exec densities for AI-adjacent companies. Rep-controlled list — email your Microsoft Advertising rep this week.",
+    "description": "Heavy Copilot / AI programming throughout the week. One of the top exec densities for AI-adjacent companies. Rep-controlled list. Email your Microsoft Advertising rep this week.",
     "registrationUrl": "https://www.canneslions.com/festival/festival-partners/microsoft",
     "registrationType": "invite-only",
     "nextAction": "Email your Microsoft Ads rep: 'Add me to the Cannes Beach guest list.'",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "likely",
-    "tags": ["ai", "platform", "recommended"],
+    "tags": [
+      "ai",
+      "platform",
+      "recommended"
+    ],
     "defaultStatus": "pending"
   },
   {
@@ -197,10 +241,14 @@
     "description": "Music + creator + CMO density. Closing-night concert is the unofficial peak party of the week. Rep-controlled.",
     "registrationUrl": "https://cannes.byspotify.com/",
     "registrationType": "invite-only",
-    "nextAction": "Reach out to Spotify Ads rep — the closing concert list closes by mid-May.",
+    "nextAction": "Reach out to Spotify Ads rep. The closing concert list closes by mid-May.",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "likely",
-    "tags": ["platform", "music", "recommended"],
+    "tags": [
+      "platform",
+      "music",
+      "recommended"
+    ],
     "defaultStatus": "pending"
   },
   {
@@ -217,7 +265,10 @@
     "nextAction": "Email Amazon Ads / DSP rep for guest-list addition.",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "likely",
-    "tags": ["retail-media", "platform"],
+    "tags": [
+      "retail-media",
+      "platform"
+    ],
     "defaultStatus": "pending"
   },
   {
@@ -234,8 +285,11 @@
     "nextAction": "Bookmark page and re-check weekly through May.",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "likely",
-    "tags": ["holding-co"],
-    "defaultStatus": "pending"
+    "tags": [
+      "holding-co"
+    ],
+    "defaultStatus": "pending",
+    "prefillUrl": "https://havascafe.havas.com/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
   },
   {
     "id": "snap-at-cannes",
@@ -251,8 +305,11 @@
     "nextAction": "Ping Snap partner manager; watch microsite for public RSVP windows.",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "likely",
-    "tags": ["platform"],
-    "defaultStatus": "pending"
+    "tags": [
+      "platform"
+    ],
+    "defaultStatus": "pending",
+    "prefillUrl": "https://snapchatcannes.com/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
   },
   {
     "id": "tiktok-at-cannes",
@@ -262,14 +319,17 @@
     "startDate": "2026-06-22T09:00:00Z",
     "endDate": "2026-06-26T23:30:00Z",
     "location": "Carlton garden",
-    "description": "Hybrid invite + public RSVP. The TikTok evening party is a hot ticket — book early.",
+    "description": "Hybrid invite + public RSVP. The TikTok evening party is a hot ticket. Book early.",
     "registrationUrl": "https://tiktokatcannes.com/",
     "registrationType": "invite-only",
     "nextAction": "Email TikTok Ads rep + watch @TikTokForBusiness for public RSVP drop.",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "likely",
-    "tags": ["platform"],
-    "defaultStatus": "pending"
+    "tags": [
+      "platform"
+    ],
+    "defaultStatus": "pending",
+    "prefillUrl": "https://tiktokatcannes.com/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
   },
   {
     "id": "reddit-at-cannes",
@@ -285,7 +345,10 @@
     "nextAction": "Reach out to Reddit Ads sales rep.",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "likely",
-    "tags": ["platform", "community"],
+    "tags": [
+      "platform",
+      "community"
+    ],
     "defaultStatus": "pending"
   },
   {
@@ -296,13 +359,16 @@
     "startDate": "2026-06-22T09:00:00Z",
     "endDate": "2026-06-26T20:00:00Z",
     "location": "La Plage du Martinez",
-    "description": "Hybrid invite + public. Creator and SMB-marketer focus. Programming announced rolling — watch Canva LinkedIn.",
+    "description": "Hybrid invite + public. Creator and SMB-marketer focus. Programming announced rolling. Watch Canva LinkedIn.",
     "registrationUrl": "https://public.canva.site/cannes",
     "registrationType": "invite-only",
     "nextAction": "Watch Canva LinkedIn; submit public RSVP when it opens.",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "likely",
-    "tags": ["creator", "design"],
+    "tags": [
+      "creator",
+      "design"
+    ],
     "defaultStatus": "pending"
   },
   {
@@ -318,7 +384,10 @@
     "nextAction": "Ask your WPP-connected investor for warm intros to events team or senior agency contacts.",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "verified",
-    "tags": ["holding-co", "gated"],
+    "tags": [
+      "holding-co",
+      "gated"
+    ],
     "defaultStatus": "pending"
   },
   {
@@ -334,7 +403,10 @@
     "nextAction": "Cold-LinkedIn senior Publicis France / Epsilon contacts.",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "verified",
-    "tags": ["holding-co", "gated"],
+    "tags": [
+      "holding-co",
+      "gated"
+    ],
     "defaultStatus": "pending"
   },
   {
@@ -345,12 +417,15 @@
     "startDate": "2026-06-22T09:00:00Z",
     "endDate": "2026-06-26T22:00:00Z",
     "location": "Plage Royale, Croisette",
-    "description": "Google's flagship beach + YouTube programming. Rep-controlled list — ask your Google Ads / DV360 / YouTube Ads rep to add you explicitly.",
+    "description": "Google's flagship beach + YouTube programming. Rep-controlled list. Ask your Google Ads / DV360 / YouTube Ads rep to add you explicitly.",
     "registrationType": "invite-only",
     "nextAction": "Email your Google Ads rep: 'Please add me to the Google Beach guest list.'",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "verified",
-    "tags": ["platform", "gated"],
+    "tags": [
+      "platform",
+      "gated"
+    ],
     "defaultStatus": "pending"
   },
   {
@@ -366,7 +441,10 @@
     "nextAction": "Ping Meta Business / Marketing Partner rep for invite.",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "verified",
-    "tags": ["platform", "gated"],
+    "tags": [
+      "platform",
+      "gated"
+    ],
     "defaultStatus": "pending"
   },
   {
@@ -383,7 +461,10 @@
     "nextAction": "Submit B2B Summit application and ping LinkedIn rep.",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "verified",
-    "tags": ["b2b", "official"],
+    "tags": [
+      "b2b",
+      "official"
+    ],
     "defaultStatus": "action-needed"
   },
   {
@@ -394,14 +475,18 @@
     "startDate": "2026-06-22T19:00:00Z",
     "endDate": "2026-06-22T22:30:00Z",
     "location": "Cannes (venue TBD)",
-    "description": "Curated dinner for ~40 brand-side marketing leaders. Caps fast. Apply early — Digiday vets every attendee.",
+    "description": "Curated dinner for ~40 brand-side marketing leaders. Caps fast. Apply early. Digiday vets every attendee.",
     "registrationUrl": "https://digiday.com/events/cannes-brand-leaders-dinner/",
     "registrationType": "application",
-    "nextAction": "Apply now — limited brand-side seats.",
+    "nextAction": "Apply now. Limited brand-side seats.",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "verified",
-    "tags": ["press", "vetted"],
-    "defaultStatus": "action-needed"
+    "tags": [
+      "press",
+      "vetted"
+    ],
+    "defaultStatus": "action-needed",
+    "prefillUrl": "https://digiday.com/events/cannes-brand-leaders-dinner/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
   },
   {
     "id": "digiday-marketing-leaders-brunch",
@@ -414,11 +499,15 @@
     "description": "Brunch + small-group conversations with senior marketing leaders. Application-only.",
     "registrationUrl": "https://digiday.com/events/cannes-marketing-leaders-brunch/",
     "registrationType": "application",
-    "nextAction": "Apply — Digiday confirms attendance ~3 weeks out.",
+    "nextAction": "Apply. Digiday confirms attendance ~3 weeks out.",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "verified",
-    "tags": ["press", "vetted"],
-    "defaultStatus": "action-needed"
+    "tags": [
+      "press",
+      "vetted"
+    ],
+    "defaultStatus": "action-needed",
+    "prefillUrl": "https://digiday.com/events/cannes-marketing-leaders-brunch/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
   },
   {
     "id": "digiday-panel-cocktail",
@@ -434,8 +523,11 @@
     "nextAction": "Apply via Digiday events page.",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "verified",
-    "tags": ["press"],
-    "defaultStatus": "action-needed"
+    "tags": [
+      "press"
+    ],
+    "defaultStatus": "action-needed",
+    "prefillUrl": "https://digiday.com/events/cannes-panel-cocktail-reception/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
   },
   {
     "id": "variety-at-cannes-studio",
@@ -445,12 +537,14 @@
     "startDate": "2026-06-22T10:00:00Z",
     "endDate": "2026-06-26T18:00:00Z",
     "location": "Croisette",
-    "description": "Variety's interview studio. Get on the schedule by pitching a story angle to a Variety ad/media reporter — the studio is also a great place to bump into talent + execs.",
+    "description": "Variety's interview studio. Get on the schedule by pitching a story angle to a Variety ad/media reporter. The studio is also a great place to bump into talent + execs.",
     "registrationType": "press",
     "nextAction": "Pitch a story angle to a Variety ad/media reporter.",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "likely",
-    "tags": ["press"],
+    "tags": [
+      "press"
+    ],
     "defaultStatus": "pending"
   },
   {
@@ -461,13 +555,15 @@
     "startDate": "2026-06-22T09:00:00Z",
     "endDate": "2026-06-26T18:00:00Z",
     "location": "Various",
-    "description": "Campaign's full programme — talks, dinners, breakfasts. Mix of open and application-only.",
+    "description": "Campaign's full programme. Talks, dinners, breakfasts. Mix of open and application-only.",
     "registrationUrl": "https://www.campaignlive.com/events",
     "registrationType": "application",
     "nextAction": "Filter for Cannes-week sessions and apply per-event.",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "verified",
-    "tags": ["press"],
+    "tags": [
+      "press"
+    ],
     "defaultStatus": "action-needed"
   },
   {
@@ -478,30 +574,35 @@
     "startDate": "2026-06-23T10:00:00Z",
     "endDate": "2026-06-25T18:00:00Z",
     "location": "Croisette",
-    "description": "Fast Company's editorial sessions — innovation- and creator-leaning audience. Application-gated.",
+    "description": "Fast Company's editorial sessions. Innovation- and creator-leaning audience. Application-gated.",
     "registrationUrl": "https://www.fastcompany.com/events",
     "registrationType": "application",
     "nextAction": "Watch events page; apply when Cannes sessions are listed.",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "likely",
-    "tags": ["press"],
+    "tags": [
+      "press"
+    ],
     "defaultStatus": "pending"
   },
   {
     "id": "ahoy-club-yacht-fleet",
-    "name": "Ahoy Club — Cannes Lions yacht fleet",
+    "name": "Ahoy Club. Cannes Lions yacht fleet",
     "organizer": "Ahoy Club",
     "category": "yacht",
     "startDate": "2026-06-22T18:00:00Z",
     "endDate": "2026-06-26T23:30:00Z",
     "location": "Vieux Port + Anchorage",
-    "description": "Charter listings for the festival week. A 10–14 person yacht dinner for prospects/portfolio is one of the highest-ROI moves at Cannes — ~$15–30k all-in.",
+    "description": "Charter listings for the festival week. A 10–14 person yacht dinner for prospects/portfolio is one of the highest-ROI moves at Cannes. ~$15–30k all-in.",
     "registrationUrl": "https://ahoyclub.com/whats-on/cannes-lions-international-festival",
     "registrationType": "open",
-    "nextAction": "Browse fleet, request quote — book by mid-May for prime dates.",
+    "nextAction": "Browse fleet, request quote. Book by mid-May for prime dates.",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "verified",
-    "tags": ["yacht", "host"],
+    "tags": [
+      "yacht",
+      "host"
+    ],
     "defaultStatus": "pending"
   },
   {
@@ -515,10 +616,13 @@
     "description": "Handles many holding-co yacht dinners. Good operator if you want a fully managed dinner-for-12 with catering and crew.",
     "registrationUrl": "https://bespokeyachtcharter.com/cannes-lions-2026-preview-why-yachts-beach-clubs-and-branded-spaces-are-driving-the-real-business-of-the-festival/",
     "registrationType": "open",
-    "nextAction": "Request quote — confirm catering and crew separately.",
+    "nextAction": "Request quote. Confirm catering and crew separately.",
     "source": "Cannes-Lions-2026-Lists.md",
     "confidence": "verified",
-    "tags": ["yacht", "host"],
+    "tags": [
+      "yacht",
+      "host"
+    ],
     "defaultStatus": "not-registered"
   },
   {
@@ -531,10 +635,13 @@
     "location": "Hôtel Carlton, La Croisette",
     "description": "Late-afternoon / early-evening drop-in spot. No list, no RSVP. The unofficial centre of gravity once the official beaches close at 7pm.",
     "registrationType": "open",
-    "nextAction": "Block 5–7pm window for impromptu meetings — text contacts to swing by.",
+    "nextAction": "Block 5–7pm window for impromptu meetings. Text contacts to swing by.",
     "source": "Cannes-Lions-2026-Lists.md tactical advice",
     "confidence": "verified",
-    "tags": ["informal", "always-on"],
+    "tags": [
+      "informal",
+      "always-on"
+    ],
     "defaultStatus": "action-needed"
   }
 ]

@@ -13,7 +13,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "How it works",
   description:
-    "What Cannes Command Center does, what's real today, and what data is stored where. Non-technical.",
+    "What this dashboard does, what's real today, and what data is stored where. Non-technical.",
 };
 
 const SECTIONS = [
@@ -23,8 +23,9 @@ const SECTIONS = [
     body: (
       <>
         <p>
-          Cannes Command Center is a single dashboard for navigating Cannes Lions 2026 — beach clubs,
-          parties, panels, yacht dinners, and the 1,100+ fringe events on the Propeller list.
+          A single dashboard for navigating Cannes Lions 2026: beach clubs,
+          parties, panels, yacht dinners, and the 1,100+ fringe events on the
+          Propeller list.
         </p>
         <p>
           It&apos;s designed for first-timers who don&apos;t know where to start, and veterans who want
@@ -40,11 +41,11 @@ const SECTIONS = [
       <>
         <p>Every event has a status. You can change it at any time on the event card.</p>
         <ul className="mt-2 list-disc space-y-1 pl-5">
-          <li><strong>Registered</strong> — you&apos;re on the list.</li>
-          <li><strong>Pending</strong> — RSVP submitted, waiting on confirmation.</li>
-          <li><strong>Action needed</strong> — you still need to do something (email a rep, submit a form).</li>
-          <li><strong>Not registered</strong> — you don&apos;t intend to attend.</li>
-          <li><strong>Attended</strong> / <strong>Skipped</strong> — for after the fact.</li>
+          <li><strong>Registered</strong>: you&apos;re on the list.</li>
+          <li><strong>Pending</strong>: RSVP submitted, waiting on confirmation.</li>
+          <li><strong>Action needed</strong>: you still need to do something (email a rep, submit a form).</li>
+          <li><strong>Not registered</strong>: you don&apos;t intend to attend.</li>
+          <li><strong>Attended</strong> / <strong>Skipped</strong>: for after the fact.</li>
         </ul>
       </>
     ),
@@ -73,8 +74,9 @@ const SECTIONS = [
       <>
         <p>
           The <Link href="/people" className="font-medium text-teal-700 hover:text-teal-900">Who&apos;s going</Link>{" "}
-          page is a timeline of people who have publicly said they&apos;re heading to the festival
-          — based on public LinkedIn posts, tweets, and conference-attendee announcements.
+          page is a timeline of people who have publicly said they&apos;re heading
+          to the festival, based on public LinkedIn posts, tweets, and
+          conference-attendee announcements.
         </p>
         <p>
           For the MVP, this tab is populated with <strong>sample data</strong> so you can see the
@@ -132,7 +134,7 @@ const SECTIONS = [
       <>
         <p><strong>Is this affiliated with Cannes Lions?</strong> No. It&apos;s an open community tool.</p>
         <p><strong>What if I clear my browser?</strong> Your statuses and profile go with it. Treat this like Notes, not a cloud doc.</p>
-        <p><strong>Can I share it?</strong> Yes — feel free to send the URL to anyone heading to Cannes. The seed event list is public; their personal data stays on their device.</p>
+        <p><strong>Can I share it?</strong> Yes. Send the URL to anyone heading to Cannes. The seed event list is public; their personal data stays on their device.</p>
         <p><strong>Found a missing event?</strong> Open the GitHub repo and submit a PR to{" "}
           <code className="rounded bg-sand-100 px-1.5 py-0.5 text-[12.5px]">data/events.json</code>, or add it
           as a custom event for yourself.</p>
@@ -154,8 +156,9 @@ export default function HowItWorksPage() {
             The 5-minute orientation.
           </h1>
           <p className="text-[15px] leading-relaxed text-[color:var(--ink-soft)]">
-            Cannes Command Center is built to be obvious, but here&apos;s a tour anyway —
-            including the things that are real today and the things we&apos;re still building.
+            This dashboard is built to be obvious, but here&apos;s a tour anyway,
+            including the things that are real today and the things we&apos;re
+            still building.
           </p>
         </section>
 
@@ -182,9 +185,9 @@ export default function HowItWorksPage() {
 
         <section className="rounded-2xl border border-coral-500/30 bg-coral-100/40 px-5 py-4 text-[13px] text-teal-900">
           <p>
-            <strong>Want a feature?</strong> Open an issue on the repo or DM the maintainer.
-            This is meant to be a useful community tool, not a polished SaaS — opinionated,
-            fast to ship, and easy to fork.
+            <strong>Want a feature?</strong> Open an issue on the repo or DM
+            the maintainer. This is meant to be a useful community tool, not a
+            polished SaaS. Opinionated, fast to ship, and easy to fork.
           </p>
         </section>
       </div>
