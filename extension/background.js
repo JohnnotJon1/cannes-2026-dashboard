@@ -13,6 +13,7 @@
 const DASHBOARD_ORIGINS = [
   "http://localhost:3000",
   "http://localhost:3100",
+  "https://cannes.airpost.ai",
   "https://cannes-2026-dashboard.vercel.app",
 ];
 

@@ -5,7 +5,7 @@
 // The "Open dashboard" link from the popup points at the production URL.
 // We can't reliably probe localhost:3100 from a popup before opening it,
 // so we just default to prod. Developers can replace this in the source.
-const DASHBOARD_URL = "https://cannes-2026-dashboard.vercel.app";
+const DASHBOARD_URL = "https://cannes.airpost.ai";
 
 async function pickDashboardUrl() {
   return DASHBOARD_URL;

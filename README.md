@@ -1,5 +1,7 @@
 # Cannes Lions 2026 Dashboard
 
+**Live at <https://cannes.airpost.ai>** · [Source on GitHub](https://github.com/JohnnotJon1/cannes-2026-dashboard) · MIT
+
 A privacy-first dashboard for **Cannes Lions 2026**: beach clubs, parties, panels, yacht
 dinners, and the 1,100+ fringe events on the Croisette. Pre-fills every RSVP form with your
 saved info. Tracks what you got into. Surfaces who else is going. Built so the site owner

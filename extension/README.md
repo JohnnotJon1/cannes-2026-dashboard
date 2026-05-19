@@ -9,7 +9,7 @@ The user always submits the form themselves. The extension never auto-submits, n
 ## Architecture
 
 ```
-Dashboard (cannes-2026-dashboard.vercel.app or localhost:3100)
+Dashboard (cannes.airpost.ai or localhost:3100)
   └── localStorage["ccc:v1:profile"]
             ▲
             │ (dashboard-bridge.js reads + forwards)

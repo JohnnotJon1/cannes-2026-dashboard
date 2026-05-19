@@ -1,12 +1,13 @@
 {
   "manifest_version": 3,
   "name": "Cannes 2026 RSVP Auto-Fill",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Auto-fills your name, email, company, and title on Cannes Lions 2026 RSVP forms. Reads your profile from your Cannes 2026 dashboard. Privacy-first: nothing leaves your browser.",
   "permissions": ["storage", "scripting"],
   "host_permissions": [
     "http://localhost:3000/*",
     "http://localhost:3100/*",
+    "https://cannes.airpost.ai/*",
     "https://cannes-2026-dashboard.vercel.app/*",
     "https://www.canneslions.com/*",
     "https://cannes.dentsu.com/*",
@@ -53,6 +54,7 @@
       "matches": [
         "http://localhost:3100/*",
         "http://localhost:3000/*",
+        "https://cannes.airpost.ai/*",
         "https://cannes-2026-dashboard.vercel.app/*"
       ],
       "js": ["dashboard-bridge.js"],
