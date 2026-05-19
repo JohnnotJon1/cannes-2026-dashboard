@@ -4,7 +4,6 @@ import { useState } from "react";
 import {
   AlertTriangle,
   ArrowRight,
-  Check,
   ChevronLeft,
   Lock,
   Users,
@@ -20,16 +19,15 @@ import { EMPTY_PROFILE, type UserProfile } from "@/types";
 // Full-screen first-visit onboarding. Photographic Croisette background,
 // white content card, big Fraunces headlines, restrained motion.
 //
-// Simplified 3-step flow (no integrations to connect):
+// 2-step flow:
 //   intro  → "Here's what this does" (3 bullets)
-//   profile → save the 6 RSVP fields
-//   done    → "you're set"
+//   profile → save the 6 RSVP fields, then drop into the dashboard
 //
 // Profile data is persisted in the same localStorage key the rest of the
 // app reads from, so it's already integrated on the dashboard.
 
-type StepId = "intro" | "profile" | "done";
-const ORDERED_STEPS: StepId[] = ["intro", "profile", "done"];
+type StepId = "intro" | "profile";
+const ORDERED_STEPS: StepId[] = ["intro", "profile"];
 const INDICATED_STEPS: StepId[] = ["intro", "profile"];
 
 export function OnboardingOverlay() {
@@ -91,7 +89,7 @@ export function OnboardingOverlay() {
           indicatorIndex={indicatorIndex}
           totalIndicated={INDICATED_STEPS.length}
           back={back}
-          showBack={stepIndex > 0 && step !== "done"}
+          showBack={stepIndex > 0}
         >
           {step === "intro" && (
             <IntroStep onContinue={next} onSkipAll={askToSkip} />
@@ -99,7 +97,6 @@ export function OnboardingOverlay() {
           {step === "profile" && (
             <ProfileStep onContinue={next} onSkip={askToSkip} />
           )}
-          {step === "done" && <DoneStep onFinish={finish} />}
         </StepShell>
       </div>
 
@@ -131,7 +128,7 @@ function StepShell({
   showBack: boolean;
   children: React.ReactNode;
 }) {
-  const showHeader = step !== "done";
+  const showHeader = true;
   return (
     <div className="px-6 py-8 sm:px-10 sm:py-10">
       {showHeader && (
@@ -346,33 +343,6 @@ function ProfileStep({
           <ArrowRight className="h-4 w-4" />
         </button>
       </div>
-    </div>
-  );
-}
-
-// ----- Step 3: Done ---------------------------------------------------------
-
-function DoneStep({ onFinish }: { onFinish: () => void }) {
-  return (
-    <div className="space-y-6 text-center">
-      <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-teal-100 text-teal-800">
-        <Check className="h-6 w-6" />
-      </div>
-      <h2 className="font-display text-3xl font-semibold leading-tight text-teal-900 sm:text-4xl">
-        You&apos;re set.
-      </h2>
-      <p className="mx-auto max-w-md text-[15px] leading-relaxed text-[color:var(--ink-soft)]">
-        Welcome to your Cannes 2026 dashboard. You can re-run this setup any
-        time from the Integrations page.
-      </p>
-      <button
-        type="button"
-        onClick={onFinish}
-        className="inline-flex items-center justify-center gap-1.5 rounded-full bg-teal-800 px-5 py-2.5 text-sm font-semibold text-sand-50 transition-colors hover:bg-teal-900"
-      >
-        See my dashboard
-        <ArrowRight className="h-4 w-4" />
-      </button>
     </div>
   );
 }

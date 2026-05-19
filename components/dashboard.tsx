@@ -24,16 +24,14 @@ import { EventDetailDialog } from "./event-detail-dialog";
 import { AddEventDialog } from "./add-event-dialog";
 import { EmptyState } from "./empty-state";
 import { DashboardStats } from "./dashboard-stats";
-import { LastUpdated } from "./last-updated";
 import { ExtensionBanner } from "./extension-banner";
 import { resolveStatus } from "@/lib/filters";
 
 type Props = {
   seedEvents: CannesEvent[];
-  refreshMeta: { iso: string; count: number };
 };
 
-export function Dashboard({ seedEvents, refreshMeta }: Props) {
+export function Dashboard({ seedEvents }: Props) {
   const [statusMap, setStatusMap] = useLocalStorage<StatusMap>(
     STORAGE_KEYS.statuses,
     {}
@@ -120,11 +118,7 @@ export function Dashboard({ seedEvents, refreshMeta }: Props) {
           aria-hidden
         />
         <div className="relative">
-          <div className="flex flex-wrap items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-sand-100/90">
-            <span className="rounded-full bg-white/15 px-2.5 py-0.5 backdrop-blur">Cannes Lions 2026</span>
-            <span>22–26 June · Croisette</span>
-          </div>
-          <h1 className="mt-3 max-w-3xl font-display text-4xl font-semibold leading-[1.05] tracking-tight drop-shadow-[0_2px_18px_rgba(0,0,0,0.35)] sm:text-5xl lg:text-6xl">
+          <h1 className="max-w-3xl font-display text-4xl font-semibold leading-[1.05] tracking-tight drop-shadow-[0_2px_18px_rgba(0,0,0,0.35)] sm:text-5xl lg:text-6xl">
             Your <span className="text-coral-500">command center</span> for Cannes Lions 2026.
           </h1>
           <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-sand-100/95 drop-shadow-[0_1px_8px_rgba(0,0,0,0.35)] sm:text-base">
@@ -141,11 +135,6 @@ export function Dashboard({ seedEvents, refreshMeta }: Props) {
               Browse events
             </a>
             <AddEventDialog onAdd={addCustom} />
-            <LastUpdated
-              iso={refreshMeta.iso}
-              count={refreshMeta.count}
-              noun="events"
-            />
           </div>
         </div>
       </section>

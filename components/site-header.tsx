@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Lock, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
 const NAV = [
@@ -31,14 +31,6 @@ export function SiteHeader() {
               26
             </span>
           </span>
-          <span className="hidden flex-col leading-tight sm:flex">
-            <span className="text-[11px] uppercase tracking-[0.16em] text-[color:var(--muted)]">
-              Cannes Lions 2026
-            </span>
-            <span className="text-[11px] uppercase tracking-[0.16em] text-[color:var(--muted)]">
-              22 to 26 June
-            </span>
-          </span>
         </Link>
 
         <div className="flex items-center gap-2">
@@ -64,17 +56,6 @@ export function SiteHeader() {
               );
             })}
           </nav>
-
-          {/* Subtle privacy pill. Visible at every viewport, doubles as a
-              tooltip-style explainer on hover. Replaces the old full-width
-              "Local-first by design" banner. */}
-          <span
-            className="inline-flex items-center gap-1.5 rounded-full border border-[color:var(--hairline)] bg-white/80 px-2.5 py-1 text-[11px] font-medium uppercase tracking-wider text-teal-800 shadow-[0_1px_0_rgba(13,61,58,0.04)]"
-            title="Your profile, statuses, and notes are stored in this browser only. Nothing is sent to us or to a server."
-          >
-            <Lock className="h-3 w-3" />
-            Local only
-          </span>
 
           <button
             type="button"
