@@ -4,8 +4,12 @@ import { seedEvents } from "@/lib/seed";
 export default function HomePage() {
   return (
     <>
-      {/* Full-bleed Croisette hero — edge-to-edge across the viewport. */}
-      <section className="relative isolate overflow-hidden bg-teal-900 text-sand-50">
+      {/* Full-bleed Croisette hero — edge-to-edge AND top-to-top.
+          The -mt-[68px] pulls the section up under the sticky header
+          (which is ~68px tall) so the photo backdrop reaches the very
+          top of the viewport. Inner pt-* compensates so the headline
+          doesn't slide under the header. */}
+      <section className="relative isolate -mt-[68px] overflow-hidden bg-teal-900 text-sand-50">
         {/* Aerial Croisette photo backdrop */}
         <div
           className="pointer-events-none absolute inset-0 bg-cover bg-center"
@@ -18,7 +22,7 @@ export default function HomePage() {
           className="pointer-events-none absolute inset-0 bg-[linear-gradient(115deg,rgba(10,46,44,0.78)_0%,rgba(10,46,44,0.55)_45%,rgba(10,46,44,0.15)_100%)]"
           aria-hidden
         />
-        <div className="relative mx-auto flex min-h-[60vh] max-w-7xl flex-col justify-center px-5 py-12 lg:px-8 lg:py-20">
+        <div className="relative mx-auto flex min-h-[60vh] max-w-7xl flex-col justify-center px-5 pb-12 pt-24 lg:px-8 lg:pb-20 lg:pt-32">
           <h1 className="max-w-3xl font-display text-4xl font-semibold leading-[1.05] tracking-tight drop-shadow-[0_2px_18px_rgba(0,0,0,0.35)] sm:text-5xl lg:text-6xl">
             The ultimate <span className="text-coral-500">prep site</span> for Cannes 2026.
           </h1>
