@@ -47,10 +47,27 @@ export function EventCard({
       className="card-lift group relative flex flex-col overflow-hidden rounded-2xl border border-[color:var(--hairline)] bg-white text-left shadow-[0_1px_0_rgba(13,61,58,0.04)] focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-700"
     >
       <div
-        className={`noise relative h-32 w-full overflow-hidden ${gradientFor(
-          event.category
-        )}`}
+        className={`noise relative h-32 w-full overflow-hidden ${
+          event.imageUrl ? "bg-teal-900" : gradientFor(event.category)
+        }`}
       >
+        {event.imageUrl && (
+          <>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={event.imageUrl}
+              alt=""
+              className="absolute inset-0 h-full w-full object-cover"
+              loading="lazy"
+              referrerPolicy="no-referrer"
+            />
+            {/* Legibility scrim so the chips + organizer text stay readable */}
+            <div
+              className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/15 to-black/65"
+              aria-hidden
+            />
+          </>
+        )}
         <div className="absolute inset-0 flex flex-col justify-between p-3">
           <div className="flex items-center justify-between gap-2">
             <span className="rounded-full bg-white/85 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-teal-900">
@@ -62,9 +79,9 @@ export function EventCard({
               </span>
             )}
           </div>
-          <div className="flex items-center justify-between text-[11px] font-medium text-white/95">
+          <div className="flex items-center justify-between text-[11px] font-medium text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.7)]">
             <span>{event.organizer}</span>
-            <span className="opacity-90">{formatEventDateTime(event)}</span>
+            <span className="opacity-95">{formatEventDateTime(event)}</span>
           </div>
         </div>
       </div>

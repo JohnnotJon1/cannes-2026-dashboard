@@ -80,6 +80,13 @@ export interface CannesEvent {
    * name/email fields for most forms).
    */
   prefillUrl?: string;
+  /**
+   * Optional hero image shown on the event card. Either a local path like
+   * `/events/<id>.jpg` (scraped from the event's og:image and committed to
+   * the repo) or an absolute URL. If absent, the card falls back to a
+   * category-tinted gradient.
+   */
+  imageUrl?: string;
 }
 
 export interface CustomEvent extends CannesEvent {

@@ -24,11 +24,8 @@ export function SiteHeader() {
           className="group flex items-center gap-2.5 text-teal-900"
           onClick={() => setOpen(false)}
         >
-          <span className="relative grid h-10 w-10 place-items-center rounded-full bg-teal-800 text-sand-50 shadow-sm">
+          <span className="grid h-10 w-10 place-items-center rounded-full bg-teal-800 text-sand-50 shadow-sm">
             <span className="font-display text-xl leading-none">C</span>
-            <span className="absolute -bottom-0.5 -right-0.5 grid h-3.5 w-3.5 place-items-center rounded-full bg-coral-500 text-[7px] font-bold text-white">
-              26
-            </span>
           </span>
         </Link>
 

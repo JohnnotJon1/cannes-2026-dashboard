@@ -1,5 +1,22 @@
+"use client";
+
+import { useState } from "react";
 import { ExternalLink, MessageSquareQuote, Calendar, Building2 } from "lucide-react";
 import type { PersonSignal } from "@/types";
+
+// Resolve a profile photo URL when we can. For X-sourced entries we route
+// through unavatar.io which proxies the latest avatar from the public X
+// profile. For LinkedIn entries there's no equivalent free service that
+// works reliably without auth — we fall back to initials.
+function resolvePhotoUrl(person: PersonSignal): string | null {
+  if (person.twitterUrl) {
+    const m = person.twitterUrl.match(/(?:twitter\.com|x\.com)\/([^/?#]+)/i);
+    if (m && m[1] && !/^(home|explore|search|i|hashtag)$/i.test(m[1])) {
+      return `https://unavatar.io/twitter/${m[1]}?fallback=false`;
+    }
+  }
+  return null;
+}
 
 function LinkedInLogo() {
   return (
@@ -24,6 +41,10 @@ export function PersonCard({ person }: { person: PersonSignal }) {
     .slice(0, 2)
     .join("");
 
+  const photoUrl = resolvePhotoUrl(person);
+  const [photoFailed, setPhotoFailed] = useState(false);
+  const showPhoto = photoUrl && !photoFailed;
+
   const yearLabel =
     person.yearSignal === "going-this-year"
       ? { text: "Going this year", classes: "bg-teal-800 text-sand-50 border-teal-800" }
@@ -34,12 +55,23 @@ export function PersonCard({ person }: { person: PersonSignal }) {
   return (
     <article className="card-lift flex h-full flex-col rounded-2xl border border-[color:var(--hairline)] bg-white p-5 shadow-[0_1px_0_rgba(13,61,58,0.04)]">
       <div className="flex items-start gap-3">
-        <div
-          className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-teal-100 font-display text-base font-semibold text-teal-900"
-          aria-hidden
-        >
-          {initials}
-        </div>
+        {showPhoto ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={photoUrl}
+            alt=""
+            onError={() => setPhotoFailed(true)}
+            className="h-12 w-12 shrink-0 rounded-full bg-teal-100 object-cover"
+            referrerPolicy="no-referrer"
+          />
+        ) : (
+          <div
+            className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-teal-100 font-display text-base font-semibold text-teal-900"
+            aria-hidden
+          >
+            {initials}
+          </div>
+        )}
         <div className="min-w-0 flex-1">
           <h3 className="font-display text-lg font-semibold leading-snug text-teal-900">
             {person.name}

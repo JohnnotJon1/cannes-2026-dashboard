@@ -18,7 +18,8 @@
       "must-have"
     ],
     "defaultStatus": "action-needed",
-    "prefillUrl": "https://www.canneslions.com/cannes-lions-2026-register-your-interest?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
+    "prefillUrl": "https://www.canneslions.com/cannes-lions-2026-register-your-interest?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}",
+    "imageUrl": "/events/cannes-lions-festival-pass.jpg"
   },
   {
     "id": "dentsu-beach-house",
@@ -39,7 +40,8 @@
       "open-rsvp"
     ],
     "defaultStatus": "action-needed",
-    "prefillUrl": "https://cannes.dentsu.com/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
+    "prefillUrl": "https://cannes.dentsu.com/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}",
+    "imageUrl": "/events/dentsu-beach-house.jpg"
   },
   {
     "id": "sport-beach-stagwell",
@@ -61,7 +63,8 @@
       "recommended"
     ],
     "defaultStatus": "action-needed",
-    "prefillUrl": "https://www.sportbeach.com/register?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
+    "prefillUrl": "https://www.sportbeach.com/register?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}",
+    "imageUrl": "/events/sport-beach-stagwell.jpg"
   },
   {
     "id": "pinterest-manifestival",
@@ -82,7 +85,8 @@
       "platform"
     ],
     "defaultStatus": "action-needed",
-    "prefillUrl": "https://pinterestcannes.com/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
+    "prefillUrl": "https://pinterestcannes.com/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}",
+    "imageUrl": "/events/pinterest-manifestival.jpg"
   },
   {
     "id": "freewheel-beach",
@@ -124,7 +128,8 @@
       "open-rsvp"
     ],
     "defaultStatus": "action-needed",
-    "prefillUrl": "https://event.adweek.com/awh-cannes-2026/begin?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
+    "prefillUrl": "https://event.adweek.com/awh-cannes-2026/begin?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}",
+    "imageUrl": "/events/adweek-house.jpg"
   },
   {
     "id": "fq-beach",
@@ -145,7 +150,8 @@
       "new-2026"
     ],
     "defaultStatus": "action-needed",
-    "prefillUrl": "https://www.thefemalequotient.com/events/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
+    "prefillUrl": "https://www.thefemalequotient.com/events/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}",
+    "imageUrl": "/events/fq-beach.jpg"
   },
   {
     "id": "propeller-fringe-events",
@@ -165,7 +171,8 @@
       "directory",
       "fringe"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/propeller-fringe-events.jpg"
   },
   {
     "id": "tubi-cabana",
@@ -185,7 +192,8 @@
       "streaming"
     ],
     "defaultStatus": "pending",
-    "prefillUrl": "https://events.tubi.tv/tubicabana2026/SavetheDate?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
+    "prefillUrl": "https://events.tubi.tv/tubicabana2026/SavetheDate?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}",
+    "imageUrl": "/events/tubi-cabana.jpg"
   },
   {
     "id": "ad-age-lounge-lawn-party",
@@ -207,7 +215,8 @@
       "recommended"
     ],
     "defaultStatus": "action-needed",
-    "prefillUrl": "https://adage.com/events-awards/cannes-lions/aa-cannes-lions-2026-ad-age-lounge-lawn-party/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
+    "prefillUrl": "https://adage.com/events-awards/cannes-lions/aa-cannes-lions-2026-ad-age-lounge-lawn-party/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}",
+    "imageUrl": "/events/ad-age-lounge-lawn-party.jpg"
   },
   {
     "id": "microsoft-beach-house",
@@ -249,7 +258,8 @@
       "music",
       "recommended"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/spotify-beach.jpg"
   },
   {
     "id": "amazon-port-amaison",
@@ -269,7 +279,8 @@
       "retail-media",
       "platform"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/amazon-port-amaison.jpg"
   },
   {
     "id": "havas-cafe",
@@ -309,7 +320,8 @@
       "platform"
     ],
     "defaultStatus": "pending",
-    "prefillUrl": "https://snapchatcannes.com/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
+    "prefillUrl": "https://snapchatcannes.com/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}",
+    "imageUrl": "/events/snap-at-cannes.jpg"
   },
   {
     "id": "tiktok-at-cannes",
@@ -329,7 +341,8 @@
       "platform"
     ],
     "defaultStatus": "pending",
-    "prefillUrl": "https://tiktokatcannes.com/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
+    "prefillUrl": "https://tiktokatcannes.com/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}",
+    "imageUrl": "/events/tiktok-at-cannes.jpg"
   },
   {
     "id": "reddit-at-cannes",
@@ -349,7 +362,8 @@
       "platform",
       "community"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/reddit-at-cannes.jpg"
   },
   {
     "id": "canva-creative-cabana",
@@ -583,7 +597,8 @@
     "tags": [
       "press"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/fast-company-sessions.jpg"
   },
   {
     "id": "ahoy-club-yacht-fleet",
@@ -603,7 +618,8 @@
       "yacht",
       "host"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/ahoy-club-yacht-fleet.jpg"
   },
   {
     "id": "bespoke-yacht-charter",
@@ -623,7 +639,8 @@
       "yacht",
       "host"
     ],
-    "defaultStatus": "not-registered"
+    "defaultStatus": "not-registered",
+    "imageUrl": "/events/bespoke-yacht-charter.jpg"
   },
   {
     "id": "carlton-bar-eighth-list",
