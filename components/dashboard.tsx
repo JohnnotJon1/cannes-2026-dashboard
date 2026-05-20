@@ -23,7 +23,6 @@ import { EventFilters } from "./event-filters";
 import { EventDetailDialog } from "./event-detail-dialog";
 import { EmptyState } from "./empty-state";
 import { DashboardStats } from "./dashboard-stats";
-import { ExtensionBanner } from "./extension-banner";
 import { resolveStatus } from "@/lib/filters";
 
 type Props = {
@@ -83,44 +82,6 @@ export function Dashboard({ seedEvents }: Props) {
 
   return (
     <div className="space-y-8">
-      {/* Hero ----------------------------------------------------------- */}
-      <section className="relative overflow-hidden rounded-3xl border border-[color:var(--hairline)] bg-teal-900 px-6 py-10 text-sand-50 sm:px-10 sm:py-16 lg:py-20">
-        {/* Aerial Croisette photo backdrop */}
-        <div
-          className="pointer-events-none absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url(/walkthrough-bg.jpg)" }}
-          aria-hidden
-        />
-        {/* Legibility scrim: dark at the bottom-left where headline + buttons
-            live, lighter at the top-right where the photo is most beautiful */}
-        <div
-          className="pointer-events-none absolute inset-0 bg-[linear-gradient(115deg,rgba(10,46,44,0.78)_0%,rgba(10,46,44,0.55)_45%,rgba(10,46,44,0.15)_100%)]"
-          aria-hidden
-        />
-        <div className="relative">
-          <h1 className="max-w-3xl font-display text-4xl font-semibold leading-[1.05] tracking-tight drop-shadow-[0_2px_18px_rgba(0,0,0,0.35)] sm:text-5xl lg:text-6xl">
-            Your <span className="text-coral-500">command center</span> for Cannes Lions 2026.
-          </h1>
-          <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-sand-100/95 drop-shadow-[0_1px_8px_rgba(0,0,0,0.35)] sm:text-base">
-            Discover beach clubs, parties, panels, and yacht dinners. Track which
-            ones you&apos;re registered for. Add your own meetings. See who else is
-            on the Croisette. Your data stays in your browser. Nothing is sent
-            to us.
-          </p>
-          <div className="mt-6 flex flex-wrap items-center gap-3">
-            <a
-              href="#events"
-              className="rounded-full bg-coral-500 px-4 py-2 text-sm font-semibold text-white hover:bg-coral-600"
-            >
-              Browse events
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Extension install CTA (Chromium only, dismissible) -------------- */}
-      <ExtensionBanner />
-
       {/* Stats ---------------------------------------------------------- */}
       <section id="events" className="space-y-4">
         <DashboardStats events={allEvents} statusMap={statusMap} />
