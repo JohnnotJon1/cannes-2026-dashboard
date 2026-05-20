@@ -55,34 +55,6 @@ export default function ExtensionPage() {
           </div>
         </section>
 
-        <section className="space-y-4">
-          <h2 className="font-display text-2xl font-semibold text-teal-900">
-            How it works
-          </h2>
-          <ol className="space-y-3">
-            <Step
-              n={1}
-              title="Save your profile on the dashboard"
-              body="Name, email, company, title, LinkedIn, phone. Stored in your browser only."
-            />
-            <Step
-              n={2}
-              title="Install the extension"
-              body="One-click from the Chrome Web Store. Free, no account, no payment."
-            />
-            <Step
-              n={3}
-              title="Visit any Cannes RSVP page"
-              body="The extension recognizes it and auto-fills your info. A small badge appears confirming what was filled."
-            />
-            <Step
-              n={4}
-              title="Review and submit"
-              body="Solve any captcha, click submit. The extension never submits for you."
-            />
-          </ol>
-        </section>
-
         <section className="rounded-2xl border border-teal-700/30 bg-teal-100 p-5 sm:p-6">
           <div className="flex items-start gap-3">
             <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-teal-800 text-sand-50">
@@ -163,18 +135,3 @@ export default function ExtensionPage() {
   );
 }
 
-function Step({ n, title, body }: { n: number; title: string; body: string }) {
-  return (
-    <li className="flex items-start gap-3 rounded-2xl border border-[color:var(--hairline)] bg-white p-4">
-      <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-teal-800 text-sm font-semibold text-sand-50">
-        {n}
-      </span>
-      <div>
-        <h3 className="font-semibold text-teal-900">{title}</h3>
-        <p className="mt-0.5 text-[13.5px] leading-relaxed text-[color:var(--ink-soft)]">
-          {body}
-        </p>
-      </div>
-    </li>
-  );
-}
