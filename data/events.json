@@ -19,7 +19,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/adweek-house-cannes.jpg"
   },
   {
     "id": "experian-s-cannes-happy-hour-sunday-kickoff",
@@ -39,7 +40,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/experian-s-cannes-happy-hour-sunday-kickoff.jpg"
   },
   {
     "id": "seedtag-at-cannes-lions-2026",
@@ -48,8 +50,8 @@
     "category": "panel",
     "startDate": "2026-06-21T08:00:00Z",
     "endDate": "2026-06-26T22:00:00Z",
-    "location": "41-43 Rue F\u00e9lix Faure, 06400 Cannes",
-    "description": "Seedtag activation across the full festival week at 41-43 Rue F\u00e9lix Faure. Contextual advertising and AI conversations with the Seedtag leadership team. Open all week for meetings and programming.",
+    "location": "41-43 Rue Félix Faure, 06400 Cannes",
+    "description": "Seedtag activation across the full festival week at 41-43 Rue Félix Faure. Contextual advertising and AI conversations with the Seedtag leadership team. Open all week for meetings and programming.",
     "registrationUrl": "https://live.seedtag.com/event/cannes-lions/summary?tm=cmGg4scxkERuS1TL14BopUo4FeRDGGwJ_J_ChZFECKY",
     "registrationType": "application",
     "nextAction": "Apply for an invite via the registration page.",
@@ -60,7 +62,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/seedtag-at-cannes-lions-2026.jpg"
   },
   {
     "id": "adform-cannes-lions-2026",
@@ -80,7 +83,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/adform-cannes-lions-2026.jpg"
   },
   {
     "id": "pre-cannes-popup-party",
@@ -99,7 +103,8 @@
     "tags": [
       "open"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/pre-cannes-popup-party.jpg"
   },
   {
     "id": "adweek-kickoff-soiree",
@@ -118,7 +123,8 @@
     "tags": [
       "marketer"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/adweek-kickoff-soiree.jpg"
   },
   {
     "id": "propeller-fringe-events",
@@ -148,8 +154,8 @@
     "category": "panel",
     "startDate": "2026-06-22T06:45:00Z",
     "endDate": "2026-06-22T07:30:00Z",
-    "location": "Esplanade Panti\u00e9ro, Monument aux Morts de Cannes, Vieux Port",
-    "description": "A 5K morning run along the Croisette organized by Shakuri Studios in partnership with Trailblazers Sweatworking Club. Inclusive pace built for conversation rather than competition. Meet 6:45 AM, run starts 7:00 AM CEST. Runs Mon\u2013Thu, June 22\u201325.",
+    "location": "Esplanade Pantiéro, Monument aux Morts de Cannes, Vieux Port",
+    "description": "A 5K morning run along the Croisette organized by Shakuri Studios in partnership with Trailblazers Sweatworking Club. Inclusive pace built for conversation rather than competition. Meet 6:45 AM, run starts 7:00 AM CEST. Runs Mon–Thu, June 22–25.",
     "registrationUrl": "https://www.eventbrite.com/e/cannes-lions-run-club-tickets-1988066578654",
     "registrationType": "open",
     "nextAction": "Submit RSVP via the registration page.",
@@ -159,7 +165,8 @@
       "open",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/cannes-lions-run-club.jpg"
   },
   {
     "id": "tennis-on-the-riviera",
@@ -178,7 +185,8 @@
     "tags": [
       "open"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/tennis-on-the-riviera.jpg"
   },
   {
     "id": "3c-ventures-cannes-plage-3cv",
@@ -199,7 +207,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/3c-ventures-cannes-plage-3cv.jpg"
   },
   {
     "id": "adobe-studio-cannes-lions",
@@ -221,7 +230,8 @@
       "creative",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/adobe-studio-cannes-lions.jpg"
   },
   {
     "id": "adobe-x-lions-creator-beach",
@@ -242,7 +252,8 @@
       "festival-pass",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/adobe-x-lions-creator-beach.jpg"
   },
   {
     "id": "axios-house-at-cannes-2026",
@@ -265,7 +276,8 @@
       "yacht",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/axios-house-at-cannes-2026.jpg"
   },
   {
     "id": "bain-company-at-cannes-lions-2026",
@@ -287,7 +299,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/bain-company-at-cannes-lions-2026.jpg"
   },
   {
     "id": "basis-at-cannes-lions-2026",
@@ -307,7 +320,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/basis-at-cannes-lions-2026.jpg"
   },
   {
     "id": "brand-innovators-marketing-leadership-summit",
@@ -316,7 +330,7 @@
     "category": "beach-club",
     "startDate": "2026-06-22T08:00:00Z",
     "endDate": "2026-06-26T22:00:00Z",
-    "location": "Armani Caffe \u00b7 LVMH Villa, Cannes",
+    "location": "Armani Caffe · LVMH Villa, Cannes",
     "description": "Brand Innovators' 4-day Marketing Leadership Summit returns to Cannes with TWO stages. Beach Stage + Showcase Stage. Across Armani Caffe and LVMH Villa.",
     "registrationUrl": "https://brand-innovators.com/events/marketing-leadership-summit-cannes-2026/",
     "registrationType": "application",
@@ -326,7 +340,8 @@
     "tags": [
       "leader"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/brand-innovators-marketing-leadership-summit.jpg"
   },
   {
     "id": "cannes-brand-leaders-dinner",
@@ -345,7 +360,8 @@
     "tags": [
       "leader"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/cannes-brand-leaders-dinner.jpg"
   },
   {
     "id": "cannes-lions-festival-pass",
@@ -376,7 +392,7 @@
     "category": "yacht",
     "startDate": "2026-06-22T08:00:00Z",
     "endDate": "2026-06-26T22:00:00Z",
-    "location": "E-Motion Yacht, Jet\u00e9e Albert Edouard Nord, Cannes",
+    "location": "E-Motion Yacht, Jetée Albert Edouard Nord, Cannes",
     "description": "Cognitiv hosts AI-powered performance marketing conversations all week aboard the E-Motion yacht. Fast, focused, elegantly produced sessions with the industry's sharpest minds.",
     "registrationUrl": "https://cannes2026.cognitiv.ai/conversations",
     "registrationType": "application",
@@ -388,7 +404,8 @@
       "yacht",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/cognitiv-at-cannes-lions-2026-performance-parlor.jpg"
   },
   {
     "id": "deloitte-digital-at-cannes-lions-festival-of-creativity",
@@ -408,7 +425,8 @@
       "leader",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/deloitte-digital-at-cannes-lions-festival-of-creativity.jpg"
   },
   {
     "id": "epidemic-sound-cannes-cabana",
@@ -429,16 +447,17 @@
       "creative",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/epidemic-sound-cannes-cabana.jpg"
   },
   {
     "id": "fq-equality-lounge-at-cannes-lions",
-    "name": "FQ Equality Lounge\u00ae at Cannes Lions",
+    "name": "FQ Equality Lounge® at Cannes Lions",
     "organizer": "Female Quotient",
     "category": "activation",
     "startDate": "2026-06-22T08:00:00Z",
     "endDate": "2026-06-26T22:00:00Z",
-    "location": "H\u00f4tel Martinez Suite 731, 73 Bd de la Croisette, Cannes",
+    "location": "Hôtel Martinez Suite 731, 73 Bd de la Croisette, Cannes",
     "description": "Opening day of The Female Quotient's Equality Lounge. 70+ panels and 400 speakers across 4 days. Programming for C-suite leaders to rising stars, with Purpose Pop-Up Shop, headshot station, wellness area.",
     "registrationUrl": "https://events.thefemalequotient.com/canneslions26/invite",
     "registrationType": "open",
@@ -448,7 +467,8 @@
     "tags": [
       "leader"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/fq-equality-lounge-at-cannes-lions.jpg"
   },
   {
     "id": "inkwell-beach-cannes",
@@ -468,7 +488,8 @@
       "creative",
       "open"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/inkwell-beach-cannes.jpg"
   },
   {
     "id": "journal-house-wsj-cannes-lions-2026",
@@ -488,7 +509,8 @@
       "media",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/journal-house-wsj-cannes-lions-2026.jpg"
   },
   {
     "id": "lbb-friends-beach-at-cannes-lions-2026",
@@ -509,7 +531,8 @@
       "open",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/lbb-friends-beach-at-cannes-lions-2026.jpg"
   },
   {
     "id": "later-lounge-at-cannes-lions-2026-day-1",
@@ -519,7 +542,7 @@
     "startDate": "2026-06-22T08:00:00Z",
     "endDate": "2026-06-22T17:00:00Z",
     "location": "Cannes (private space, address shared upon approval)",
-    "description": "Later kicks off Later Lounge. A series of small, invite-only sessions and conversations with marketers, creators, and platform leaders, set within a space designed to slow the pace of Cannes. Runs Mon\u2013Wed, 8 AM \u2013 5 PM CEST daily.",
+    "description": "Later kicks off Later Lounge. A series of small, invite-only sessions and conversations with marketers, creators, and platform leaders, set within a space designed to slow the pace of Cannes. Runs Mon–Wed, 8 AM – 5 PM CEST daily.",
     "registrationUrl": "https://luma.com/cannes_laterlounge",
     "registrationType": "application",
     "nextAction": "Apply for an invite via the registration page.",
@@ -530,7 +553,8 @@
       "leader",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/later-lounge-at-cannes-lions-2026-day-1.jpg"
   },
   {
     "id": "le-monks-cafe",
@@ -539,7 +563,7 @@
     "category": "panel",
     "startDate": "2026-06-22T08:00:00Z",
     "endDate": "2026-06-26T22:00:00Z",
-    "location": "Les Monks Caf\u00e9, 5 Sq. M\u00e9rim\u00e9e, Cannes, France 06400",
+    "location": "Les Monks Café, 5 Sq. Mérimée, Cannes, France 06400",
     "description": "Monks (formerly Media.Monks) cafe venue at Cannes. Drop-in programming and partner conversations through the festival.",
     "registrationUrl": "https://www.canneslions.com/partnerships/our-partners/monks",
     "registrationType": "open",
@@ -550,7 +574,8 @@
       "media",
       "marketer"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/le-monks-cafe.jpg"
   },
   {
     "id": "linktree-at-cannes-2026",
@@ -569,7 +594,8 @@
     "tags": [
       "creator"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/linktree-at-cannes-2026.jpg"
   },
   {
     "id": "liveramp-at-cannes-lions-2026",
@@ -589,7 +615,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/liveramp-at-cannes-lions-2026.jpg"
   },
   {
     "id": "maison-new-digital-age",
@@ -611,7 +638,8 @@
       "ai",
       "retail-media"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/maison-new-digital-age.jpg"
   },
   {
     "id": "microsoft-gardens",
@@ -630,7 +658,8 @@
     "tags": [
       "marketer"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/microsoft-gardens.jpg"
   },
   {
     "id": "nbcuniversal-at-le-studio",
@@ -650,7 +679,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/nbcuniversal-at-le-studio.jpg"
   },
   {
     "id": "openhouse-at-cannes-2026-the-trade-desk",
@@ -670,7 +700,8 @@
       "leader",
       "marketer"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/openhouse-at-cannes-2026-the-trade-desk.jpg"
   },
   {
     "id": "opus-base-cannes",
@@ -689,7 +720,8 @@
     "tags": [
       "creator"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/opus-base-cannes.jpg"
   },
   {
     "id": "signal-at-cannes",
@@ -710,7 +742,8 @@
       "media",
       "marketer"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/signal-at-cannes.jpg"
   },
   {
     "id": "samsung-ads-at-cannes-lions-2026",
@@ -730,7 +763,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/samsung-ads-at-cannes-lions-2026.jpg"
   },
   {
     "id": "semrush-villa-cannes-lions-2026",
@@ -751,7 +785,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/semrush-villa-cannes-lions-2026.jpg"
   },
   {
     "id": "siriusxm-media-adswizz-cannes-lions-2026",
@@ -772,7 +807,8 @@
       "media",
       "marketer"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/siriusxm-media-adswizz-cannes-lions-2026.jpg"
   },
   {
     "id": "sport-beach-stagwell",
@@ -781,7 +817,7 @@
     "category": "beach-club",
     "startDate": "2026-06-22T08:00:00Z",
     "endDate": "2026-06-26T20:00:00Z",
-    "location": "Plage Mac\u00e9, Croisette",
+    "location": "Plage Macé, Croisette",
     "description": "Athlete-driven activation with celebrity drop-ins, fitness classes, and one of the densest exec attendee lists at the festival. Open RSVP. Easy yes for first-timers.",
     "registrationUrl": "https://www.sportbeach.com/register",
     "registrationType": "open",
@@ -814,7 +850,8 @@
     "tags": [
       "marketer"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/t-mobile-advertising-cabana-at-cannes-lions-2026.jpg"
   },
   {
     "id": "the-exhale-an-xp-land-retreat-at-collins-house",
@@ -834,16 +871,17 @@
       "leader",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/the-exhale-an-xp-land-retreat-at-collins-house.jpg"
   },
   {
     "id": "vaynerx-chez-vayner-caf",
-    "name": "VaynerX Chez Vayner Caf\u00e9",
+    "name": "VaynerX Chez Vayner Café",
     "organizer": "New Digital Age",
     "category": "party",
     "startDate": "2026-06-22T08:00:00Z",
     "endDate": "2026-06-26T22:00:00Z",
-    "location": "Chez Vayner, 2 Pl. du G\u00e9n\u00e9ral de Gaulle",
+    "location": "Chez Vayner, 2 Pl. du Général de Gaulle",
     "description": "VaynerX Cannes 2026 base with full Mon-Thu agenda live. Champagne Bar kickoff, P&G Alumni Reunion Breakfast, From Streets to Screens, The Future of AI & Creative, and more programming throughout the week.",
     "registrationUrl": "https://vaynerx.com/cannes2026/",
     "registrationType": "open",
@@ -855,7 +893,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/vaynerx-chez-vayner-caf.jpg"
   },
   {
     "id": "videoamp-sea-change-at-cannes-2026",
@@ -874,7 +913,8 @@
     "tags": [
       "marketer"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/videoamp-sea-change-at-cannes-2026.jpg"
   },
   {
     "id": "wp-studio-at-cannes",
@@ -883,7 +923,7 @@
     "category": "panel",
     "startDate": "2026-06-22T08:00:00Z",
     "endDate": "2026-06-26T22:00:00Z",
-    "location": "29 rue du Commandant Andr\u00e9, Cannes",
+    "location": "29 rue du Commandant André, Cannes",
     "description": "The Washington Post brings a dedicated vodcast studio to Cannes. Live conversations all week on trusted storytelling and influence in a creator-driven media landscape. Daily executive roundtable lunches and evening receptions.",
     "registrationUrl": "https://www.washingtonpost.com/events/in-person/2026/06/22/wp-studio-at-cannes/",
     "registrationType": "application",
@@ -895,7 +935,8 @@
       "media",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/wp-studio-at-cannes.jpg"
   },
   {
     "id": "walmart-connect-at-cannes-2026",
@@ -904,8 +945,8 @@
     "category": "activation",
     "startDate": "2026-06-22T08:00:00Z",
     "endDate": "2026-06-26T22:00:00Z",
-    "location": "H\u00f4tel Barri\u00e8re Le Majestic Cannes, 10 La Croisette, 06407 Cannes",
-    "description": "Walmart Connect umbrella programming across Cannes Lions week. Sessions on commerce-driven audiences, culture to cart creativity, and retail-media-to-results measurement. Hosted at H\u00f4tel Barri\u00e8re Le Majestic.",
+    "location": "Hôtel Barrière Le Majestic Cannes, 10 La Croisette, 06407 Cannes",
+    "description": "Walmart Connect umbrella programming across Cannes Lions week. Sessions on commerce-driven audiences, culture to cart creativity, and retail-media-to-results measurement. Hosted at Hôtel Barrière Le Majestic.",
     "registrationUrl": "https://web.cvent.com/event/0a277b7d-522e-413a-9717-f497a212a33d/welcome",
     "registrationType": "application",
     "nextAction": "Apply for an invite via the registration page.",
@@ -916,7 +957,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/walmart-connect-at-cannes-2026.jpg"
   },
   {
     "id": "xp-land-doors-in-5-tours",
@@ -936,7 +978,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/xp-land-doors-in-5-tours.jpg"
   },
   {
     "id": "mediasense-at-cannes-lions-2026",
@@ -956,7 +999,8 @@
       "media",
       "marketer"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/mediasense-at-cannes-lions-2026.jpg"
   },
   {
     "id": "fq-beach",
@@ -965,7 +1009,7 @@
     "category": "beach-club",
     "startDate": "2026-06-22T08:30:00Z",
     "endDate": "2026-06-26T20:00:00Z",
-    "location": "H\u00f4tel Martinez",
+    "location": "Hôtel Martinez",
     "description": "New for 2026. CMO-heavy programming and an Equality Lounge open to all attendees. Pre-register early. Capacity is real.",
     "registrationUrl": "https://www.thefemalequotient.com/events/",
     "registrationType": "open",
@@ -1040,7 +1084,8 @@
     "tags": [
       "press"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/campaign-events.jpg"
   },
   {
     "id": "canva-creative-cabana",
@@ -1060,7 +1105,8 @@
       "creator",
       "design"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/canva-creative-cabana.jpg"
   },
   {
     "id": "dentsu-beach-house",
@@ -1103,7 +1149,8 @@
       "ctv"
     ],
     "defaultStatus": "action-needed",
-    "prefillUrl": "https://www.freewheelcannes.com/registration?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
+    "prefillUrl": "https://www.freewheelcannes.com/registration?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}",
+    "imageUrl": "/events/freewheel-beach.jpg"
   },
   {
     "id": "google-beach",
@@ -1122,11 +1169,12 @@
       "platform",
       "gated"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/google-beach.jpg"
   },
   {
     "id": "havas-cafe",
-    "name": "Havas Caf\u00e9",
+    "name": "Havas Café",
     "organizer": "Havas",
     "category": "beach-club",
     "startDate": "2026-06-22T09:00:00Z",
@@ -1142,7 +1190,8 @@
       "holding-co"
     ],
     "defaultStatus": "pending",
-    "prefillUrl": "https://havascafe.havas.com/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
+    "prefillUrl": "https://havascafe.havas.com/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}",
+    "imageUrl": "/events/havas-cafe.jpg"
   },
   {
     "id": "instacart-at-cannes-lions-2026",
@@ -1162,7 +1211,8 @@
       "leader",
       "marketer"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/instacart-at-cannes-lions-2026.jpg"
   },
   {
     "id": "lions-creators-kick-off-breakfast",
@@ -1182,7 +1232,8 @@
       "creator",
       "festival-pass"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/lions-creators-kick-off-breakfast.jpg"
   },
   {
     "id": "meta-beach",
@@ -1191,7 +1242,7 @@
     "category": "beach-club",
     "startDate": "2026-06-22T09:00:00Z",
     "endDate": "2026-06-26T22:00:00Z",
-    "location": "H\u00f4tel Barri\u00e8re Le Majestic",
+    "location": "Hôtel Barrière Le Majestic",
     "description": "Meta's hotel-anchored beach. Invite via Meta Business Partner or Meta Marketing Partner rep.",
     "registrationType": "invite-only",
     "nextAction": "Ping Meta Business / Marketing Partner rep for invite.",
@@ -1201,7 +1252,8 @@
       "platform",
       "gated"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/meta-beach.jpg"
   },
   {
     "id": "microsoft-beach-house",
@@ -1222,7 +1274,8 @@
       "platform",
       "recommended"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/microsoft-beach-house.jpg"
   },
   {
     "id": "nda-live-podcast-feat-sir-martin-sorrell",
@@ -1243,7 +1296,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/nda-live-podcast-feat-sir-martin-sorrell.jpg"
   },
   {
     "id": "nordic-sunset-drinks-cannes",
@@ -1263,7 +1317,8 @@
       "creative",
       "open"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/nordic-sunset-drinks-cannes.jpg"
   },
   {
     "id": "pinterest-manifestival",
@@ -1304,7 +1359,8 @@
       "holding-co",
       "gated"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/publicis-plage.jpg"
   },
   {
     "id": "rtl-beach-at-cannes-lions-2026",
@@ -1313,8 +1369,8 @@
     "category": "beach-club",
     "startDate": "2026-06-22T09:00:00Z",
     "endDate": "2026-06-22T18:00:00Z",
-    "location": "La M\u00f4me Plage, Bd de la Croisette, Cannes",
-    "description": "RTL AdAlliance opens RTL Beach at La M\u00f4me. Four days of programming on Total Video advertising, trust as the industry superpower, and culturally-grounded media. Networking, panels, and learning. Open 9 AM \u2013 6 PM all week.",
+    "location": "La Môme Plage, Bd de la Croisette, Cannes",
+    "description": "RTL AdAlliance opens RTL Beach at La Môme. Four days of programming on Total Video advertising, trust as the industry superpower, and culturally-grounded media. Networking, panels, and learning. Open 9 AM – 6 PM all week.",
     "registrationUrl": "https://rtlbeach.com/",
     "registrationType": "open",
     "nextAction": "Submit RSVP via the registration page.",
@@ -1324,7 +1380,8 @@
       "media",
       "marketer"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/rtl-beach-at-cannes-lions-2026.jpg"
   },
   {
     "id": "samba-tv-at-cannes-lions",
@@ -1345,7 +1402,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/samba-tv-at-cannes-lions.jpg"
   },
   {
     "id": "snap-at-cannes",
@@ -1428,7 +1486,8 @@
       "holding-co",
       "gated"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/wpp-beach.jpg"
   },
   {
     "id": "variety-at-cannes-studio",
@@ -1446,7 +1505,8 @@
     "tags": [
       "press"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/variety-at-cannes-studio.jpg"
   },
   {
     "id": "annual-lws-cannes-breakfast",
@@ -1465,7 +1525,8 @@
     "tags": [
       "marketer"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/annual-lws-cannes-breakfast.jpg"
   },
   {
     "id": "does-the-board-trust-your-marketing",
@@ -1485,7 +1546,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/does-the-board-trust-your-marketing.jpg"
   },
   {
     "id": "reddit-community-deli",
@@ -1495,7 +1557,7 @@
     "startDate": "2026-06-22T11:30:00Z",
     "endDate": "2026-06-22T14:30:00Z",
     "location": "Cannes (venue TBD)",
-    "description": "Open to all Cannes Lions badge holders. Deli open Mon\u2013Thu 11:30 AM \u2013 2:30 PM, Fri 10 AM \u2013 2 PM. Powered by the Reddit Recommends program.",
+    "description": "Open to all Cannes Lions badge holders. Deli open Mon–Thu 11:30 AM – 2:30 PM, Fri 10 AM – 2 PM. Powered by the Reddit Recommends program.",
     "registrationUrl": "https://redditcannes2026.splashthat.com/",
     "registrationType": "open",
     "nextAction": "Show your festival pass at the door, no separate RSVP needed.",
@@ -1505,7 +1567,8 @@
       "marketer",
       "festival-pass"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/reddit-community-deli.jpg"
   },
   {
     "id": "turbo-charging-marketing-performance-with-ai-driven-campaign-intelligence",
@@ -1525,7 +1588,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/turbo-charging-marketing-performance-with-ai-driven-campaign-intelligence.jpg"
   },
   {
     "id": "wp-executive-roundtable-lunch-creator-as-authority",
@@ -1534,11 +1598,11 @@
     "category": "panel",
     "startDate": "2026-06-22T12:00:00Z",
     "endDate": "2026-06-22T13:30:00Z",
-    "location": "WP Studio at Cannes, 29 rue du Commandant Andr\u00e9, Cannes",
+    "location": "WP Studio at Cannes, 29 rue du Commandant André, Cannes",
     "description": "Executive roundtable with senior marketing, media, and creator-community leaders on the future of influence and authority in a creator-led landscape. Hosted by WaPo with Whalar Group.",
     "registrationUrl": "https://www.washingtonpost.com/events/in-person/2026/06/22/wp-studio-at-cannes/",
     "registrationType": "invite-only",
-    "nextAction": "Invite-only \u2014 request access if you have a connection.",
+    "nextAction": "Invite-only — request access if you have a connection.",
     "source": "brandonsmithwrick-sheet",
     "confidence": "verified",
     "tags": [
@@ -1548,7 +1612,8 @@
       "marketer",
       "invite-only"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/wp-executive-roundtable-lunch-creator-as-authority.jpg"
   },
   {
     "id": "cannes-adtech-kickoff-lunch",
@@ -1567,7 +1632,8 @@
     "tags": [
       "marketer"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/cannes-adtech-kickoff-lunch.jpg"
   },
   {
     "id": "world-woman-foundation-cannes-agenda-panels",
@@ -1587,7 +1653,8 @@
       "creative",
       "media"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/world-woman-foundation-cannes-agenda-panels.jpg"
   },
   {
     "id": "press-gazette-s-news-yacht-at-cannes-lions-2026",
@@ -1609,11 +1676,12 @@
       "yacht",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/press-gazette-s-news-yacht-at-cannes-lions-2026.jpg"
   },
   {
     "id": "adform-empower-caf-respect-as-a-strategic-growth-driver",
-    "name": "Adform Empower Caf\u00e9: Respect as a Strategic Growth Driver",
+    "name": "Adform Empower Café: Respect as a Strategic Growth Driver",
     "organizer": "Adform",
     "category": "activation",
     "startDate": "2026-06-22T14:30:00Z",
@@ -1629,7 +1697,8 @@
       "leader",
       "marketer"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/adform-empower-caf-respect-as-a-strategic-growth-driver.jpg"
   },
   {
     "id": "creative-consequences-kantar",
@@ -1648,16 +1717,17 @@
     "tags": [
       "creative"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/creative-consequences-kantar.jpg"
   },
   {
     "id": "via-in-cannes-sunset-drinks-aboard-the-stad-amsterdam",
-    "name": "VIA in Cannes \u2014 Sunset Drinks Aboard the Stad Amsterdam",
-    "organizer": "VIA in Cannes \u2014",
+    "name": "VIA in Cannes — Sunset Drinks Aboard the Stad Amsterdam",
+    "organizer": "VIA in Cannes —",
     "category": "yacht",
     "startDate": "2026-06-22T14:30:00Z",
     "endDate": "2026-06-22T18:00:00Z",
-    "location": "Clipper Stad Amsterdam, Ponton D\u00e9bordoir, Cannes Harbour",
+    "location": "Clipper Stad Amsterdam, Ponton Débordoir, Cannes Harbour",
     "description": "VIA Nederland and Amsterdam Trade & Invest take over a tall ship moored in the harbour, reached by dinghy from the quay next to the Palais. Panel on industry transformation and Amsterdam as a destination for international agency.",
     "registrationUrl": "https://vianederland.nl/cannes-2026",
     "registrationType": "open",
@@ -1668,26 +1738,28 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/via-in-cannes-sunset-drinks-aboard-the-stad-amsterdam.jpg"
   },
   {
     "id": "carlton-bar-eighth-list",
     "name": "Carlton Bar (the unofficial 8th list)",
-    "organizer": "H\u00f4tel Carlton",
+    "organizer": "Hôtel Carlton",
     "category": "networking",
     "startDate": "2026-06-22T16:00:00Z",
     "endDate": "2026-06-26T23:00:00Z",
-    "location": "H\u00f4tel Carlton, La Croisette",
+    "location": "Hôtel Carlton, La Croisette",
     "description": "Late-afternoon / early-evening drop-in spot. No list, no RSVP. The unofficial centre of gravity once the official beaches close at 7pm.",
     "registrationType": "open",
-    "nextAction": "Block 5\u20137pm window for impromptu meetings. Text contacts to swing by.",
+    "nextAction": "Block 5–7pm window for impromptu meetings. Text contacts to swing by.",
     "source": "Cannes-Lions-2026-Lists.md tactical advice",
     "confidence": "verified",
     "tags": [
       "informal",
       "always-on"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/carlton-bar-eighth-list.jpg"
   },
   {
     "id": "inside-the-sustainability-leaders-playbook-for-brand-growth",
@@ -1707,7 +1779,8 @@
       "leader",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/inside-the-sustainability-leaders-playbook-for-brand-growth.jpg"
   },
   {
     "id": "wp-studio-golden-hour-cocktail-reception",
@@ -1716,7 +1789,7 @@
     "category": "networking",
     "startDate": "2026-06-22T17:30:00Z",
     "endDate": "2026-06-22T19:30:00Z",
-    "location": "WP Studio at Cannes, 29 rue du Commandant Andr\u00e9, Cannes",
+    "location": "WP Studio at Cannes, 29 rue du Commandant André, Cannes",
     "description": "Early-evening cocktail reception welcoming the week ahead in Cannes. Hosted by Washington Post Publisher and CEO Jeff D'Onofrio at WP Studio.",
     "registrationUrl": "https://www.washingtonpost.com/events/in-person/2026/06/22/wp-studio-at-cannes/",
     "registrationType": "open",
@@ -1728,7 +1801,8 @@
       "media",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/wp-studio-golden-hour-cocktail-reception.jpg"
   },
   {
     "id": "ahoy-club-yacht-fleet",
@@ -1738,7 +1812,7 @@
     "startDate": "2026-06-22T18:00:00Z",
     "endDate": "2026-06-26T23:30:00Z",
     "location": "Vieux Port + Anchorage",
-    "description": "Charter listings for the festival week. A 10\u201314 person yacht dinner for prospects/portfolio is one of the highest-ROI moves at Cannes. ~$15\u201330k all-in.",
+    "description": "Charter listings for the festival week. A 10–14 person yacht dinner for prospects/portfolio is one of the highest-ROI moves at Cannes. ~$15–30k all-in.",
     "registrationUrl": "https://ahoyclub.com/whats-on/cannes-lions-international-festival",
     "registrationType": "open",
     "nextAction": "Browse fleet, request quote. Book by mid-May for prime dates.",
@@ -1790,7 +1864,8 @@
       "creative",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/pantone-presents-golden-hour-at-collins-house.jpg"
   },
   {
     "id": "the-list-cannes-kickoff",
@@ -1809,7 +1884,8 @@
     "tags": [
       "marketer"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/the-list-cannes-kickoff.jpg"
   },
   {
     "id": "aussie-cannes-welcome-party",
@@ -1829,7 +1905,8 @@
       "creative",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/aussie-cannes-welcome-party.jpg"
   },
   {
     "id": "digiday-brand-leaders-dinner",
@@ -1850,7 +1927,8 @@
       "vetted"
     ],
     "defaultStatus": "action-needed",
-    "prefillUrl": "https://digiday.com/events/cannes-brand-leaders-dinner/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
+    "prefillUrl": "https://digiday.com/events/cannes-brand-leaders-dinner/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}",
+    "imageUrl": "/events/digiday-brand-leaders-dinner.jpg"
   },
   {
     "id": "world-woman-foundation-opening-red-carpet-celebration",
@@ -1859,7 +1937,7 @@
     "category": "activation",
     "startDate": "2026-06-22T19:00:00Z",
     "endDate": "2026-06-22T22:00:00Z",
-    "location": "La Sc\u00e8ne des Artistes, Cannes",
+    "location": "La Scène des Artistes, Cannes",
     "description": "Opening night red carpet celebration kicking off the World Woman Foundation programme at Cannes Lions. Honoring women in creativity across film, advertising, and storytelling.",
     "registrationUrl": "https://worldwomanfoundation.com/cannes2026/register/",
     "registrationType": "open",
@@ -1869,7 +1947,8 @@
     "tags": [
       "open"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/world-woman-foundation-opening-red-carpet-celebration.jpg"
   },
   {
     "id": "retail-media-couples-therapy",
@@ -1891,7 +1970,8 @@
       "ai",
       "retail-media"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/retail-media-couples-therapy.jpg"
   },
   {
     "id": "cannes-marketing-media-leaders-brunch",
@@ -1911,7 +1991,8 @@
       "leader",
       "media"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/cannes-marketing-media-leaders-brunch.jpg"
   },
   {
     "id": "cannes-panel-cocktail-reception",
@@ -1931,11 +2012,12 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/cannes-panel-cocktail-reception.jpg"
   },
   {
     "id": "dept-secret-garden",
-    "name": "DEPT\u00ae Secret Garden",
+    "name": "DEPT® Secret Garden",
     "organizer": "DEPT",
     "category": "panel",
     "startDate": "2026-06-23T08:00:00Z",
@@ -1951,7 +2033,8 @@
       "leader",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/dept-secret-garden.jpg"
   },
   {
     "id": "diaspora-dinner",
@@ -1970,7 +2053,8 @@
     "tags": [
       "creative"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/diaspora-dinner.jpg"
   },
   {
     "id": "le-club-msq-in-cannes-2026",
@@ -1979,7 +2063,7 @@
     "category": "dinner",
     "startDate": "2026-06-23T08:00:00Z",
     "endDate": "2026-06-23T22:00:00Z",
-    "location": "Fervor, 5 Rue des Fr\u00e8res Casanova, 06400 Cannes",
+    "location": "Fervor, 5 Rue des Frères Casanova, 06400 Cannes",
     "description": "Two-day MSQ retreat away from the Croisette. Tuesday programming includes Momentum Made, The Indie Forum 2026 with The Network One, and The B2B Leaders Dinner. Curated conversations with selected industry leaders.",
     "registrationUrl": "https://connect.msqpartners.com/le-club-msq-2026",
     "registrationType": "application",
@@ -1989,7 +2073,8 @@
     "tags": [
       "leader"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/le-club-msq-in-cannes-2026.jpg"
   },
   {
     "id": "breakfast-and-programming-commerce-connections-by-smg",
@@ -2008,7 +2093,8 @@
     "tags": [
       "marketer"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/breakfast-and-programming-commerce-connections-by-smg.jpg"
   },
   {
     "id": "cmo-roundtable",
@@ -2027,7 +2113,8 @@
     "tags": [
       "leader"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/cmo-roundtable.jpg"
   },
   {
     "id": "leading-women-at-cannes-breakfast",
@@ -2046,7 +2133,8 @@
     "tags": [
       "marketer"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/leading-women-at-cannes-breakfast.jpg"
   },
   {
     "id": "campaign-house-get-back-your-ai-investment",
@@ -2067,7 +2155,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/campaign-house-get-back-your-ai-investment.jpg"
   },
   {
     "id": "campaign-x-talon-one-roundtable",
@@ -2087,7 +2176,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/campaign-x-talon-one-roundtable.jpg"
   },
   {
     "id": "how-brands-and-agencies-can-get-back-their-ai-investment",
@@ -2107,7 +2197,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/how-brands-and-agencies-can-get-back-their-ai-investment.jpg"
   },
   {
     "id": "reddit-at-cannes",
@@ -2150,7 +2241,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/bima-house-at-cannes-lions-2026.jpg"
   },
   {
     "id": "creativity-is-business-europes-most-effective-advertising",
@@ -2169,17 +2261,18 @@
     "tags": [
       "creative"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/creativity-is-business-europes-most-effective-advertising.jpg"
   },
   {
     "id": "creators-culture",
-    "name": "Creators&Culture\u2122",
+    "name": "Creators&Culture™",
     "organizer": "WeRepresent + Convergence",
     "category": "networking",
     "startDate": "2026-06-23T10:00:00Z",
     "endDate": "2026-06-23T18:00:00Z",
-    "location": "Villa Alexandra, 102 Av. Mar\u00e9chal Juin, 06400 Cannes",
-    "description": "Day-long creator + brand connect event curated by WeRepresent and Convergence. Panels on brand voice in the creator era, measurement frameworks, Latinx creators, podcast influence, and bringing creators to the ideation table. Happy hour networking after. Free CV shuttle runs every 20 minutes from JW Marriott on Rue Fr\u00e9d\u00e9ric Amouretti, 5-minute air-conditioned ride bypassing the Croisette.",
+    "location": "Villa Alexandra, 102 Av. Maréchal Juin, 06400 Cannes",
+    "description": "Day-long creator + brand connect event curated by WeRepresent and Convergence. Panels on brand voice in the creator era, measurement frameworks, Latinx creators, podcast influence, and bringing creators to the ideation table. Happy hour networking after. Free CV shuttle runs every 20 minutes from JW Marriott on Rue Frédéric Amouretti, 5-minute air-conditioned ride bypassing the Croisette.",
     "registrationUrl": "https://www.creatorsnculture.com/",
     "registrationType": "open",
     "nextAction": "Submit RSVP via the registration page.",
@@ -2189,7 +2282,8 @@
       "creator",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/creators-culture.jpg"
   },
   {
     "id": "fast-company-sessions",
@@ -2251,7 +2345,8 @@
       "vetted"
     ],
     "defaultStatus": "action-needed",
-    "prefillUrl": "https://digiday.com/events/cannes-marketing-leaders-brunch/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
+    "prefillUrl": "https://digiday.com/events/cannes-marketing-leaders-brunch/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}",
+    "imageUrl": "/events/digiday-marketing-leaders-brunch.jpg"
   },
   {
     "id": "campaign-x-seedtag-panel",
@@ -2271,7 +2366,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/campaign-x-seedtag-panel.jpg"
   },
   {
     "id": "tearing-the-paper-ceiling",
@@ -2291,7 +2387,8 @@
       "leader",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/tearing-the-paper-ceiling.jpg"
   },
   {
     "id": "videoweek-live",
@@ -2312,7 +2409,8 @@
       "open",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/videoweek-live.jpg"
   },
   {
     "id": "the-future-of-retail-media-roundtable-maison-nda",
@@ -2334,7 +2432,8 @@
       "ai",
       "retail-media"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/the-future-of-retail-media-roundtable-maison-nda.jpg"
   },
   {
     "id": "creative-recode-how-to-sell-to-humans-and-algorithms",
@@ -2353,7 +2452,8 @@
     "tags": [
       "creative"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/creative-recode-how-to-sell-to-humans-and-algorithms.jpg"
   },
   {
     "id": "fuel-up-with-fortune",
@@ -2372,7 +2472,8 @@
     "tags": [
       "marketer"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/fuel-up-with-fortune.jpg"
   },
   {
     "id": "wp-executive-roundtable-lunch-technology-trust-future-of-media",
@@ -2381,11 +2482,11 @@
     "category": "panel",
     "startDate": "2026-06-23T12:00:00Z",
     "endDate": "2026-06-23T13:30:00Z",
-    "location": "WP Studio at Cannes, 29 rue du Commandant Andr\u00e9, Cannes",
+    "location": "WP Studio at Cannes, 29 rue du Commandant André, Cannes",
     "description": "Executive roundtable on how AI and publishing technology are reshaping newsroom operations, audience experience, and the business of trust. Hosted by WaPo CEO Jeff D'Onofrio, CTO Vineet Khosla, and CSO Suzi Watford.",
     "registrationUrl": "https://www.washingtonpost.com/events/in-person/2026/06/22/wp-studio-at-cannes/",
     "registrationType": "invite-only",
-    "nextAction": "Invite-only \u2014 request access if you have a connection.",
+    "nextAction": "Invite-only — request access if you have a connection.",
     "source": "brandonsmithwrick-sheet",
     "confidence": "verified",
     "tags": [
@@ -2394,7 +2495,8 @@
       "invite-only",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/wp-executive-roundtable-lunch-technology-trust-future-of-media.jpg"
   },
   {
     "id": "the-creative-power-of-sports",
@@ -2414,7 +2516,8 @@
       "sports",
       "creative"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/the-creative-power-of-sports.jpg"
   },
   {
     "id": "digiday-panel-cocktail",
@@ -2434,7 +2537,8 @@
       "press"
     ],
     "defaultStatus": "action-needed",
-    "prefillUrl": "https://digiday.com/events/cannes-panel-cocktail-reception/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}"
+    "prefillUrl": "https://digiday.com/events/cannes-panel-cocktail-reception/?firstname={{firstName}}&lastname={{lastName}}&email={{email}}&company={{company}}&jobtitle={{title}}",
+    "imageUrl": "/events/digiday-panel-cocktail.jpg"
   },
   {
     "id": "digiday-panel-cocktail-reception",
@@ -2454,7 +2558,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/digiday-panel-cocktail-reception.jpg"
   },
   {
     "id": "modern-heritage-the-three-step-path-to-timeless-brands",
@@ -2474,7 +2579,8 @@
       "leader",
       "marketer"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/modern-heritage-the-three-step-path-to-timeless-brands.jpg"
   },
   {
     "id": "championing-creative-voices-on-the-global-stage",
@@ -2493,7 +2599,8 @@
     "tags": [
       "creative"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/championing-creative-voices-on-the-global-stage.jpg"
   },
   {
     "id": "retail-media-age-panel-networking-drinks",
@@ -2515,7 +2622,8 @@
       "ai",
       "retail-media"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/retail-media-age-panel-networking-drinks.jpg"
   },
   {
     "id": "scaling-advertiser-access-unlocking-commerce-driven-audiences",
@@ -2535,7 +2643,8 @@
       "media",
       "marketer"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/scaling-advertiser-access-unlocking-commerce-driven-audiences.jpg"
   },
   {
     "id": "the-cannes-social",
@@ -2554,7 +2663,8 @@
     "tags": [
       "marketer"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/the-cannes-social.jpg"
   },
   {
     "id": "campaign-and-bauer-media",
@@ -2575,7 +2685,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/campaign-and-bauer-media.jpg"
   },
   {
     "id": "kargo-sea-scene",
@@ -2584,8 +2695,8 @@
     "category": "activation",
     "startDate": "2026-06-23T16:30:00Z",
     "endDate": "2026-06-23T16:30:00Z",
-    "location": "H\u00f4tel Belles Rives, Juan-les-Pins (Cap d\u2019Antibes)",
-    "description": "Kargo\u2019s coveted escape outside Cannes at the stunning Belles Rives. Boat transfer provided. Intimate guest list.",
+    "location": "Hôtel Belles Rives, Juan-les-Pins (Cap d’Antibes)",
+    "description": "Kargo’s coveted escape outside Cannes at the stunning Belles Rives. Boat transfer provided. Intimate guest list.",
     "registrationUrl": "https://www.kargo.com/",
     "registrationType": "application",
     "nextAction": "Apply for an invite via the registration page.",
@@ -2594,7 +2705,8 @@
     "tags": [
       "marketer"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/kargo-sea-scene.jpg"
   },
   {
     "id": "roundel-cocktails-connections",
@@ -2617,7 +2729,8 @@
       "ai",
       "retail-media"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/roundel-cocktails-connections.jpg"
   },
   {
     "id": "ad-age-lounge-lawn-party",
@@ -2626,7 +2739,7 @@
     "category": "party",
     "startDate": "2026-06-23T17:00:00Z",
     "endDate": "2026-06-23T22:00:00Z",
-    "location": "H\u00f4tel Martinez Lawn",
+    "location": "Hôtel Martinez Lawn",
     "description": "Ad Age's CMO Roundtable, List Lounge, and the Tuesday-evening Lawn Party. One of the festival's defining trade-press parties.",
     "registrationUrl": "https://adage.com/events-awards/cannes-lions/aa-cannes-lions-2026-ad-age-lounge-lawn-party/",
     "registrationType": "open",
@@ -2661,7 +2774,8 @@
       "creative",
       "marketer"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/bima-house-cannes-golden-hour.jpg"
   },
   {
     "id": "cognitiv-pink-performance-club",
@@ -2670,11 +2784,11 @@
     "category": "yacht",
     "startDate": "2026-06-23T17:00:00Z",
     "endDate": "2026-06-23T20:30:00Z",
-    "location": "E-Motion Yacht, Jet\u00e9e Albert Edouard Nord, Cannes",
+    "location": "E-Motion Yacht, Jetée Albert Edouard Nord, Cannes",
     "description": "Invite-only night of glitzy western glamour, bright pink cocktails, and cosmic fortune aboard the Cognitiv E-Motion yacht.",
     "registrationUrl": "https://cannes2026.cognitiv.ai/pink-party",
     "registrationType": "invite-only",
-    "nextAction": "Invite-only \u2014 request access if you have a connection.",
+    "nextAction": "Invite-only — request access if you have a connection.",
     "source": "brandonsmithwrick-sheet",
     "confidence": "verified",
     "tags": [
@@ -2683,7 +2797,8 @@
       "yacht",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/cognitiv-pink-performance-club.jpg"
   },
   {
     "id": "creative-intelligence-in-motion",
@@ -2702,7 +2817,8 @@
     "tags": [
       "creative"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/creative-intelligence-in-motion.jpg"
   },
   {
     "id": "small-agency-network-cannes",
@@ -2721,7 +2837,8 @@
     "tags": [
       "leader"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/small-agency-network-cannes.jpg"
   },
   {
     "id": "the-brands-culture-day",
@@ -2731,7 +2848,7 @@
     "startDate": "2026-06-23T17:30:00Z",
     "endDate": "2026-06-23T17:30:00Z",
     "location": "Brands&Culture Villa, Cannes (address shared upon registration)",
-    "description": "Brands&Culture\u2019s third year at Cannes. Afternoon sessions on whether brands are genuinely moving culture forward or borrowing its energy. Confirmed speakers: Alex Weller (Patagonia), Catherine Ferdon (Coinbase), Viviana Ochoa (Essity).",
+    "description": "Brands&Culture’s third year at Cannes. Afternoon sessions on whether brands are genuinely moving culture forward or borrowing its energy. Confirmed speakers: Alex Weller (Patagonia), Catherine Ferdon (Coinbase), Viviana Ochoa (Essity).",
     "registrationUrl": "https://www.brandsnculture.com/bc-cannes/cannes-2026-registration/",
     "registrationType": "application",
     "nextAction": "Apply for an invite via the registration page.",
@@ -2740,7 +2857,8 @@
     "tags": [
       "marketer"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/the-brands-culture-day.jpg"
   },
   {
     "id": "world-woman-cannes-agenda-that-s-what-she-said",
@@ -2761,7 +2879,8 @@
       "open",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/world-woman-cannes-agenda-that-s-what-she-said.jpg"
   },
   {
     "id": "the-diaspora-dinner",
@@ -2782,7 +2901,8 @@
       "creative",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/the-diaspora-dinner.jpg"
   },
   {
     "id": "the-pmw-powerlist-watch-party",
@@ -2801,11 +2921,12 @@
     "tags": [
       "marketer"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/the-pmw-powerlist-watch-party.jpg"
   },
   {
     "id": "au-apr-s-dark",
-    "name": "AU Apr\u00e8s Dark",
+    "name": "AU Après Dark",
     "organizer": "Adelaide",
     "category": "networking",
     "startDate": "2026-06-23T21:00:00Z",
@@ -2821,7 +2942,8 @@
       "creative",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/au-apr-s-dark.jpg"
   },
   {
     "id": "adform-match-night-at-cannes",
@@ -2840,7 +2962,8 @@
     "tags": [
       "sports"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/adform-match-night-at-cannes.jpg"
   },
   {
     "id": "luminate-emerging-artist-showcase",
@@ -2849,7 +2972,7 @@
     "category": "networking",
     "startDate": "2026-06-23T22:00:00Z",
     "endDate": "2026-06-23T00:00:00Z",
-    "location": "Chrystie, 22 Rue Mac\u00e9, Cannes",
+    "location": "Chrystie, 22 Rue Macé, Cannes",
     "description": "Luminate predictive-analytics showcase of two breakout emerging artists. Live music, drinks, and a splash of data on who is dominating the metrics before they top the charts.",
     "registrationUrl": "https://luminatedata.com/cannes-2026/",
     "registrationType": "open",
@@ -2859,7 +2982,8 @@
     "tags": [
       "open"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/luminate-emerging-artist-showcase.jpg"
   },
   {
     "id": "strava-x-cannes-lions-run-club-2026",
@@ -2879,7 +3003,8 @@
       "leader",
       "open"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/strava-x-cannes-lions-run-club-2026.jpg"
   },
   {
     "id": "digiday-cannes-marketing-leaders-brunch-tatari",
@@ -2898,7 +3023,8 @@
     "tags": [
       "leader"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/digiday-cannes-marketing-leaders-brunch-tatari.jpg"
   },
   {
     "id": "lions-b2b-summit",
@@ -2918,7 +3044,8 @@
       "b2b",
       "official"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/lions-b2b-summit.jpg"
   },
   {
     "id": "nectar360-session-amplification-with-campaign",
@@ -2940,7 +3067,8 @@
       "ai",
       "retail-media"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/nectar360-session-amplification-with-campaign.jpg"
   },
   {
     "id": "the-digital-advertising-reset-a-balanced-diet-for-2026",
@@ -2960,7 +3088,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/the-digital-advertising-reset-a-balanced-diet-for-2026.jpg"
   },
   {
     "id": "when-the-world-goes-quiet-south-africa-gets-louder",
@@ -2979,7 +3108,8 @@
     "tags": [
       "creative"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/when-the-world-goes-quiet-south-africa-gets-louder.jpg"
   },
   {
     "id": "women-in-ai-designing-a-safer-smarter-future",
@@ -2999,7 +3129,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/women-in-ai-designing-a-safer-smarter-future.jpg"
   },
   {
     "id": "the-truth-about-trusted-sources",
@@ -3018,7 +3149,8 @@
     "tags": [
       "media"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/the-truth-about-trusted-sources.jpg"
   },
   {
     "id": "creator-led-marketing-from-chaos-to-catalyst",
@@ -3037,7 +3169,8 @@
     "tags": [
       "creator"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/creator-led-marketing-from-chaos-to-catalyst.jpg"
   },
   {
     "id": "nda-live-podcast-feat-brian-o-kelley",
@@ -3058,7 +3191,8 @@
       "media",
       "marketer"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/nda-live-podcast-feat-brian-o-kelley.jpg"
   },
   {
     "id": "roundel-women-in-leadership-brunch",
@@ -3080,7 +3214,8 @@
       "ai",
       "retail-media"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/roundel-women-in-leadership-brunch.jpg"
   },
   {
     "id": "wp-executive-roundtable-lunch-the-power-of-news",
@@ -3089,18 +3224,19 @@
     "category": "panel",
     "startDate": "2026-06-24T12:00:00Z",
     "endDate": "2026-06-24T13:30:00Z",
-    "location": "WP Studio at Cannes, 29 rue du Commandant Andr\u00e9, Cannes",
+    "location": "WP Studio at Cannes, 29 rue du Commandant André, Cannes",
     "description": "Roundtable on the evolving role of news in driving brand relevance, credibility, and connection in a fragmented media landscape. Hosted by WaPo CSO Suzi Watford and CRO Karl Wells, in partnership with Omnicom.",
     "registrationUrl": "https://www.washingtonpost.com/events/in-person/2026/06/22/wp-studio-at-cannes/",
     "registrationType": "invite-only",
-    "nextAction": "Invite-only \u2014 request access if you have a connection.",
+    "nextAction": "Invite-only — request access if you have a connection.",
     "source": "brandonsmithwrick-sheet",
     "confidence": "verified",
     "tags": [
       "media",
       "invite-only"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/wp-executive-roundtable-lunch-the-power-of-news.jpg"
   },
   {
     "id": "the-great-unlearn-cannes-lions-2026",
@@ -3110,7 +3246,7 @@
     "startDate": "2026-06-24T12:30:00Z",
     "endDate": "2026-06-24T16:00:00Z",
     "location": "Cannes (venue revealed on registration approval)",
-    "description": "Billion Dollar Boy and FiveTwoNine host a curated rooftop session with the brands, creators and platforms shaping what\u2019s next. In partnership with Cannes Lions and Patreon. Followed by the FiveTwoNine x Patreon Happy Hour with drinks and canap\u00e9s.",
+    "description": "Billion Dollar Boy and FiveTwoNine host a curated rooftop session with the brands, creators and platforms shaping what’s next. In partnership with Cannes Lions and Patreon. Followed by the FiveTwoNine x Patreon Happy Hour with drinks and canapés.",
     "registrationUrl": "https://luma.com/bdb-cannes-lions-2026",
     "registrationType": "application",
     "nextAction": "Apply for an invite via the registration page.",
@@ -3119,7 +3255,8 @@
     "tags": [
       "creator"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/the-great-unlearn-cannes-lions-2026.jpg"
   },
   {
     "id": "campaign-asia-x-spikes-asia-panel",
@@ -3139,7 +3276,8 @@
       "creative",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/campaign-asia-x-spikes-asia-panel.jpg"
   },
   {
     "id": "open-house-for-good-2026-at-cannes-lions",
@@ -3158,7 +3296,8 @@
     "tags": [
       "open"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/open-house-for-good-2026-at-cannes-lions.jpg"
   },
   {
     "id": "made-in-germany-3-0-ai-meets-creative-reality",
@@ -3178,7 +3317,8 @@
       "creative",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/made-in-germany-3-0-ai-meets-creative-reality.jpg"
   },
   {
     "id": "modern-heritage-how-do-you-build-equity-that-outlives-trends",
@@ -3198,7 +3338,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/modern-heritage-how-do-you-build-equity-that-outlives-trends.jpg"
   },
   {
     "id": "from-culture-to-cart-creativity-that-converts",
@@ -3219,7 +3360,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/from-culture-to-cart-creativity-that-converts.jpg"
   },
   {
     "id": "get-sh-t-done-x-cannes-2026",
@@ -3240,7 +3382,8 @@
       "creative",
       "media"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/get-sh-t-done-x-cannes-2026.jpg"
   },
   {
     "id": "cocktail-hour-in-cannes-covatic",
@@ -3260,7 +3403,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/cocktail-hour-in-cannes-covatic.jpg"
   },
   {
     "id": "creativity-is-business-frances-most-effective-advertising",
@@ -3279,7 +3423,8 @@
     "tags": [
       "creative"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/creativity-is-business-frances-most-effective-advertising.jpg"
   },
   {
     "id": "brands-culture-fandoms-communities-niches",
@@ -3289,7 +3434,7 @@
     "startDate": "2026-06-24T17:15:00Z",
     "endDate": "2026-06-24T17:15:00Z",
     "location": "Brands&Culture Villa, Cannes (address shared upon registration)",
-    "description": "Wednesday\u2019s program shifts to communities where brand relevance is earned: sports fandoms, gaming, creator networks. Speakers from Sportradar, Edelman, PepsiCo plus Gigi Russo (HUNTER). Closes with AI in cultural marketing workflow.",
+    "description": "Wednesday’s program shifts to communities where brand relevance is earned: sports fandoms, gaming, creator networks. Speakers from Sportradar, Edelman, PepsiCo plus Gigi Russo (HUNTER). Closes with AI in cultural marketing workflow.",
     "registrationUrl": "https://www.brandsnculture.com/bc-cannes/cannes-2026-registration/",
     "registrationType": "application",
     "nextAction": "Apply for an invite via the registration page.",
@@ -3301,7 +3446,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/brands-culture-fandoms-communities-niches.jpg"
   },
   {
     "id": "adweek-house-creative-100-reception",
@@ -3321,7 +3467,8 @@
       "creative",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/adweek-house-creative-100-reception.jpg"
   },
   {
     "id": "ad-age-cannes-lawn-party",
@@ -3340,7 +3487,8 @@
     "tags": [
       "marketer"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/ad-age-cannes-lawn-party.jpg"
   },
   {
     "id": "sigawomen-lounge-at-roberto-cavalli",
@@ -3361,7 +3509,8 @@
       "leader",
       "creative"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/sigawomen-lounge-at-roberto-cavalli.jpg"
   },
   {
     "id": "campaign-party",
@@ -3381,7 +3530,8 @@
       "leader",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/campaign-party.jpg"
   },
   {
     "id": "campaign-party-at-the-carlton",
@@ -3402,7 +3552,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/campaign-party-at-the-carlton.jpg"
   },
   {
     "id": "lions-creators-party",
@@ -3422,7 +3573,8 @@
       "creator",
       "festival-pass"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/lions-creators-party.jpg"
   },
   {
     "id": "cognitiv-pride-party-confidently-together",
@@ -3441,7 +3593,8 @@
     "tags": [
       "open"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/cognitiv-pride-party-confidently-together.jpg"
   },
   {
     "id": "wp-studio-after-hours-nightcap-reception",
@@ -3450,8 +3603,8 @@
     "category": "party",
     "startDate": "2026-06-24T22:00:00Z",
     "endDate": "2026-06-24T01:00:00Z",
-    "location": "WP Studio at Cannes, 29 rue du Commandant Andr\u00e9, Cannes",
-    "description": "Late-night unwind with canap\u00e9s, handcrafted cocktails, and good company at WP Studio.",
+    "location": "WP Studio at Cannes, 29 rue du Commandant André, Cannes",
+    "description": "Late-night unwind with canapés, handcrafted cocktails, and good company at WP Studio.",
     "registrationUrl": "https://www.washingtonpost.com/events/in-person/2026/06/22/wp-studio-at-cannes/",
     "registrationType": "open",
     "nextAction": "Submit RSVP via the registration page.",
@@ -3461,7 +3614,8 @@
       "media",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/wp-studio-after-hours-nightcap-reception.jpg"
   },
   {
     "id": "the-business-of-xp-brunch-at-canva-beach",
@@ -3480,7 +3634,8 @@
     "tags": [
       "marketer"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/the-business-of-xp-brunch-at-canva-beach.jpg"
   },
   {
     "id": "campaign-house-editorial-collective",
@@ -3500,7 +3655,8 @@
       "media",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/campaign-house-editorial-collective.jpg"
   },
   {
     "id": "campaign-multi-partner-roundtable",
@@ -3520,7 +3676,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/campaign-multi-partner-roundtable.jpg"
   },
   {
     "id": "editorial-collective",
@@ -3541,7 +3698,8 @@
       "media",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/editorial-collective.jpg"
   },
   {
     "id": "off-the-record-comms-mixer-breakfast-canva",
@@ -3561,7 +3719,8 @@
       "creative",
       "media"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/off-the-record-comms-mixer-breakfast-canva.jpg"
   },
   {
     "id": "the-list-closing-breakfast",
@@ -3580,7 +3739,8 @@
     "tags": [
       "marketer"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/the-list-closing-breakfast.jpg"
   },
   {
     "id": "from-retail-media-to-results-proving-what-works",
@@ -3603,7 +3763,8 @@
       "ai",
       "retail-media"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/from-retail-media-to-results-proving-what-works.jpg"
   },
   {
     "id": "cultural-os-new-brand-intelligence-for-winning-with-creators-fans",
@@ -3622,7 +3783,8 @@
     "tags": [
       "creator"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/cultural-os-new-brand-intelligence-for-winning-with-creators-fans.jpg"
   },
   {
     "id": "exclusive-drinks-networking-finale-driving-the-future-of-marketing",
@@ -3641,7 +3803,8 @@
     "tags": [
       "leader"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/exclusive-drinks-networking-finale-driving-the-future-of-marketing.jpg"
   },
   {
     "id": "xp-next-the-future-of-experiential-linkedin",
@@ -3660,7 +3823,8 @@
     "tags": [
       "marketer"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/xp-next-the-future-of-experiential-linkedin.jpg"
   },
   {
     "id": "act-responsible-tributes-celebration-2026",
@@ -3680,7 +3844,8 @@
       "open",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/act-responsible-tributes-celebration-2026.jpg"
   },
   {
     "id": "sunset-cocktail-markapp-spinx",
@@ -3700,7 +3865,8 @@
       "marketer",
       "ai"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/sunset-cocktail-markapp-spinx.jpg"
   },
   {
     "id": "lions-grand-prix-closing-ceremony",
@@ -3721,11 +3887,12 @@
       "open",
       "festival-pass"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/lions-grand-prix-closing-ceremony.jpg"
   },
   {
     "id": "influential-beach-farewell-brunch",
-    "name": "Influential Beach \u2014 Farewell Brunch",
+    "name": "Influential Beach — Farewell Brunch",
     "organizer": "Influential Beach",
     "category": "beach-club",
     "startDate": "2026-06-26T10:00:00Z",
@@ -3741,17 +3908,18 @@
       "creative",
       "marketer"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/influential-beach-farewell-brunch.jpg"
   },
   {
     "id": "reddit-community-deli-closing-day",
-    "name": "Reddit Community Deli \u2014 Closing Day",
+    "name": "Reddit Community Deli — Closing Day",
     "organizer": "Reddit",
     "category": "activation",
     "startDate": "2026-06-26T10:00:00Z",
     "endDate": "2026-06-26T14:00:00Z",
     "location": "TBA",
-    "description": "Open to all Cannes Lions badge holders. Deli open Mon\u2013Thu 11:30 AM \u2013 2:30 PM, Fri 10 AM \u2013 2 PM. Powered by the Reddit Recommends program.",
+    "description": "Open to all Cannes Lions badge holders. Deli open Mon–Thu 11:30 AM – 2:30 PM, Fri 10 AM – 2 PM. Powered by the Reddit Recommends program.",
     "registrationUrl": "https://redditcannes2026.splashthat.com/",
     "registrationType": "open",
     "nextAction": "Show your festival pass at the door, no separate RSVP needed.",
@@ -3761,7 +3929,8 @@
       "marketer",
       "festival-pass"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/reddit-community-deli-closing-day.jpg"
   },
   {
     "id": "riviera-escape-from-cannes-to-st-tropez",
@@ -3771,7 +3940,7 @@
     "startDate": "2026-06-26T10:00:00Z",
     "endDate": "2026-06-26T10:00:00Z",
     "location": "Departs Cannes; yacht to St. Tropez",
-    "description": "Intimate yacht escape from Cannes to St. Tropez hosted by beehiiv, curium, and Vicus Ventures. A relaxed afternoon on the water with a small group of media executives, founders, and CMOs. No programming, no panels \u2014 sun, sea, food, drinks, and good company. Limited to C-level execs and media leaders; attendance is by approved application only.",
+    "description": "Intimate yacht escape from Cannes to St. Tropez hosted by beehiiv, curium, and Vicus Ventures. A relaxed afternoon on the water with a small group of media executives, founders, and CMOs. No programming, no panels — sun, sea, food, drinks, and good company. Limited to C-level execs and media leaders; attendance is by approved application only.",
     "registrationUrl": "https://luma.com/qbp8rm5x",
     "registrationType": "application",
     "nextAction": "Apply for an invite via the registration page.",
@@ -3782,7 +3951,8 @@
       "media",
       "yacht"
     ],
-    "defaultStatus": "pending"
+    "defaultStatus": "pending",
+    "imageUrl": "/events/riviera-escape-from-cannes-to-st-tropez.jpg"
   },
   {
     "id": "networking-brunch-on-the-creators-beach",
@@ -3803,7 +3973,8 @@
       "creative",
       "festival-pass"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/networking-brunch-on-the-creators-beach.jpg"
   },
   {
     "id": "lions-friday-awards-show",
@@ -3823,11 +3994,12 @@
       "open",
       "festival-pass"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/lions-friday-awards-show.jpg"
   },
   {
     "id": "closing-party-a-celebration-for-all",
-    "name": "Closing Party \u2014 A Celebration for All",
+    "name": "Closing Party — A Celebration for All",
     "organizer": "Cannes Lions",
     "category": "party",
     "startDate": "2026-06-26T21:00:00Z",
@@ -3844,6 +4016,7 @@
       "open",
       "festival-pass"
     ],
-    "defaultStatus": "action-needed"
+    "defaultStatus": "action-needed",
+    "imageUrl": "/events/closing-party-a-celebration-for-all.jpg"
   }
 ]
