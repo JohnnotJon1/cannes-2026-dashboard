@@ -27,6 +27,10 @@ English (United States)
 ```
 
 **Detailed description** (paste into the long-description field)
+
+> **Revised after the 2026-05-20 keyword-spam rejection** — the WHAT IT COVERS bullet
+> no longer enumerates brand names. Other sections unchanged.
+
 ```
 Skip the 30 forms.
 
@@ -35,14 +39,14 @@ Save your profile once on the free Cannes 2026 dashboard at cannes.airpost.ai, t
 You review what was filled, solve any captcha, and click submit yourself. The extension never auto-submits, never sees your data outside your browser, never makes a network request.
 
 WHAT IT COVERS
-• 25+ Cannes 2026 events including SportBeach, Pinterest, FreeWheel, Adweek House, Female Quotient, Spotify Beach, Snap, TikTok, Reddit, Canva, Dentsu, Tubi, Ad Age, Digiday Lounge, and more
-• Smart field detection fallback for events not yet in our playbook
+• Pre-configured for the Cannes Lions 2026 event ecosystem — open beach activations, invite-only platform events, press dinners, panels, and yacht charters
+• Heuristic fallback fills standard name, email, company, and title fields on any registration form not already in the preset playbook
 
 PRIVACY
 • All data stays in your browser's localStorage and the extension's chrome.storage.local
 • No analytics, no tracking, no servers, no accounts
-• The extension only reads from your cannes.airpost.ai dashboard and writes form fields on listed Cannes event domains — nothing else
-• Open source under MIT: github.com/ReadySetCo/cannes-2026-dashboard
+• The extension only reads from your cannes.airpost.ai dashboard and writes form fields on the event domains in its manifest — nothing else
+• Open source under MIT: github.com/JohnnotJon1/cannes-2026-dashboard
 
 WHY THIS EXISTS
 Cannes Lions is 30 separate registration forms, each asking for the same six fields. Save your info once. Click. Done.
