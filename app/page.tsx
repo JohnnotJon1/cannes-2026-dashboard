@@ -20,13 +20,10 @@ export default function HomePage() {
         />
         <div className="relative mx-auto flex min-h-[60vh] max-w-7xl flex-col justify-center px-5 py-12 lg:px-8 lg:py-20">
           <h1 className="max-w-3xl font-display text-4xl font-semibold leading-[1.05] tracking-tight drop-shadow-[0_2px_18px_rgba(0,0,0,0.35)] sm:text-5xl lg:text-6xl">
-            Your <span className="text-coral-500">command center</span> for Cannes Lions 2026.
+            The ultimate <span className="text-coral-500">prep site</span> for Cannes 2026.
           </h1>
           <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-sand-100/95 drop-shadow-[0_1px_8px_rgba(0,0,0,0.35)] sm:text-base">
-            Discover beach clubs, parties, panels, and yacht dinners. Track which
-            ones you&apos;re registered for. Add your own meetings. See who else is
-            on the Croisette. Your data stays in your browser. Nothing is sent
-            to us.
+            See who&apos;s going and register for every possible party and event.
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <a
