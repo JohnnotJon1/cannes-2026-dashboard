@@ -4,11 +4,12 @@ import { useState } from "react";
 import { ExternalLink, MessageSquareQuote, Calendar, Building2 } from "lucide-react";
 import type { PersonSignal } from "@/types";
 
-// Resolve a profile photo URL when we can. For X-sourced entries we route
-// through unavatar.io which proxies the latest avatar from the public X
-// profile. For LinkedIn entries there's no equivalent free service that
-// works reliably without auth — we fall back to initials.
+// Resolve a profile photo URL when we can. Priority:
+//   1. Explicit `photoUrl` (pulled from LinkedIn via Apify, or curated manually)
+//   2. Twitter avatar via unavatar.io (for X-sourced entries)
+//   3. null → initials fallback rendered by the card
 function resolvePhotoUrl(person: PersonSignal): string | null {
+  if (person.photoUrl) return person.photoUrl;
   if (person.twitterUrl) {
     const m = person.twitterUrl.match(/(?:twitter\.com|x\.com)\/([^/?#]+)/i);
     if (m && m[1] && !/^(home|explore|search|i|hashtag)$/i.test(m[1])) {

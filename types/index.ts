@@ -141,6 +141,13 @@ export interface PersonSignal {
   role: string;
   linkedinUrl?: string;
   twitterUrl?: string;
+  /**
+   * Optional direct URL to a profile headshot. Used when neither
+   * the Twitter avatar (via unavatar.io) nor initials are ideal.
+   * Pulled from LinkedIn (signed media.licdn.com URLs — expire in
+   * ~30 days, re-scrape periodically) or other public sources.
+   */
+  photoUrl?: string;
   sourcePostUrl: string;
   sourceQuote: string;
   signalReason: string;
