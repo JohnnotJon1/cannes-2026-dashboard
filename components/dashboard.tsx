@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Calendar, Compass, Filter } from "lucide-react";
+import { Calendar, Filter } from "lucide-react";
 import type {
   AnyEvent,
   CannesEvent,
@@ -64,20 +64,6 @@ export function Dashboard({ seedEvents }: Props) {
         updatedAt: new Date().toISOString(),
       };
       next[eventId] = record;
-      return next;
-    });
-  };
-
-  const setNote = (eventId: string, note: string) => {
-    setStatusMap((prev) => {
-      const next: StatusMap = { ...prev };
-      const existing = prev[eventId];
-      next[eventId] = {
-        eventId,
-        status: existing?.status ?? "not-registered",
-        notes: note,
-        updatedAt: new Date().toISOString(),
-      };
       return next;
     });
   };
@@ -184,27 +170,12 @@ export function Dashboard({ seedEvents }: Props) {
         </div>
       )}
 
-      {/* Tip strip ------------------------------------------------------ */}
-      <section className="rounded-2xl border border-[color:var(--hairline)] bg-sand-100 px-5 py-4 text-[13px] leading-relaxed text-[color:var(--ink-soft)]">
-        <div className="flex items-start gap-3">
-          <Compass className="mt-0.5 h-4 w-4 shrink-0 text-teal-700" />
-          <p>
-            <strong className="text-teal-900">First Cannes?</strong> Sign up
-            for the open-RSVP ones first (FQ Beach, Sport Beach, Pinterest, Ad
-            Age Lawn Party). Email your platform reps this week for the
-            invite-only beaches like Microsoft, Google, Meta, TikTok and
-            Spotify. They all fill by mid-May.
-          </p>
-        </div>
-      </section>
-
       <EventDetailDialog
         event={openEvent}
         open={!!openEvent}
         onOpenChange={(o) => !o && setOpenId(null)}
         statusMap={statusMap}
         setStatus={setStatus}
-        setNote={setNote}
         onDeleteCustom={(id) => deleteCustom(id)}
       />
     </div>

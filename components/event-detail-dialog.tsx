@@ -7,7 +7,6 @@ import {
   Calendar,
   Sparkles,
   ShieldCheck,
-  Lock,
   Building2,
   Wand2,
 } from "lucide-react";
@@ -31,7 +30,6 @@ type Props = {
   onOpenChange: (open: boolean) => void;
   statusMap: StatusMap;
   setStatus: (eventId: string, status: EventStatus) => void;
-  setNote: (eventId: string, note: string) => void;
   onDeleteCustom?: (eventId: string) => void;
 };
 
@@ -44,7 +42,6 @@ export function EventDetailDialog({
   onOpenChange,
   statusMap,
   setStatus,
-  setNote,
   onDeleteCustom,
 }: Props) {
   return (
@@ -58,7 +55,6 @@ export function EventDetailDialog({
               event={event}
               statusMap={statusMap}
               setStatus={setStatus}
-              setNote={setNote}
               onDeleteCustom={onDeleteCustom}
               closeDialog={() => onOpenChange(false)}
             />
@@ -73,14 +69,12 @@ function EventDetailBody({
   event,
   statusMap,
   setStatus,
-  setNote,
   onDeleteCustom,
   closeDialog,
 }: {
   event: AnyEvent;
   statusMap: StatusMap;
   setStatus: (eventId: string, status: EventStatus) => void;
-  setNote: (eventId: string, note: string) => void;
   onDeleteCustom?: (eventId: string) => void;
   closeDialog: () => void;
 }) {
@@ -94,7 +88,6 @@ function EventDetailBody({
   );
 
   const current = resolveStatus(event, statusMap);
-  const record = statusMap[event.id];
   const isCustom = "isCustom" in event && event.isCustom;
   const url = buildRegistrationUrl(event, profile);
 
@@ -242,22 +235,6 @@ function EventDetailBody({
           </div>
         </div>
 
-        <div>
-          <label htmlFor={`notes-${event.id}`} className="field-label">
-            Private notes
-          </label>
-          <textarea
-            id={`notes-${event.id}`}
-            placeholder="Pings sent, who's also going, dinner partner pairings…"
-            defaultValue={record?.notes ?? ""}
-            onBlur={(e) => setNote(event.id, e.target.value)}
-          />
-          <p className="mt-1.5 inline-flex items-center gap-1.5 text-[11px] text-[color:var(--muted)]">
-            <Lock className="h-3 w-3" />
-            Notes save to this browser only.
-          </p>
-        </div>
-
         {isCustom && onDeleteCustom && (
           <button
             type="button"
@@ -271,9 +248,6 @@ function EventDetailBody({
           </button>
         )}
 
-        <div className="border-t border-[color:var(--hairline)] pt-3 text-[11px] text-[color:var(--muted)]">
-          Source: {event.source}
-        </div>
       </div>
     </>
   );
