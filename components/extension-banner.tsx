@@ -2,7 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 import Link from "next/link";
-import { Wand2, X, Check } from "lucide-react";
+import { Wand2, X, Download } from "lucide-react";
 import { STORAGE_KEYS, useLocalStorage } from "@/lib/storage";
 
 // Dismissible install CTA shown on the dashboard for Chrome users who
@@ -79,7 +79,7 @@ export function ExtensionBanner() {
             href="/extension"
             className="inline-flex items-center gap-1.5 rounded-full border border-teal-800 px-3.5 py-1.5 text-[13px] font-semibold text-teal-800 transition-colors hover:bg-teal-800 hover:text-sand-50"
           >
-            <Check className="h-3.5 w-3.5" />
+            <Download className="h-3.5 w-3.5" />
             Install extension
           </Link>
           <button
