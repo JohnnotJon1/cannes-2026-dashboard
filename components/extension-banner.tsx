@@ -53,9 +53,9 @@ export function ExtensionBanner() {
   if (!isChromium) return null;
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-coral-500/40 bg-gradient-to-r from-coral-100 via-sand-100 to-sand-50 px-4 py-3 shadow-[0_1px_0_rgba(13,61,58,0.04)] sm:px-5">
+    <div className="relative rounded-2xl border border-[color:var(--hairline)] bg-white px-4 py-3 sm:px-5">
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2 sm:flex-nowrap">
-        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-teal-800 text-sand-50">
+        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-sand-100 text-teal-800">
           <Wand2 className="h-4 w-4" />
         </span>
         <div className="flex-1 min-w-0">
@@ -77,7 +77,7 @@ export function ExtensionBanner() {
         <div className="flex items-center gap-2">
           <Link
             href="/extension"
-            className="inline-flex items-center gap-1.5 rounded-full bg-coral-500 px-3.5 py-1.5 text-[13px] font-semibold text-white shadow-[0_6px_18px_-10px_rgba(214,90,58,0.7)] transition-colors hover:bg-coral-600"
+            className="inline-flex items-center gap-1.5 rounded-full border border-teal-800 px-3.5 py-1.5 text-[13px] font-semibold text-teal-800 transition-colors hover:bg-teal-800 hover:text-sand-50"
           >
             <Check className="h-3.5 w-3.5" />
             Install extension
@@ -86,7 +86,7 @@ export function ExtensionBanner() {
             type="button"
             onClick={() => setDismissed(true)}
             aria-label="Dismiss extension banner"
-            className="inline-flex h-7 w-7 items-center justify-center rounded-full text-[color:var(--muted)] hover:bg-white/60 hover:text-teal-900"
+            className="inline-flex h-7 w-7 items-center justify-center rounded-full text-[color:var(--muted)] hover:bg-sand-100 hover:text-teal-900"
           >
             <X className="h-4 w-4" />
           </button>
