@@ -106,12 +106,7 @@ export function PersonCard({ person }: { person: PersonSignal }) {
         “{person.sourceQuote}”
       </blockquote>
 
-      <p className="mt-3 text-[12.5px] text-[color:var(--muted)]">
-        <strong className="font-semibold text-[color:var(--ink-soft)]">Signal:</strong>{" "}
-        {person.signalReason}.
-      </p>
-
-      <div className="mt-auto flex items-center gap-3 pt-4">
+      <div className="mt-auto flex items-center gap-3 pt-3">
         {linkValid(person.linkedinUrl) ? (
           <a
             href={person.linkedinUrl}
@@ -131,9 +126,10 @@ export function PersonCard({ person }: { person: PersonSignal }) {
             href={person.twitterUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-[12px] font-medium text-teal-700 hover:text-teal-900"
+            aria-label="X profile"
+            className="inline-flex items-center text-teal-700 hover:text-teal-900"
           >
-            <XLogo /> X
+            <XLogo />
           </a>
         ) : null}
         {linkValid(person.sourcePostUrl) ? (
