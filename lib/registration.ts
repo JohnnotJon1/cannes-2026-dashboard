@@ -67,12 +67,35 @@ export function buildRegistrationUrl(
 ): string | null {
   const template = event.prefillUrl ?? event.registrationUrl ?? null;
   if (!template) return null;
-  if (!event.prefillUrl) return template; // raw URL, nothing to substitute
 
-  return template.replace(VAR_PATTERN, (_match, key: string) => {
-    const value = resolveVar(key as ProfileVar, profile);
-    return encodeURIComponent(value);
-  });
+  // Explicit prefillUrl template: substitute {{var}} placeholders.
+  if (event.prefillUrl) {
+    return template.replace(VAR_PATTERN, (_match, key: string) => {
+      const value = resolveVar(key as ProfileVar, profile);
+      return encodeURIComponent(value);
+    });
+  }
+
+  // No template: append the standard profile params to registrationUrl so
+  // forms that read query params (HubSpot, Splash That, Cvent, etc.) prefill
+  // without needing the Chrome extension. Skip empty fields. URLs that
+  // ignore query params (Luma, Eventbrite SPAs) silently drop these.
+  const { first, last } = splitName(profile.name);
+  const params: Array<[string, string]> = [];
+  if (first) params.push(["firstname", first]);
+  if (last) params.push(["lastname", last]);
+  if (profile.email) params.push(["email", profile.email]);
+  if (profile.company) params.push(["company", profile.company]);
+  if (profile.title) params.push(["jobtitle", profile.title]);
+  if (params.length === 0) return template;
+
+  try {
+    const url = new URL(template);
+    for (const [k, v] of params) url.searchParams.set(k, v);
+    return url.toString();
+  } catch {
+    return template;
+  }
 }
 
 /**
