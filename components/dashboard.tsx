@@ -21,7 +21,6 @@ import {
 import { EventCard } from "./event-card";
 import { EventFilters } from "./event-filters";
 import { EventDetailDialog } from "./event-detail-dialog";
-import { AddEventDialog } from "./add-event-dialog";
 import { EmptyState } from "./empty-state";
 import { DashboardStats } from "./dashboard-stats";
 import { ExtensionBanner } from "./extension-banner";
@@ -83,11 +82,6 @@ export function Dashboard({ seedEvents }: Props) {
     });
   };
 
-  const addCustom = (event: CustomEvent) => {
-    setCustomEvents((prev) => [event, ...prev]);
-    setOpenId(event.id);
-  };
-
   const deleteCustom = (id: string) => {
     setCustomEvents((prev) => prev.filter((e) => e.id !== id));
     setStatusMap((prev) => {
@@ -134,7 +128,6 @@ export function Dashboard({ seedEvents }: Props) {
             >
               Browse events
             </a>
-            <AddEventDialog onAdd={addCustom} />
           </div>
         </div>
       </section>

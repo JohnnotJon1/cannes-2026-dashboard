@@ -4,7 +4,6 @@ import {
   Plus,
   Users,
   ShieldCheck,
-  Plug,
   HelpCircle,
 } from "lucide-react";
 import Link from "next/link";
@@ -109,20 +108,6 @@ const SECTIONS = [
           That means the site owner literally can&apos;t see your data. If you open
           DevTools and clear <code className="rounded bg-sand-100 px-1.5 py-0.5 text-[12.5px]">localStorage</code>,
           everything personal vanishes.
-        </p>
-      </>
-    ),
-  },
-  {
-    Icon: Plug,
-    title: "Integrations (coming soon)",
-    body: (
-      <>
-        <p>
-          See <Link href="/integrations" className="font-medium text-teal-700 hover:text-teal-900">Integrations</Link>{" "}
-          for the roadmap: Gmail confirmation parsing, Google Calendar push, and an optional
-          public-LinkedIn signal feed. All optional, all using your own accounts, all designed
-          so the site owner never sees your data.
         </p>
       </>
     ),

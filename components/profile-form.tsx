@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Lock, Check, Trash2 } from "lucide-react";
+import { Check, Trash2 } from "lucide-react";
 import { STORAGE_KEYS, useLocalStorage } from "@/lib/storage";
 import { EMPTY_PROFILE, type UserProfile } from "@/types";
 
@@ -89,19 +89,13 @@ export function ProfileForm() {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-teal-700/30 bg-teal-100 px-4 py-3 text-[13px] text-teal-900">
-        <div className="flex items-center gap-2">
-          <Lock className="h-4 w-4" />
-          <span>
-            <strong>Stored in this browser only.</strong> Nothing on this page is sent to a server.
-          </span>
-        </div>
-        {savedTick && (
+      {savedTick && (
+        <div className="flex justify-end">
           <span className="inline-flex items-center gap-1 text-[12px] font-medium text-teal-700">
             <Check className="h-3.5 w-3.5" /> Saved
           </span>
-        )}
-      </div>
+        </div>
+      )}
 
       <form
         className="grid gap-4 rounded-2xl border border-[color:var(--hairline)] bg-white p-5 sm:grid-cols-2"
