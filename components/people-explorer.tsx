@@ -9,7 +9,7 @@ import { EmptyState } from "./empty-state";
 type Filter = "all" | "going-this-year" | "attended-last-year";
 
 const TABS: { value: Filter; label: string }[] = [
-  { value: "all", label: "All signals" },
+  { value: "all", label: "All" },
   { value: "going-this-year", label: "Going this year" },
   { value: "attended-last-year", label: "Last year's crew" },
 ];
@@ -142,7 +142,7 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
         <EmptyState
           icon={Filter}
           title="No people match"
-          description="Try clearing the search or switching to the All signals view."
+          description="Try clearing the search or switching to the All view."
         />
       ) : (
         <PaginatedList key={listKey} items={filtered} />

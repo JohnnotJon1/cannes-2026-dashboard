@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ExternalLink, MessageSquareQuote, Calendar, Building2 } from "lucide-react";
+import { MessageSquareQuote, Calendar, Building2 } from "lucide-react";
 import type { PersonSignal } from "@/types";
 
 // Resolve a profile photo URL when we can. Priority:
@@ -133,24 +133,6 @@ export function PersonCard({ person }: { person: PersonSignal }) {
             <XLogo />
           </a>
         ) : null}
-        {linkValid(person.sourcePostUrl) ? (
-          <a
-            href={person.sourcePostUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ml-auto inline-flex items-center gap-1 text-[12px] font-medium text-teal-700 hover:text-teal-900"
-          >
-            Source post
-            <ExternalLink className="h-3 w-3" />
-          </a>
-        ) : (
-          <span
-            className="ml-auto text-[11px] text-[color:var(--muted)]"
-            title="Sample data, no real source link"
-          >
-            Sample source
-          </span>
-        )}
       </div>
     </article>
   );
