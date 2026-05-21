@@ -10,13 +10,23 @@ import { EmptyState } from "./empty-state";
 import { STORAGE_KEYS, useLocalStorage } from "@/lib/storage";
 
 type ViewMode = "grid" | "list";
-type SortMode = "photos" | "recent" | "alpha";
+type SortMode = "recent" | "alpha";
 
 const SORT_OPTIONS: { key: SortMode; label: string }[] = [
- { key: "photos", label: "Photos first" },
  { key: "recent", label: "Recently added" },
  { key: "alpha", label: "Alphabetical" },
 ];
+
+// Round an ISO timestamp to a day-integer in UTC. Used so entries
+// landing inside the same 24-hour window count as "tied" and break
+// the tie via photos-first instead of arbitrary millisecond order.
+function dayBucket(iso: string): number {
+ return Math.floor(new Date(iso).getTime() / 86_400_000);
+}
+
+function hasPhoto(p: PersonSignal): boolean {
+ return !!(p.photoUrl && p.photoUrl.trim());
+}
 
 interface SubmissionReceipt {
  id: string;
@@ -57,19 +67,6 @@ function pruneStaleReceipts(liveIds: Set<string>): void {
  if (next.length !== list.length) writeReceipts(next);
 }
 
-/** Stable partition: cards with a non-empty photoUrl come first, then the
- * rest, with each group's internal order preserved. Twitter-only entries
- * (no photoUrl) count as "no photo" because the unavatar fallback is
- * unreliable enough that they render as initials in practice. */
-function photosFirst(arr: PersonSignal[]): PersonSignal[] {
- const withPhoto: PersonSignal[] = [];
- const noPhoto: PersonSignal[] = [];
- for (const p of arr) {
- if (p.photoUrl && p.photoUrl.trim()) withPhoto.push(p);
- else noPhoto.push(p);
- }
- return [...withPhoto, ...noPhoto];
-}
 
 const PAGE_SIZE = 18;
 
@@ -77,7 +74,7 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
  const [search, setSearch] = useState("");
  const [selectedCompany, setSelectedCompany] = useState<string | null>(null);
  const [selectedRole, setSelectedRole] = useState<string | null>(null);
- const [sortMode, setSortMode] = useState<SortMode>("photos");
+ const [sortMode, setSortMode] = useState<SortMode>("recent");
  const [viewMode, setViewMode] = useLocalStorage<ViewMode>(
  STORAGE_KEYS.peopleViewMode,
  "grid"
@@ -180,13 +177,19 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
  // is non-negotiable — celebrities never get promoted by alpha/recency
  // and self-submitted entries always lead so the just-added moment lands.
  const applySort = (arr: PersonSignal[]): PersonSignal[] => {
- if (sortMode === "photos") return photosFirst(arr);
  if (sortMode === "recent") {
- return [...arr].sort(
- (a, b) =>
- new Date(b.detectedAt).getTime() -
- new Date(a.detectedAt).getTime()
- );
+ // Day-bucketed timestamp desc with photos-first as the
+ // tiebreaker. Fresh self-submissions float to the top (today's
+ // day-bucket wins). The big mining cohort (all same day) breaks
+ // ties via the photo tiebreaker so photographed cards surface
+ // naturally.
+ return [...arr].sort((a, b) => {
+ const dayDiff = dayBucket(b.detectedAt) - dayBucket(a.detectedAt);
+ if (dayDiff !== 0) return dayDiff;
+ const aP = hasPhoto(a), bP = hasPhoto(b);
+ if (aP !== bP) return aP ? -1 : 1;
+ return 0;
+ });
  }
  // alpha: first-name A→Z, case-insensitive + locale-aware
  return [...arr].sort((a, b) =>
