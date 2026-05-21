@@ -35,7 +35,15 @@ function XLogo() {
   );
 }
 
-export function PersonCard({ person }: { person: PersonSignal }) {
+export function PersonCard({
+  person,
+  isHighlighted,
+  cardRef,
+}: {
+  person: PersonSignal;
+  isHighlighted?: boolean;
+  cardRef?: (el: HTMLElement | null) => void;
+}) {
   const initials = person.name
     .split(" ")
     .map((p) => p[0])
@@ -54,7 +62,20 @@ export function PersonCard({ person }: { person: PersonSignal }) {
   const linkValid = (url?: string) => !!url && url !== "#sample" && url !== "#";
 
   return (
-    <article className="card-lift flex h-full flex-col rounded-2xl border border-[color:var(--hairline)] bg-white p-5 shadow-[0_1px_0_rgba(13,61,58,0.04)]">
+    <article
+      ref={cardRef}
+      className={[
+        "card-lift flex h-full flex-col rounded-2xl border bg-white p-5 shadow-[0_1px_0_rgba(13,61,58,0.04)] transition",
+        isHighlighted
+          ? "border-coral-500 ring-2 ring-coral-500/60 ring-offset-2 ring-offset-sand-50"
+          : "border-[color:var(--hairline)]",
+      ].join(" ")}
+    >
+      {isHighlighted && (
+        <div className="-mt-1 mb-2 inline-flex w-fit items-center rounded-full bg-coral-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-coral-700">
+          You're on the list ✓
+        </div>
+      )}
       <div className="flex items-start gap-3">
         {showPhoto ? (
           // eslint-disable-next-line @next/next/no-img-element
@@ -74,7 +95,7 @@ export function PersonCard({ person }: { person: PersonSignal }) {
           </div>
         )}
         <div className="min-w-0 flex-1">
-          <h3 className="font-display text-lg font-semibold leading-snug text-teal-900">
+          <h3 className="truncate font-display text-lg font-semibold leading-snug text-teal-900">
             {person.name}
           </h3>
           <p className="mt-0.5 flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-[13px] text-[color:var(--muted)]">
@@ -140,7 +161,15 @@ export function PersonCard({ person }: { person: PersonSignal }) {
 // Compact row variant used in list view. Same data as PersonCard but
 // laid out horizontally: thumbnail + name/role/company + year badge +
 // LinkedIn/X icon links. No quote.
-export function PersonRow({ person }: { person: PersonSignal }) {
+export function PersonRow({
+  person,
+  isHighlighted,
+  cardRef,
+}: {
+  person: PersonSignal;
+  isHighlighted?: boolean;
+  cardRef?: (el: HTMLElement | null) => void;
+}) {
   const initials = person.name
     .split(" ")
     .map((p) => p[0])
@@ -159,7 +188,15 @@ export function PersonRow({ person }: { person: PersonSignal }) {
   const linkValid = (url?: string) => !!url && url !== "#sample" && url !== "#";
 
   return (
-    <article className="card-lift flex items-center gap-4 rounded-xl border border-[color:var(--hairline)] bg-white px-3 py-2.5 shadow-[0_1px_0_rgba(13,61,58,0.04)] sm:px-4">
+    <article
+      ref={cardRef}
+      className={[
+        "card-lift flex items-center gap-4 rounded-xl border bg-white px-3 py-2.5 shadow-[0_1px_0_rgba(13,61,58,0.04)] transition sm:px-4",
+        isHighlighted
+          ? "border-coral-500 ring-2 ring-coral-500/60 ring-offset-2 ring-offset-sand-50"
+          : "border-[color:var(--hairline)]",
+      ].join(" ")}
+    >
       {showPhoto ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img

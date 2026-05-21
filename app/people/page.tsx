@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import { ShieldCheck, UserPlus } from "lucide-react";
 import { PeopleExplorer } from "@/components/people-explorer";
 import { seedPeople } from "@/lib/seed";
@@ -27,7 +28,11 @@ export default function PeoplePage() {
           </Link>
         </div>
 
-        <PeopleExplorer people={seedPeople} />
+        {/* useSearchParams() inside PeopleExplorer requires Suspense at the
+            static-generation boundary. */}
+        <Suspense fallback={null}>
+          <PeopleExplorer people={seedPeople} />
+        </Suspense>
 
         <section className="rounded-2xl border border-[color:var(--hairline)] bg-sand-100 px-5 py-4 text-[13px] leading-relaxed text-[color:var(--ink-soft)]">
           <div className="flex items-start gap-3">

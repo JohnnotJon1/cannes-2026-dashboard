@@ -57,6 +57,7 @@ function resizeImageToDataUrl(file: File): Promise<string> {
 export function SubmitForm() {
   const [state, setState] = useState<FormState>(EMPTY);
   const [submitting, setSubmitting] = useState(false);
+  const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
@@ -85,8 +86,13 @@ export function SubmitForm() {
         setSubmitting(false);
         return;
       }
+      // Brief success flash so the user gets confirmation before the
+      // redirect lands. The button stays disabled to prevent a re-click.
+      setSucceeded(true);
       const id = data.person?.id ?? "";
-      router.push(`/people?just-added=${encodeURIComponent(id)}`);
+      setTimeout(() => {
+        router.push(`/people?just-added=${encodeURIComponent(id)}`);
+      }, 700);
     } catch {
       setError("Network error. Try again.");
       setSubmitting(false);
@@ -164,10 +170,14 @@ export function SubmitForm() {
       <div className="sm:col-span-2 pt-3">
         <button
           type="submit"
-          disabled={submitting}
-          className="inline-flex items-center gap-2 rounded-full bg-teal-900 px-7 py-3 text-[15px] font-semibold text-sand-50 shadow-md shadow-teal-900/15 transition hover:bg-teal-800 disabled:opacity-60"
+          disabled={submitting || succeeded}
+          className="inline-flex items-center gap-2 rounded-full bg-teal-900 px-7 py-3 text-[15px] font-semibold text-sand-50 shadow-md shadow-teal-900/15 transition hover:bg-teal-800 disabled:opacity-90"
         >
-          {submitting ? (
+          {succeeded ? (
+            <>
+              <Check className="h-4 w-4" /> You&apos;re on the list — taking you there…
+            </>
+          ) : submitting ? (
             <>
               <Loader2 className="h-4 w-4 animate-spin" /> Adding you to the list…
             </>
@@ -200,6 +210,18 @@ function PhotoDropzone({
   const [processing, setProcessing] = useState(false);
 
   async function handleFile(file: File) {
+    // HEIC/HEIF (default iPhone format) can't be drawn to <canvas>. Catch
+    // it explicitly so iPhone users get a useful next step instead of a
+    // cryptic "not an image" error.
+    const looksHeic =
+      /\.heic$|\.heif$/i.test(file.name) ||
+      /^image\/heic|^image\/heif/i.test(file.type);
+    if (looksHeic) {
+      onError(
+        "iPhone HEIC photos can't be processed in the browser. Take a screenshot of your headshot first, or switch iPhone Settings → Camera → Formats to 'Most Compatible'."
+      );
+      return;
+    }
     if (!file.type.startsWith("image/")) {
       onError("That file isn't an image.");
       return;

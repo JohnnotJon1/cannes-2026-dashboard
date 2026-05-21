@@ -9,7 +9,8 @@ export const dynamic = "force-dynamic";
 const LINKEDIN_RE = /^https?:\/\/(www\.)?linkedin\.com\/in\/[^\/?#]+\/?$/i;
 const TWITTER_RE = /^https?:\/\/(www\.)?(x|twitter)\.com\/[^\/?#]+\/?$/i;
 const PHOTO_URL_RE = /^https?:\/\/.+\.(jpg|jpeg|png|webp|gif)(\?.*)?$/i;
-const PHOTO_DATA_RE = /^data:image\/(jpeg|jpg|png|webp);base64,[A-Za-z0-9+/]+=*$/;
+// Browsers always emit `image/jpeg` (never `image/jpg`) from canvas.toDataURL.
+const PHOTO_DATA_RE = /^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+/]+=*$/;
 // Data URL upper bound: 200 KB encoded ≈ 150 KB decoded. Client-side
 // resize at 400×400 q0.85 typically yields 30-60 KB JPEG.
 const PHOTO_MAX_LEN = 200_000;
@@ -45,16 +46,6 @@ export async function POST(req: NextRequest) {
     body = (await req.json()) as Record<string, unknown>;
   } catch {
     return jsonErr(400, "Invalid JSON body.");
-  }
-
-  // Rate limit by IP — max 3 per hour
-  const ip = clientIp(req);
-  const count = await rateLimitHit(ip);
-  if (count > 3) {
-    return jsonErr(
-      429,
-      "You've already added three people in the past hour. Try again later — or DM John if this is wrong."
-    );
   }
 
   // Required fields
@@ -94,6 +85,17 @@ export async function POST(req: NextRequest) {
     return jsonErr(
       400,
       `"${flagged}" isn't allowed. If this is a real name or company, email John@airpost.ai.`
+    );
+  }
+
+  // Rate limit by IP — max 3 per hour. Runs AFTER validation so a user
+  // who's correcting a typo doesn't burn budget on failed attempts.
+  const ip = clientIp(req);
+  const count = await rateLimitHit(ip);
+  if (count > 3) {
+    return jsonErr(
+      429,
+      "You've already added three people in the past hour. Try again later — or DM John if this is wrong."
     );
   }
 

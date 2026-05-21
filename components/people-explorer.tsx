@@ -2,6 +2,7 @@
 
 import { Search, Filter, X, LayoutGrid, LayoutList } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import type { PersonSignal } from "@/types";
 import { PersonCard, PersonRow } from "./person-card";
 import { EmptyState } from "./empty-state";
@@ -25,6 +26,19 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
     STORAGE_KEYS.peopleViewMode,
     "grid"
   );
+
+  // "I just added myself!" — read ?just-added=u-xxxx and pulse the
+  // matching card for ~4s once it's in the merged list. The highlight
+  // clears after the timeout so it doesn't persist across navigations.
+  const searchParams = useSearchParams();
+  const justAddedId = searchParams?.get("just-added") ?? null;
+  const [highlightId, setHighlightId] = useState<string | null>(justAddedId);
+  useEffect(() => {
+    if (!justAddedId) return;
+    setHighlightId(justAddedId);
+    const t = setTimeout(() => setHighlightId(null), 4500);
+    return () => clearTimeout(t);
+  }, [justAddedId]);
 
   // Self-submitted attendees (KV) layered on top of the static seed.
   // Fetched on mount; an empty array if KV is empty or the API errors.
@@ -146,7 +160,12 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
           description="Try clearing the search or switching to the All view."
         />
       ) : (
-        <PaginatedList key={listKey} items={filtered} viewMode={viewMode} />
+        <PaginatedList
+          key={listKey}
+          items={filtered}
+          viewMode={viewMode}
+          highlightId={highlightId}
+        />
       )}
     </div>
   );
@@ -190,12 +209,16 @@ function ViewToggle({
 function PaginatedList({
   items,
   viewMode,
+  highlightId,
 }: {
   items: PersonSignal[];
   viewMode: ViewMode;
+  highlightId: string | null;
 }) {
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const sentinelRef = useRef<HTMLDivElement | null>(null);
+  const highlightRef = useRef<HTMLElement | null>(null);
+  const scrolledOnceRef = useRef(false);
   const hasMore = visibleCount < items.length;
 
   useEffect(() => {
@@ -214,19 +237,44 @@ function PaginatedList({
     return () => io.disconnect();
   }, [hasMore, items.length]);
 
+  // Scroll the highlighted card into view once, after it lands in the DOM.
+  // The KV fetch in PeopleExplorer is async, so the just-added card may not
+  // exist yet on first render — we wait for the ref to populate.
+  useEffect(() => {
+    if (!highlightId || scrolledOnceRef.current) return;
+    const el = highlightRef.current;
+    if (!el) return;
+    scrolledOnceRef.current = true;
+    el.scrollIntoView({ behavior: "smooth", block: "center" });
+  }, [highlightId, items]);
+
   const slice = items.slice(0, visibleCount);
+  const setHighlightRef = (id: string) => (el: HTMLElement | null) => {
+    if (id === highlightId && el) highlightRef.current = el;
+  };
+
   return (
     <>
       {viewMode === "grid" ? (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {slice.map((p) => (
-            <PersonCard key={p.id} person={p} />
+            <PersonCard
+              key={p.id}
+              person={p}
+              isHighlighted={p.id === highlightId}
+              cardRef={setHighlightRef(p.id)}
+            />
           ))}
         </div>
       ) : (
         <div className="flex flex-col gap-2">
           {slice.map((p) => (
-            <PersonRow key={p.id} person={p} />
+            <PersonRow
+              key={p.id}
+              person={p}
+              isHighlighted={p.id === highlightId}
+              cardRef={setHighlightRef(p.id)}
+            />
           ))}
         </div>
       )}

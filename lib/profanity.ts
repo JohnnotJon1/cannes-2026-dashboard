@@ -1,8 +1,15 @@
 import profanity from "leo-profanity";
 
-// Initialize once on module load with the English dictionary plus a few
-// targeted additions (slurs / common spam terms not in the default set).
+// Initialize once on module load with English + French dictionaries.
+// Cannes Lions has a heavy French/EU contingent so en-only would miss
+// the most obvious EU slurs. loadDictionary replaces; .list() returns
+// the active set; .add() merges. So: load en, snapshot, load fr, merge
+// the snapshot back in.
 profanity.loadDictionary("en");
+const enWords = profanity.list();
+profanity.loadDictionary("fr");
+profanity.add(enWords);
+
 profanity.add([
   "fuckface",
   "shithead",
