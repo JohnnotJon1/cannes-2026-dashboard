@@ -50,6 +50,20 @@ function pruneStaleReceipts(liveIds: Set<string>): void {
  if (next.length !== list.length) writeReceipts(next);
 }
 
+/** Stable partition: cards with a non-empty photoUrl come first, then the
+ * rest, with each group's internal order preserved. Twitter-only entries
+ * (no photoUrl) count as "no photo" because the unavatar fallback is
+ * unreliable enough that they render as initials in practice. */
+function photosFirst(arr: PersonSignal[]): PersonSignal[] {
+ const withPhoto: PersonSignal[] = [];
+ const noPhoto: PersonSignal[] = [];
+ for (const p of arr) {
+ if (p.photoUrl && p.photoUrl.trim()) withPhoto.push(p);
+ else noPhoto.push(p);
+ }
+ return [...withPhoto, ...noPhoto];
+}
+
 const PAGE_SIZE = 18;
 
 export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
@@ -153,9 +167,17 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
  seenNames.add(nameKey);
  merged.push(p);
  }
- const practical = merged.filter((p) => !p.id.startsWith("p-"));
- const celebrities = merged.filter((p) => p.id.startsWith("p-"));
- return [...practical, ...celebrities];
+ // Three buckets, ordered: self-submitted → practical seed → celebrities.
+ // Inside each bucket, cards with photos lead — photos are the social
+ // proof that makes the directory feel alive. The "I just added myself!"
+ // highlight is position-independent, so a no-photo self-submission
+ // still gets the coral ring + scrollIntoView at whatever spot it lands.
+ const submittedSlice = photosFirst(merged.filter((p) => p.id.startsWith("u-")));
+ const practical = photosFirst(
+ merged.filter((p) => !p.id.startsWith("p-") && !p.id.startsWith("u-"))
+ );
+ const celebrities = photosFirst(merged.filter((p) => p.id.startsWith("p-")));
+ return [...submittedSlice, ...practical, ...celebrities];
  }, [people, submitted]);
 
  // Top-N companies and roles for the filter pill rows. Recomputed
