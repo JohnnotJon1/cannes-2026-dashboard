@@ -24,7 +24,9 @@ export function SiteFooter() {
             {showEvents && (
               <li><Link className="hover:text-teal-700" href="/">Events</Link></li>
             )}
-            <li><Link className="hover:text-teal-700" href="/people">Who&apos;s going</Link></li>
+            {showEvents && (
+              <li><Link className="hover:text-teal-700" href="/people">Who&apos;s going</Link></li>
+            )}
             {showEvents && (
               <li><Link className="hover:text-teal-700" href="/profile">Your profile</Link></li>
             )}

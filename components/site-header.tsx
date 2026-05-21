@@ -8,7 +8,10 @@ import { showEvents } from "@/lib/features";
 
 const NAV = [
   ...(showEvents ? [{ href: "/#events", label: "Events" }] : []),
-  { href: "/people", label: "Who's going" },
+  // "Who's going" is hidden on the public deploy because the homepage
+  // already IS the people list (see app/page.tsx). On the private deploy
+  // it stays as a separate nav item pointing at /people.
+  ...(showEvents ? [{ href: "/people", label: "Who's going" }] : []),
   { href: "/submit", label: "Add yourself" },
   // "My profile" hidden from nav while the Chrome extension is in CWS
   // review. /profile route stays accessible by direct URL so the in-app

@@ -1,7 +1,9 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import { ArrowRight } from "lucide-react";
 import { Dashboard } from "@/components/dashboard";
-import { seedEvents } from "@/lib/seed";
+import { PeopleExplorer } from "@/components/people-explorer";
+import { seedEvents, seedPeople } from "@/lib/seed";
 import { showEvents } from "@/lib/features";
 
 export default function HomePage() {
@@ -45,7 +47,7 @@ export default function HomePage() {
               </p>
               <div className="mt-7 flex flex-wrap gap-3">
                 <Link
-                  href="/people"
+                  href="#people"
                   className="inline-flex items-center gap-2 rounded-full bg-coral-500 px-6 py-3 text-[15px] font-semibold text-teal-900 shadow-lg shadow-black/20 transition hover:bg-coral-400"
                 >
                   See who&apos;s going <ArrowRight className="h-4 w-4" />
@@ -62,10 +64,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      {showEvents && (
+      {showEvents ? (
         <div className="mx-auto max-w-7xl px-5 py-8 lg:px-8 lg:py-12">
           <Dashboard seedEvents={seedEvents} />
         </div>
+      ) : (
+        <section
+          id="people"
+          className="mx-auto max-w-7xl scroll-mt-20 px-5 py-10 lg:px-8 lg:py-14"
+        >
+          {/* PeopleExplorer uses useSearchParams() so we wrap in Suspense
+              to satisfy Next 15+'s static-generation boundary requirement. */}
+          <Suspense fallback={null}>
+            <PeopleExplorer people={seedPeople} />
+          </Suspense>
+        </section>
       )}
     </>
   );
