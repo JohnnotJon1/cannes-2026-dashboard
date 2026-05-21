@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { SubmitForm } from "@/components/submit-form";
 import type { Metadata } from "next";
 
@@ -21,7 +22,11 @@ export default function SubmitPage() {
           </p>
         </div>
 
-        <SubmitForm />
+        {/* SubmitForm reads ?prefillName=... via useSearchParams, which
+            requires a Suspense boundary at the static-generation seam. */}
+        <Suspense fallback={null}>
+          <SubmitForm />
+        </Suspense>
       </div>
     </div>
   );

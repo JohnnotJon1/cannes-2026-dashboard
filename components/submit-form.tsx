@@ -1,8 +1,8 @@
 "use client";
 
-import { useRef, useState, type ChangeEvent, type DragEvent, type FormEvent } from "react";
+import { useEffect, useRef, useState, type ChangeEvent, type DragEvent, type FormEvent } from "react";
 import { Check, ImagePlus, Loader2, X } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { STORAGE_KEYS } from "@/lib/storage";
 
 interface SubmissionReceipt {
@@ -84,6 +84,17 @@ export function SubmitForm() {
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  // Seed the Name field from ?prefillName=... when a visitor lands
+  // here from the "Find Yourself" empty state on /people. Runs once
+  // on mount and only fills if the field is still blank — never
+  // clobbers user input.
+  useEffect(() => {
+    const name = searchParams?.get("prefillName")?.trim();
+    if (!name) return;
+    setState((prev) => (prev.name ? prev : { ...prev, name }));
+  }, [searchParams]);
 
   const update = <K extends keyof FormState>(k: K, v: FormState[K]) => {
     setState((prev) => ({ ...prev, [k]: v }));

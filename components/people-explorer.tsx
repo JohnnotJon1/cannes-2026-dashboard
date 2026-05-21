@@ -1,12 +1,17 @@
 "use client";
 
-import { Search, Filter, X, LayoutGrid, AlignJustify } from "lucide-react";
+import { Search, Filter, X, LayoutGrid, AlignJustify, Building2, Briefcase, UserPlus } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 import type { PersonSignal } from "@/types";
 import { PersonCard, PersonRow } from "./person-card";
 import { EmptyState } from "./empty-state";
 import { STORAGE_KEYS, useLocalStorage } from "@/lib/storage";
+
+// How many top-N entries to surface in each filter pill row.
+const TOP_COMPANIES = 20;
+const TOP_ROLES = 15;
 
 type Filter = "all" | "going-this-year" | "attended-last-year";
 type ViewMode = "grid" | "list";
@@ -61,6 +66,8 @@ const PAGE_SIZE = 18;
 export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState<Filter>("all");
+  const [selectedCompany, setSelectedCompany] = useState<string | null>(null);
+  const [selectedRole, setSelectedRole] = useState<string | null>(null);
   const [viewMode, setViewMode] = useLocalStorage<ViewMode>(
     STORAGE_KEYS.peopleViewMode,
     "grid"
@@ -163,9 +170,39 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
     return [...practical, ...celebrities];
   }, [people, submitted]);
 
+  // Top-N companies and roles for the filter pill rows. Recomputed
+  // whenever the merged list changes (i.e., when KV submissions arrive).
+  const topCompanies = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const p of ordered) {
+      const c = p.company?.trim();
+      if (!c) continue;
+      counts.set(c, (counts.get(c) ?? 0) + 1);
+    }
+    return [...counts.entries()]
+      .filter(([, n]) => n >= 2) // only show companies with 2+ people to avoid a long tail of singletons
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, TOP_COMPANIES);
+  }, [ordered]);
+
+  const topRoles = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const p of ordered) {
+      const r = p.role?.trim();
+      if (!r) continue;
+      counts.set(r, (counts.get(r) ?? 0) + 1);
+    }
+    return [...counts.entries()]
+      .filter(([, n]) => n >= 2)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, TOP_ROLES);
+  }, [ordered]);
+
   const filtered = useMemo(() => {
     return ordered.filter((p) => {
       if (filter !== "all" && p.yearSignal !== filter) return false;
+      if (selectedCompany && p.company !== selectedCompany) return false;
+      if (selectedRole && p.role !== selectedRole) return false;
       if (search) {
         const q = search.toLowerCase();
         const hay = [p.name, p.company, p.role, p.sourceQuote, p.signalReason]
@@ -175,11 +212,20 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
       }
       return true;
     });
-  }, [ordered, search, filter]);
+  }, [ordered, search, filter, selectedCompany, selectedRole]);
 
   // PaginatedList is remounted (and its visibleCount resets) whenever any
   // input that changes "what we're showing" changes.
-  const listKey = `${filter}|${search}|${viewMode}`;
+  const listKey = `${filter}|${search}|${viewMode}|${selectedCompany ?? ""}|${selectedRole ?? ""}`;
+
+  const anyFilterActive =
+    search !== "" || filter !== "all" || selectedCompany !== null || selectedRole !== null;
+  const clearAll = () => {
+    setSearch("");
+    setFilter("all");
+    setSelectedCompany(null);
+    setSelectedRole(null);
+  };
 
   return (
     <div className="space-y-6">
@@ -189,7 +235,7 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[color:var(--muted)]" />
             <input
               type="search"
-              placeholder="Search by name, company, or signal…"
+              placeholder="Find yourself or someone you know…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="!pl-9"
@@ -216,27 +262,71 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
               </button>
             );
           })}
-          {(search || filter !== "all") && (
+          {anyFilterActive && (
             <button
               type="button"
-              onClick={() => {
-                setSearch("");
-                setFilter("all");
-              }}
+              onClick={clearAll}
               className="ml-1 inline-flex items-center gap-1 rounded-full border border-[color:var(--hairline)] bg-sand-50 px-2.5 py-1 text-[12px] font-medium text-teal-900 hover:bg-sand-100"
             >
               <X className="h-3 w-3" /> Clear
             </button>
           )}
         </div>
+
+        {/* Top-N company pill row */}
+        {topCompanies.length > 0 && (
+          <FacetPillRow
+            icon={Building2}
+            label="Company"
+            options={topCompanies}
+            selected={selectedCompany}
+            onSelect={(value) => setSelectedCompany(value)}
+          />
+        )}
+
+        {/* Top-N role pill row */}
+        {topRoles.length > 0 && (
+          <FacetPillRow
+            icon={Briefcase}
+            label="Role"
+            options={topRoles}
+            selected={selectedRole}
+            onSelect={(value) => setSelectedRole(value)}
+          />
+        )}
       </div>
 
       {filtered.length === 0 ? (
-        <EmptyState
-          icon={Filter}
-          title="No people match"
-          description="Try clearing the search or switching to the All view."
-        />
+        search.trim().length >= 2 &&
+        filter === "all" &&
+        !selectedCompany &&
+        !selectedRole ? (
+          // "Find Yourself" invite: the visitor typed a name (or anything 2+
+          // chars), no other filters narrow the result, and we got zero
+          // matches. Turn it into a self-submission opportunity.
+          <div className="rounded-2xl border border-coral-200 bg-coral-50/60 p-6 text-center">
+            <p className="font-display text-lg font-semibold text-teal-900">
+              No one named <span className="text-coral-700">&ldquo;{search.trim()}&rdquo;</span> is on the list yet.
+            </p>
+            <p className="mx-auto mt-2 max-w-md text-[13.5px] leading-relaxed text-[color:var(--ink-soft)]">
+              Want to be the first? Drop your name, company, and LinkedIn and
+              you&apos;ll appear on the list in seconds.
+            </p>
+            <Link
+              href={`/submit?prefillName=${encodeURIComponent(search.trim())}`}
+              className="mt-4 inline-flex items-center gap-2 rounded-full bg-teal-900 px-5 py-2.5 text-[14px] font-semibold text-sand-50 shadow-md shadow-teal-900/15 transition hover:bg-teal-800"
+            >
+              <UserPlus className="h-4 w-4" />
+              Add yourself
+            </Link>
+          </div>
+        ) : (
+          <EmptyState
+            icon={Filter}
+            title="No people match"
+            description="Try clearing the filters or switching to the All view."
+          />
+        )
       ) : (
         <PaginatedList
           key={listKey}
@@ -374,5 +464,60 @@ function PaginatedList({
         {hasMore ? "Loading more…" : "You've reached the end of the feed."}
       </div>
     </>
+  );
+}
+
+/**
+ * Horizontally-scrolling row of filter pills for a single facet
+ * (Company or Role). Click a pill to single-select; click again to
+ * clear. Counts shown in muted text so the label leads.
+ */
+function FacetPillRow({
+  icon: Icon,
+  label,
+  options,
+  selected,
+  onSelect,
+}: {
+  icon: typeof Building2;
+  label: string;
+  options: [string, number][];
+  selected: string | null;
+  onSelect: (value: string | null) => void;
+}) {
+  return (
+    <div className="flex items-center gap-2 -mx-1 overflow-x-auto pb-0.5 pl-1 [scrollbar-width:thin]">
+      <span className="inline-flex shrink-0 items-center gap-1 text-[11px] font-semibold uppercase tracking-wider text-[color:var(--muted)]">
+        <Icon className="h-3 w-3" />
+        {label}
+      </span>
+      {options.map(([value, count]) => {
+        const active = selected === value;
+        return (
+          <button
+            type="button"
+            key={value}
+            onClick={() => onSelect(active ? null : value)}
+            title={active ? `Clear ${label.toLowerCase()} filter` : `Show only ${value}`}
+            className={[
+              "inline-flex shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-1 text-[12px] font-medium transition-colors",
+              active
+                ? "bg-teal-800 text-sand-50 border-teal-800"
+                : "bg-white text-[color:var(--ink-soft)] border-[color:var(--hairline)] hover:border-teal-700 hover:text-teal-900",
+            ].join(" ")}
+          >
+            <span className="truncate max-w-[14rem]">{value}</span>
+            <span
+              className={[
+                "text-[11px]",
+                active ? "text-sand-50/80" : "text-[color:var(--muted)]",
+              ].join(" ")}
+            >
+              {count}
+            </span>
+          </button>
+        );
+      })}
+    </div>
   );
 }

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { ArrowRight } from "lucide-react";
 import { Dashboard } from "@/components/dashboard";
+import { HeroProof } from "@/components/hero-proof";
 import { PeopleExplorer } from "@/components/people-explorer";
 import { seedEvents, seedPeople } from "@/lib/seed";
 import { showEvents } from "@/lib/features";
@@ -45,6 +46,7 @@ export default function HomePage() {
               <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-sand-100/95 drop-shadow-[0_1px_8px_rgba(0,0,0,0.35)] sm:text-base">
                 A live directory of advertising people heading to the festival. Find your network, add yourself, plan the meet-ups.
               </p>
+              <HeroProof people={seedPeople} />
               <div className="mt-7 flex flex-wrap gap-3">
                 <Link
                   href="#people"
