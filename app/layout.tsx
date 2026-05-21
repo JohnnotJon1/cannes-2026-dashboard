@@ -25,7 +25,7 @@ const siteUrl =
 
 export const metadata: Metadata = {
   title: {
-    default: "Cannes Lions 2026 · 1,658 going",
+    default: "Cannes Lions 2026 · 1,595 going",
     template: "%s · Cannes Lions 2026",
   },
   description:
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   ],
   metadataBase: new URL(siteUrl),
   openGraph: {
-    title: "Cannes Lions 2026 · 1,658 going",
+    title: "Cannes Lions 2026 · 1,595 going",
     description: "See who's going + 200 events to register for in one place.",
     type: "website",
     url: siteUrl,
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cannes Lions 2026 · 1,658 going",
+    title: "Cannes Lions 2026 · 1,595 going",
     description: "See who's going + 200 events to register for in one place.",
     images: ["/og-cannes.jpg"],
   },

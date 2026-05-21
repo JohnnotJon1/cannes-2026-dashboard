@@ -37,8 +37,9 @@ function normalize(s) {
     .replace(/[^a-z0-9]/g, "");
 }
 
-function searchUrl(name) {
-  return `https://www.linkedin.com/search/results/people/?keywords=${encodeURIComponent(name)}`;
+function searchUrl(name, company) {
+  const keywords = company ? `${name} ${company}`.trim() : name;
+  return `https://www.linkedin.com/search/results/people/?keywords=${encodeURIComponent(keywords)}`;
 }
 
 // Convert "neo-makhele-36821621" or "sophie-godfrey" to "Neo Makhele" / "Sophie Godfrey".
@@ -161,7 +162,18 @@ for (const person of people) {
     const matched = tokens.length === 0 || tokens.some((t) => slugNorm.includes(t));
     if (!matched) {
       urlFallbacks.push({ id: working.id, name: working.name, slug });
-      working = { ...working, linkedinUrl: searchUrl(working.name) };
+      // Clear photoUrl only if it came from LinkedIn (media.licdn.com). Those
+      // were scraped from the same wrong slug, so the headshot lies even harder
+      // than the URL. Twitter avatars, OG-scraped images, and Apify Twitter
+      // user-profile photos on other entries can be correct even when the
+      // LinkedIn URL we found is wrong, so leave those alone.
+      const photo = working.photoUrl || "";
+      const photoFromLi = /licdn\.com/i.test(photo);
+      working = {
+        ...working,
+        linkedinUrl: searchUrl(working.name, working.company),
+        ...(photoFromLi ? { photoUrl: "" } : {}),
+      };
     }
   }
 
