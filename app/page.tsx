@@ -43,8 +43,8 @@ export default function HomePage() {
               <h1 className="max-w-3xl font-display text-4xl font-semibold leading-[1.05] tracking-tight drop-shadow-[0_2px_18px_rgba(0,0,0,0.35)] sm:text-5xl lg:text-6xl">
                 Who&apos;s going to <span className="text-coral-500">Cannes 2026</span>?
               </h1>
-              <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-sand-100/95 drop-shadow-[0_1px_8px_rgba(0,0,0,0.35)] sm:text-base">
-                A live directory of advertising people heading to the festival. Find your network, add yourself, plan the meet-ups.
+              <p className="mt-4 max-w-2xl text-[15px] font-medium leading-relaxed text-sand-50 drop-shadow-[0_1px_10px_rgba(0,0,0,0.55)] sm:text-base">
+                See who&apos;s going, share that you&apos;re going, connect at the event.
               </p>
               <HeroProof people={seedPeople} />
             </>
