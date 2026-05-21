@@ -1,7 +1,6 @@
 import { Users, ShieldCheck } from "lucide-react";
 import { PeopleExplorer } from "@/components/people-explorer";
-import { LastUpdated } from "@/components/last-updated";
-import { seedPeople, refreshMetadata } from "@/lib/seed";
+import { seedPeople } from "@/lib/seed";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -22,18 +21,6 @@ export default function PeoplePage() {
           <h1 className="font-display text-4xl font-semibold leading-tight text-teal-900 sm:text-5xl">
             Who&apos;s going to Cannes this year.
           </h1>
-          <p className="max-w-3xl text-[15px] leading-relaxed text-[color:var(--ink-soft)]">
-            A feed of people publicly confirmed for Cannes Lions 2026.
-            Speakers, jury presidents, brand CMOs, agency creative leaders.
-            One click on any card opens their LinkedIn so you can reach out.
-          </p>
-          <div className="flex flex-wrap items-center gap-3">
-            <LastUpdated
-              iso={refreshMetadata.people.lastUpdated}
-              count={refreshMetadata.people.count}
-              noun="people"
-            />
-          </div>
         </section>
 
         <PeopleExplorer people={seedPeople} />
