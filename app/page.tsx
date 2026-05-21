@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Suspense } from "react";
-import { ArrowRight } from "lucide-react";
+import { UserPlus } from "lucide-react";
 import { Dashboard } from "@/components/dashboard";
 import { HeroProof } from "@/components/hero-proof";
 import { PeopleExplorer } from "@/components/people-explorer";
@@ -47,20 +47,6 @@ export default function HomePage() {
                 A live directory of advertising people heading to the festival. Find your network, add yourself, plan the meet-ups.
               </p>
               <HeroProof people={seedPeople} />
-              <div className="mt-7 flex flex-wrap gap-3">
-                <Link
-                  href="#people"
-                  className="inline-flex items-center gap-2 rounded-full bg-coral-500 px-6 py-3 text-[15px] font-semibold text-teal-900 shadow-lg shadow-black/20 transition hover:bg-coral-400"
-                >
-                  See who&apos;s going <ArrowRight className="h-4 w-4" />
-                </Link>
-                <Link
-                  href="/submit"
-                  className="inline-flex items-center gap-2 rounded-full border border-sand-50/40 bg-white/10 px-6 py-3 text-[15px] font-semibold text-sand-50 backdrop-blur-sm transition hover:bg-white/20"
-                >
-                  Add yourself
-                </Link>
-              </div>
             </>
           )}
         </div>
@@ -71,16 +57,41 @@ export default function HomePage() {
           <Dashboard seedEvents={seedEvents} />
         </div>
       ) : (
-        <section
-          id="people"
-          className="mx-auto max-w-7xl scroll-mt-20 px-5 py-10 lg:px-8 lg:py-14"
-        >
-          {/* PeopleExplorer uses useSearchParams() so we wrap in Suspense
-              to satisfy Next 15+'s static-generation boundary requirement. */}
-          <Suspense fallback={null}>
-            <PeopleExplorer people={seedPeople} />
-          </Suspense>
-        </section>
+        <>
+          {/* Quiet sub-hero band between the hero photo and the people grid.
+              Single CTA: are you going? Add yourself. The hero itself stays
+              CTA-free now — its job is the visual + the 1,658 proof. */}
+          <section className="mx-auto max-w-7xl px-5 pt-10 lg:px-8 lg:pt-14">
+            <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[color:var(--hairline)] bg-white p-5 shadow-sm sm:p-6">
+              <div>
+                <p className="font-display text-lg font-semibold text-teal-900 sm:text-xl">
+                  Going to Cannes 2026?
+                </p>
+                <p className="mt-1 text-[13.5px] leading-relaxed text-[color:var(--ink-soft)]">
+                  Add yourself to the list and people scanning this page will see you.
+                </p>
+              </div>
+              <Link
+                href="/submit"
+                className="inline-flex items-center gap-2 rounded-full bg-coral-500 px-6 py-3 text-[15px] font-semibold text-teal-900 shadow-md transition hover:bg-coral-400"
+              >
+                <UserPlus className="h-4 w-4" />
+                Add yourself
+              </Link>
+            </div>
+          </section>
+
+          <section
+            id="people"
+            className="mx-auto max-w-7xl scroll-mt-20 px-5 py-10 lg:px-8 lg:py-14"
+          >
+            {/* PeopleExplorer uses useSearchParams() so we wrap in Suspense
+                to satisfy Next 15+'s static-generation boundary requirement. */}
+            <Suspense fallback={null}>
+              <PeopleExplorer people={seedPeople} />
+            </Suspense>
+          </section>
+        </>
       )}
     </>
   );

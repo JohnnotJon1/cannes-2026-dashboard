@@ -12,7 +12,10 @@ const NAV = [
   // already IS the people list (see app/page.tsx). On the private deploy
   // it stays as a separate nav item pointing at /people.
   ...(showEvents ? [{ href: "/people", label: "Who's going" }] : []),
-  { href: "/submit", label: "Add yourself" },
+  // "Add yourself" is hidden on the public deploy too — the sub-hero
+  // band in app/page.tsx (events-off) already surfaces it prominently,
+  // and the nav variant would duplicate that CTA on first paint.
+  ...(showEvents ? [{ href: "/submit", label: "Add yourself" }] : []),
   // "My profile" hidden from nav while the Chrome extension is in CWS
   // review. /profile route stays accessible by direct URL so the in-app
   // prefill (lib/registration.ts) keeps working for anyone with saved data.
@@ -76,23 +79,25 @@ export function SiteHeader() {
             })}
           </nav>
 
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            className={[
-              "inline-flex h-10 w-10 items-center justify-center rounded-full border transition-colors lg:hidden",
-              overlay
-                ? "border-white/30 text-sand-50 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]"
-                : "border-[color:var(--hairline)] text-teal-900",
-            ].join(" ")}
-            aria-label={open ? "Close menu" : "Open menu"}
-          >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+          {NAV.length > 0 && (
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              className={[
+                "inline-flex h-10 w-10 items-center justify-center rounded-full border transition-colors lg:hidden",
+                overlay
+                  ? "border-white/30 text-sand-50 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]"
+                  : "border-[color:var(--hairline)] text-teal-900",
+              ].join(" ")}
+              aria-label={open ? "Close menu" : "Open menu"}
+            >
+              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          )}
         </div>
       </div>
 
-      {open && (
+      {open && NAV.length > 0 && (
         <nav className="border-t border-[color:var(--hairline)] bg-sand-50 px-5 py-3 lg:hidden">
           <ul className="flex flex-col gap-1">
             {NAV.map((item) => {
