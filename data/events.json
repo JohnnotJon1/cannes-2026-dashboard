@@ -1602,7 +1602,7 @@
     "description": "Executive roundtable with senior marketing, media, and creator-community leaders on the future of influence and authority in a creator-led landscape. Hosted by WaPo with Whalar Group.",
     "registrationUrl": "https://www.washingtonpost.com/events/in-person/2026/06/22/wp-studio-at-cannes/",
     "registrationType": "invite-only",
-    "nextAction": "Invite-only — request access if you have a connection.",
+    "nextAction": "Invite-only, request access if you have a connection.",
     "source": "brandonsmithwrick-sheet",
     "confidence": "verified",
     "tags": [
@@ -1722,8 +1722,8 @@
   },
   {
     "id": "via-in-cannes-sunset-drinks-aboard-the-stad-amsterdam",
-    "name": "VIA in Cannes — Sunset Drinks Aboard the Stad Amsterdam",
-    "organizer": "VIA in Cannes —",
+    "name": "VIA in Cannes, Sunset Drinks Aboard the Stad Amsterdam",
+    "organizer": "VIA in Cannes , ",
     "category": "yacht",
     "startDate": "2026-06-22T14:30:00Z",
     "endDate": "2026-06-22T18:00:00Z",
@@ -2486,7 +2486,7 @@
     "description": "Executive roundtable on how AI and publishing technology are reshaping newsroom operations, audience experience, and the business of trust. Hosted by WaPo CEO Jeff D'Onofrio, CTO Vineet Khosla, and CSO Suzi Watford.",
     "registrationUrl": "https://www.washingtonpost.com/events/in-person/2026/06/22/wp-studio-at-cannes/",
     "registrationType": "invite-only",
-    "nextAction": "Invite-only — request access if you have a connection.",
+    "nextAction": "Invite-only, request access if you have a connection.",
     "source": "brandonsmithwrick-sheet",
     "confidence": "verified",
     "tags": [
@@ -2788,7 +2788,7 @@
     "description": "Invite-only night of glitzy western glamour, bright pink cocktails, and cosmic fortune aboard the Cognitiv E-Motion yacht.",
     "registrationUrl": "https://cannes2026.cognitiv.ai/pink-party",
     "registrationType": "invite-only",
-    "nextAction": "Invite-only — request access if you have a connection.",
+    "nextAction": "Invite-only, request access if you have a connection.",
     "source": "brandonsmithwrick-sheet",
     "confidence": "verified",
     "tags": [
@@ -3228,7 +3228,7 @@
     "description": "Roundtable on the evolving role of news in driving brand relevance, credibility, and connection in a fragmented media landscape. Hosted by WaPo CSO Suzi Watford and CRO Karl Wells, in partnership with Omnicom.",
     "registrationUrl": "https://www.washingtonpost.com/events/in-person/2026/06/22/wp-studio-at-cannes/",
     "registrationType": "invite-only",
-    "nextAction": "Invite-only — request access if you have a connection.",
+    "nextAction": "Invite-only, request access if you have a connection.",
     "source": "brandonsmithwrick-sheet",
     "confidence": "verified",
     "tags": [
@@ -3892,7 +3892,7 @@
   },
   {
     "id": "influential-beach-farewell-brunch",
-    "name": "Influential Beach — Farewell Brunch",
+    "name": "Influential Beach, Farewell Brunch",
     "organizer": "Influential Beach",
     "category": "beach-club",
     "startDate": "2026-06-26T10:00:00Z",
@@ -3913,7 +3913,7 @@
   },
   {
     "id": "reddit-community-deli-closing-day",
-    "name": "Reddit Community Deli — Closing Day",
+    "name": "Reddit Community Deli, Closing Day",
     "organizer": "Reddit",
     "category": "activation",
     "startDate": "2026-06-26T10:00:00Z",
@@ -3940,7 +3940,7 @@
     "startDate": "2026-06-26T10:00:00Z",
     "endDate": "2026-06-26T10:00:00Z",
     "location": "Departs Cannes; yacht to St. Tropez",
-    "description": "Intimate yacht escape from Cannes to St. Tropez hosted by beehiiv, curium, and Vicus Ventures. A relaxed afternoon on the water with a small group of media executives, founders, and CMOs. No programming, no panels — sun, sea, food, drinks, and good company. Limited to C-level execs and media leaders; attendance is by approved application only.",
+    "description": "Intimate yacht escape from Cannes to St. Tropez hosted by beehiiv, curium, and Vicus Ventures. A relaxed afternoon on the water with a small group of media executives, founders, and CMOs. No programming, no panels, sun, sea, food, drinks, and good company. Limited to C-level execs and media leaders; attendance is by approved application only.",
     "registrationUrl": "https://luma.com/qbp8rm5x",
     "registrationType": "application",
     "nextAction": "Apply for an invite via the registration page.",
@@ -3999,7 +3999,7 @@
   },
   {
     "id": "closing-party-a-celebration-for-all",
-    "name": "Closing Party — A Celebration for All",
+    "name": "Closing Party, A Celebration for All",
     "organizer": "Cannes Lions",
     "category": "party",
     "startDate": "2026-06-26T21:00:00Z",

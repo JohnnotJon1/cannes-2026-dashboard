@@ -1,138 +1,138 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------
-   Cannes Command Center — design tokens
-   Mediterranean editorial palette. Sand backgrounds, deep teal ink,
-   coral accent. Fraunces (display serif) + Inter (UI sans).
+ Cannes Command Center, design tokens
+ Mediterranean editorial palette. Sand backgrounds, deep teal ink,
+ coral accent. Fraunces (display serif) + Inter (UI sans).
 --------------------------------------------------------------------- */
 
 :root {
-  --sand-50: #fdfaf3;
-  --sand-100: #f7eedd;
-  --sand-200: #f1e3c6;
-  --sand-300: #e6d2a7;
-  --sand-400: #c9b07d;
+ --sand-50: #fdfaf3;
+ --sand-100: #f7eedd;
+ --sand-200: #f1e3c6;
+ --sand-300: #e6d2a7;
+ --sand-400: #c9b07d;
 
-  --teal-900: #0a2e2c;
-  --teal-800: #0d3d3a;
-  --teal-700: #185f5a;
-  --teal-600: #2a8a83;
-  --teal-100: #d6ebe9;
+ --teal-900: #0a2e2c;
+ --teal-800: #0d3d3a;
+ --teal-700: #185f5a;
+ --teal-600: #2a8a83;
+ --teal-100: #d6ebe9;
 
-  /* Champagne gold accent — replaces the prior coral. CSS variable
-     names kept (text-coral-500, etc.) to avoid a project-wide rename;
-     semantic intent is now "Cannes-Lions-trophy gold", not orange. */
-  --coral-600: #b8895a;
-  --coral-500: #d4a574;
-  --coral-100: #f5e6d0;
+ /* Champagne gold accent, replaces the prior coral. CSS variable
+ names kept (text-coral-500, etc.) to avoid a project-wide rename;
+ semantic intent is now "Cannes-Lions-trophy gold", not orange. */
+ --coral-600: #b8895a;
+ --coral-500: #d4a574;
+ --coral-100: #f5e6d0;
 
-  --amber-600: #b97a1f;
-  --amber-500: #d99a3b;
-  --amber-100: #f5e3bf;
+ --amber-600: #b97a1f;
+ --amber-500: #d99a3b;
+ --amber-100: #f5e3bf;
 
-  --ink: #1a1a1a;
-  --ink-soft: #3f3f3f;
-  --muted: #6b6256;
-  --hairline: rgba(13, 61, 58, 0.12);
-  --hairline-strong: rgba(13, 61, 58, 0.22);
+ --ink: #1a1a1a;
+ --ink-soft: #3f3f3f;
+ --muted: #6b6256;
+ --hairline: rgba(13, 61, 58, 0.12);
+ --hairline-strong: rgba(13, 61, 58, 0.22);
 }
 
 @theme inline {
-  --color-background: var(--sand-50);
-  --color-foreground: var(--ink);
-  --color-muted: var(--muted);
-  --color-hairline: var(--hairline);
+ --color-background: var(--sand-50);
+ --color-foreground: var(--ink);
+ --color-muted: var(--muted);
+ --color-hairline: var(--hairline);
 
-  --color-sand-50: var(--sand-50);
-  --color-sand-100: var(--sand-100);
-  --color-sand-200: var(--sand-200);
-  --color-sand-300: var(--sand-300);
-  --color-sand-400: var(--sand-400);
+ --color-sand-50: var(--sand-50);
+ --color-sand-100: var(--sand-100);
+ --color-sand-200: var(--sand-200);
+ --color-sand-300: var(--sand-300);
+ --color-sand-400: var(--sand-400);
 
-  --color-teal-900: var(--teal-900);
-  --color-teal-800: var(--teal-800);
-  --color-teal-700: var(--teal-700);
-  --color-teal-600: var(--teal-600);
-  --color-teal-100: var(--teal-100);
+ --color-teal-900: var(--teal-900);
+ --color-teal-800: var(--teal-800);
+ --color-teal-700: var(--teal-700);
+ --color-teal-600: var(--teal-600);
+ --color-teal-100: var(--teal-100);
 
-  --color-coral-600: var(--coral-600);
-  --color-coral-500: var(--coral-500);
-  --color-coral-100: var(--coral-100);
+ --color-coral-600: var(--coral-600);
+ --color-coral-500: var(--coral-500);
+ --color-coral-100: var(--coral-100);
 
-  --color-amber-600: var(--amber-600);
-  --color-amber-500: var(--amber-500);
-  --color-amber-100: var(--amber-100);
+ --color-amber-600: var(--amber-600);
+ --color-amber-500: var(--amber-500);
+ --color-amber-100: var(--amber-100);
 
-  --font-sans: var(--font-inter), system-ui, sans-serif;
-  --font-display: var(--font-fraunces), Georgia, serif;
+ --font-sans: var(--font-inter), system-ui, sans-serif;
+ --font-display: var(--font-fraunces), Georgia, serif;
 }
 
 html,
 body {
-  background: var(--sand-50);
-  color: var(--ink);
-  font-family: var(--font-inter), system-ui, sans-serif;
-  font-feature-settings: "ss01", "cv11";
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+ background: var(--sand-50);
+ color: var(--ink);
+ font-family: var(--font-inter), system-ui, sans-serif;
+ font-feature-settings: "ss01", "cv11";
+ -webkit-font-smoothing: antialiased;
+ -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background: var(--teal-100);
-  color: var(--teal-900);
+ background: var(--teal-100);
+ color: var(--teal-900);
 }
 
 /* Display utilities --------------------------------------------------- */
 .font-display {
-  font-family: var(--font-fraunces), Georgia, serif;
-  font-optical-sizing: auto;
-  font-variation-settings: "SOFT" 50, "WONK" 0;
-  letter-spacing: -0.01em;
+ font-family: var(--font-fraunces), Georgia, serif;
+ font-optical-sizing: auto;
+ font-variation-settings: "SOFT" 50, "WONK" 0;
+ letter-spacing: -0.01em;
 }
 
 /* Card lift ----------------------------------------------------------- */
 .card-lift {
-  transition: transform 180ms ease-out, box-shadow 180ms ease-out,
-    border-color 180ms ease-out;
+ transition: transform 180ms ease-out, box-shadow 180ms ease-out,
+ border-color 180ms ease-out;
 }
 .card-lift:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 32px -16px rgba(10, 46, 44, 0.35);
-  border-color: var(--hairline-strong);
+ transform: translateY(-2px);
+ box-shadow: 0 12px 32px -16px rgba(10, 46, 44, 0.35);
+ border-color: var(--hairline-strong);
 }
 
 /* Hero gradient placeholder (when an event has no image) ------------- */
 .hero-gradient {
-  background:
-    radial-gradient(at 20% 20%, var(--teal-100) 0%, transparent 50%),
-    radial-gradient(at 80% 80%, var(--coral-100) 0%, transparent 55%),
-    linear-gradient(135deg, var(--sand-100), var(--sand-200));
+ background:
+ radial-gradient(at 20% 20%, var(--teal-100) 0%, transparent 50%),
+ radial-gradient(at 80% 80%, var(--coral-100) 0%, transparent 55%),
+ linear-gradient(135deg, var(--sand-100), var(--sand-200));
 }
 .hero-gradient-teal {
-  background:
-    radial-gradient(at 30% 30%, rgba(255, 255, 255, 0.18) 0%, transparent 55%),
-    linear-gradient(135deg, var(--teal-700), var(--teal-900));
+ background:
+ radial-gradient(at 30% 30%, rgba(255, 255, 255, 0.18) 0%, transparent 55%),
+ linear-gradient(135deg, var(--teal-700), var(--teal-900));
 }
 .hero-gradient-coral {
-  background:
-    radial-gradient(at 70% 30%, rgba(255, 255, 255, 0.2) 0%, transparent 55%),
-    linear-gradient(135deg, var(--coral-500), var(--coral-600));
+ background:
+ radial-gradient(at 70% 30%, rgba(255, 255, 255, 0.2) 0%, transparent 55%),
+ linear-gradient(135deg, var(--coral-500), var(--coral-600));
 }
 .hero-gradient-amber {
-  background:
-    radial-gradient(at 30% 70%, rgba(255, 255, 255, 0.18) 0%, transparent 55%),
-    linear-gradient(135deg, var(--amber-500), var(--amber-600));
+ background:
+ radial-gradient(at 30% 70%, rgba(255, 255, 255, 0.18) 0%, transparent 55%),
+ linear-gradient(135deg, var(--amber-500), var(--amber-600));
 }
 
 /* Tiny noise overlay for editorial texture --------------------------- */
 .noise::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.05;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+ content: "";
+ position: absolute;
+ inset: 0;
+ pointer-events: none;
+ opacity: 0.05;
+ mix-blend-mode: multiply;
+ background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
 }
 
 /* Form controls ------------------------------------------------------- */
@@ -145,75 +145,75 @@ input[type="date"],
 input[type="datetime-local"],
 textarea,
 select {
-  width: 100%;
-  background: white;
-  border: 1px solid var(--hairline);
-  color: var(--ink);
-  border-radius: 10px;
-  padding: 0.625rem 0.75rem;
-  font-size: 0.9375rem;
-  line-height: 1.45;
-  transition: border-color 120ms ease, box-shadow 120ms ease;
+ width: 100%;
+ background: white;
+ border: 1px solid var(--hairline);
+ color: var(--ink);
+ border-radius: 10px;
+ padding: 0.625rem 0.75rem;
+ font-size: 0.9375rem;
+ line-height: 1.45;
+ transition: border-color 120ms ease, box-shadow 120ms ease;
 }
 input:focus,
 textarea:focus,
 select:focus {
-  outline: none;
-  border-color: var(--teal-700);
-  box-shadow: 0 0 0 3px rgba(24, 95, 90, 0.18);
+ outline: none;
+ border-color: var(--teal-700);
+ box-shadow: 0 0 0 3px rgba(24, 95, 90, 0.18);
 }
 textarea {
-  min-height: 96px;
-  resize: vertical;
+ min-height: 96px;
+ resize: vertical;
 }
 label.field-label {
-  display: block;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--ink-soft);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 0.375rem;
+ display: block;
+ font-size: 0.75rem;
+ font-weight: 600;
+ color: var(--ink-soft);
+ text-transform: uppercase;
+ letter-spacing: 0.06em;
+ margin-bottom: 0.375rem;
 }
 
 /* Dialog overlay & content (Radix) ----------------------------------- */
 @keyframes overlay-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+ from { opacity: 0; }
+ to { opacity: 1; }
 }
 @keyframes content-in {
-  from { opacity: 0; transform: translate(-50%, -48%) scale(0.97); }
-  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+ from { opacity: 0; transform: translate(-50%, -48%) scale(0.97); }
+ to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 }
 .dialog-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(10, 46, 44, 0.45);
-  backdrop-filter: blur(2px);
-  z-index: 50;
-  animation: overlay-in 140ms ease-out;
+ position: fixed;
+ inset: 0;
+ background: rgba(10, 46, 44, 0.45);
+ backdrop-filter: blur(2px);
+ z-index: 50;
+ animation: overlay-in 140ms ease-out;
 }
 .dialog-content {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(640px, calc(100vw - 2rem));
-  max-height: calc(100vh - 2rem);
-  overflow-y: auto;
-  background: var(--sand-50);
-  border-radius: 16px;
-  border: 1px solid var(--hairline);
-  box-shadow: 0 24px 80px -32px rgba(10, 46, 44, 0.45);
-  z-index: 51;
-  animation: content-in 160ms ease-out;
+ position: fixed;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ width: min(640px, calc(100vw - 2rem));
+ max-height: calc(100vh - 2rem);
+ overflow-y: auto;
+ background: var(--sand-50);
+ border-radius: 16px;
+ border: 1px solid var(--hairline);
+ box-shadow: 0 24px 80px -32px rgba(10, 46, 44, 0.45);
+ z-index: 51;
+ animation: content-in 160ms ease-out;
 }
 
 /* Scrollbar (subtle, sand-tinted) ------------------------------------ */
 .dialog-content::-webkit-scrollbar {
-  width: 8px;
+ width: 8px;
 }
 .dialog-content::-webkit-scrollbar-thumb {
-  background: var(--sand-300);
-  border-radius: 4px;
+ background: var(--sand-300);
+ border-radius: 4px;
 }
