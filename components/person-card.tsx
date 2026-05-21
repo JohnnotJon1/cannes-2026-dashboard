@@ -59,11 +59,6 @@ export function PersonCard({
   const [photoFailed, setPhotoFailed] = useState(false);
   const showPhoto = photoUrl && !photoFailed;
 
-  const yearLabel =
-    person.yearSignal === "going-this-year"
-      ? { text: "Going this year", classes: "bg-teal-800 text-sand-50 border-teal-800" }
-      : { text: "Went last year", classes: "bg-sand-100 text-[color:var(--ink-soft)] border-[color:var(--hairline)]" };
-
   const linkValid = (url?: string) => !!url && url !== "#sample" && url !== "#";
 
   return (
@@ -114,20 +109,15 @@ export function PersonCard({
         </div>
       </div>
 
-      <div className="mt-4 flex flex-wrap gap-1.5">
-        <span
-          className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-medium ${yearLabel.classes}`}
-        >
-          {yearLabel.text}
-        </span>
-        {person.isSample && (
+      {person.isSample && (
+        <div className="mt-4 flex flex-wrap gap-1.5">
           <span className="inline-flex items-center rounded-full border border-coral-500/40 bg-coral-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-coral-600">
             Sample data
           </span>
-        )}
-      </div>
+        </div>
+      )}
 
-      <blockquote className="mt-3 rounded-xl bg-sand-50 px-3 py-2.5 text-[13.5px] leading-relaxed text-teal-900 ring-1 ring-[color:var(--hairline)]">
+      <blockquote className="mt-4 rounded-xl bg-sand-50 px-3 py-2.5 text-[13.5px] leading-relaxed text-teal-900 ring-1 ring-[color:var(--hairline)]">
         <MessageSquareQuote className="mb-1 h-3.5 w-3.5 text-coral-500" />
         “{person.sourceQuote}”
       </blockquote>
@@ -206,11 +196,6 @@ export function PersonRow({
   const [photoFailed, setPhotoFailed] = useState(false);
   const showPhoto = photoUrl && !photoFailed;
 
-  const yearLabel =
-    person.yearSignal === "going-this-year"
-      ? { text: "Going this year", classes: "bg-teal-800 text-sand-50 border-teal-800" }
-      : { text: "Went last year", classes: "bg-sand-100 text-[color:var(--ink-soft)] border-[color:var(--hairline)]" };
-
   const linkValid = (url?: string) => !!url && url !== "#sample" && url !== "#";
 
   return (
@@ -275,12 +260,6 @@ export function PersonRow({
             <span className="truncate">{person.sourceQuote}</span>
           </span>
         ))}
-
-      <span
-        className={`hidden shrink-0 items-center rounded-full border px-2 py-0.5 text-[11px] font-medium sm:inline-flex ${yearLabel.classes}`}
-      >
-        {yearLabel.text}
-      </span>
 
       <div className="flex shrink-0 items-center gap-3">
         {linkValid(person.linkedinUrl) ? (
