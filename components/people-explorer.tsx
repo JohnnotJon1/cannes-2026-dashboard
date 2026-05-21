@@ -1,6 +1,6 @@
 "use client";
 
-import { Search, Filter, X, LayoutGrid, AlignJustify, Building2, Briefcase, UserPlus, ChevronDown } from "lucide-react";
+import { Search, Filter, X, LayoutGrid, AlignJustify, Building2, Briefcase, UserPlus, ChevronDown, ArrowUpDown } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
@@ -10,6 +10,13 @@ import { EmptyState } from "./empty-state";
 import { STORAGE_KEYS, useLocalStorage } from "@/lib/storage";
 
 type ViewMode = "grid" | "list";
+type SortMode = "photos" | "recent" | "alpha";
+
+const SORT_OPTIONS: { key: SortMode; label: string }[] = [
+ { key: "photos", label: "Photos first" },
+ { key: "recent", label: "Recently added" },
+ { key: "alpha", label: "Alphabetical" },
+];
 
 interface SubmissionReceipt {
  id: string;
@@ -70,6 +77,7 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
  const [search, setSearch] = useState("");
  const [selectedCompany, setSelectedCompany] = useState<string | null>(null);
  const [selectedRole, setSelectedRole] = useState<string | null>(null);
+ const [sortMode, setSortMode] = useState<SortMode>("photos");
  const [viewMode, setViewMode] = useLocalStorage<ViewMode>(
  STORAGE_KEYS.peopleViewMode,
  "grid"
@@ -168,17 +176,30 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
  merged.push(p);
  }
  // Three buckets, ordered: self-submitted → practical seed → celebrities.
- // Inside each bucket, cards with photos lead — photos are the social
- // proof that makes the directory feel alive. The "I just added myself!"
- // highlight is position-independent, so a no-photo self-submission
- // still gets the coral ring + scrollIntoView at whatever spot it lands.
- const submittedSlice = photosFirst(merged.filter((p) => p.id.startsWith("u-")));
- const practical = photosFirst(
+ // Inside each bucket, apply the user's chosen sort mode. Bucket order
+ // is non-negotiable — celebrities never get promoted by alpha/recency
+ // and self-submitted entries always lead so the just-added moment lands.
+ const applySort = (arr: PersonSignal[]): PersonSignal[] => {
+ if (sortMode === "photos") return photosFirst(arr);
+ if (sortMode === "recent") {
+ return [...arr].sort(
+ (a, b) =>
+ new Date(b.detectedAt).getTime() -
+ new Date(a.detectedAt).getTime()
+ );
+ }
+ // alpha: first-name A→Z, case-insensitive + locale-aware
+ return [...arr].sort((a, b) =>
+ a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
+ );
+ };
+ const submittedSlice = applySort(merged.filter((p) => p.id.startsWith("u-")));
+ const practical = applySort(
  merged.filter((p) => !p.id.startsWith("p-") && !p.id.startsWith("u-"))
  );
- const celebrities = photosFirst(merged.filter((p) => p.id.startsWith("p-")));
+ const celebrities = applySort(merged.filter((p) => p.id.startsWith("p-")));
  return [...submittedSlice, ...practical, ...celebrities];
- }, [people, submitted]);
+ }, [people, submitted, sortMode]);
 
  // Top-N companies and roles for the filter pill rows. Recomputed
  // whenever the merged list changes (i.e., when KV submissions arrive).
@@ -223,7 +244,7 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
 
  // PaginatedList is remounted (and its visibleCount resets) whenever any
  // input that changes "what we're showing" changes.
- const listKey = `${search}|${viewMode}|${selectedCompany ?? ""}|${selectedRole ?? ""}`;
+ const listKey = `${search}|${viewMode}|${selectedCompany ?? ""}|${selectedRole ?? ""}|${sortMode}`;
 
  const anyFilterActive =
  search !== "" || selectedCompany !== null || selectedRole !== null;
@@ -249,9 +270,9 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
  </div>
  <ViewToggle viewMode={viewMode} setViewMode={setViewMode} />
  </div>
- {/* Filter dropdowns: searchable, vertically-scrollable popovers
- instead of horizontally-scrolling pill strips. */}
- {(topCompanies.length > 0 || topRoles.length > 0) && (
+ {/* Filter dropdowns + sort selector. Always renders since sort is
+ always available; Company / Role only render when their lists
+ have at least one entry (i.e. KV+seed isn't empty). */}
  <div className="flex flex-wrap items-center justify-between gap-2">
  <div className="flex flex-wrap items-center gap-2">
  {topCompanies.length > 0 && (
@@ -272,6 +293,7 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
  onSelect={setSelectedRole}
  />
  )}
+ <SortSelector value={sortMode} onChange={setSortMode} />
  </div>
  {anyFilterActive && (
  <button
@@ -283,7 +305,6 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
  </button>
  )}
  </div>
- )}
  </div>
 
  {filtered.length === 0 ? (
@@ -605,6 +626,89 @@ function FacetSelector({
  })
  )}
  </ul>
+ </div>
+ )}
+ </div>
+ );
+}
+
+/**
+ * Sort-mode dropdown. Three fixed options (no search needed). Same
+ * trigger-pill + popover style as FacetSelector for visual consistency.
+ * Not considered "an active filter" — Clear button does NOT reset it.
+ */
+function SortSelector({
+ value,
+ onChange,
+}: {
+ value: SortMode;
+ onChange: (next: SortMode) => void;
+}) {
+ const [open, setOpen] = useState(false);
+ const wrapperRef = useRef<HTMLDivElement | null>(null);
+
+ useEffect(() => {
+ if (!open) return;
+ const onMouseDown = (e: MouseEvent) => {
+ if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
+ setOpen(false);
+ }
+ };
+ const onKey = (e: KeyboardEvent) => {
+ if (e.key === "Escape") setOpen(false);
+ };
+ document.addEventListener("mousedown", onMouseDown);
+ document.addEventListener("keydown", onKey);
+ return () => {
+ document.removeEventListener("mousedown", onMouseDown);
+ document.removeEventListener("keydown", onKey);
+ };
+ }, [open]);
+
+ const currentLabel =
+ SORT_OPTIONS.find((o) => o.key === value)?.label ?? "Photos first";
+
+ return (
+ <div ref={wrapperRef} className="relative">
+ <button
+ type="button"
+ onClick={() => setOpen((o) => !o)}
+ className="inline-flex items-center gap-1.5 rounded-full border border-[color:var(--hairline)] bg-white px-3 py-1.5 text-[12.5px] font-medium text-[color:var(--ink-soft)] transition-colors hover:border-teal-700 hover:text-teal-900"
+ >
+ <ArrowUpDown className="h-3.5 w-3.5" />
+ <span>Sort: {currentLabel}</span>
+ <ChevronDown className="h-3.5 w-3.5 opacity-70" />
+ </button>
+
+ {open && (
+ <div
+ className="absolute right-0 top-full z-30 mt-2 w-52 rounded-2xl border border-[color:var(--hairline)] bg-white py-1 shadow-xl shadow-teal-900/10"
+ role="listbox"
+ >
+ {SORT_OPTIONS.map((opt) => {
+ const active = opt.key === value;
+ return (
+ <button
+ key={opt.key}
+ type="button"
+ onClick={() => {
+ onChange(opt.key);
+ setOpen(false);
+ }}
+ className={[
+ "flex w-full items-center justify-between gap-2 px-3 py-2 text-left text-[13px] transition-colors",
+ active
+ ? "bg-teal-50 text-teal-900 font-medium"
+ : "text-[color:var(--ink-soft)] hover:bg-sand-50 hover:text-teal-900",
+ ].join(" ")}
+ >
+ <span>{opt.label}</span>
+ {active && (
+ <span className="text-[11px] text-teal-700">✓</span>
+ )}
+ </button>
+ );
+ })}
  </div>
  )}
  </div>
