@@ -61,10 +61,10 @@ export default function HomePage() {
           {/* Quiet sub-hero band between the hero photo and the people grid.
               Single CTA: are you going? Add yourself. The hero itself stays
               CTA-free now — its job is the visual + the 1,658 proof. */}
-          <section className="mx-auto max-w-7xl px-5 pt-10 lg:px-8 lg:pt-14">
-            <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[color:var(--hairline)] bg-white p-5 shadow-sm sm:p-6">
+          <section className="mx-auto max-w-7xl px-5 pt-6 lg:px-8 lg:pt-8">
+            <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[color:var(--hairline)] bg-white p-4 shadow-sm sm:p-5">
               <div>
-                <p className="font-display text-lg font-semibold text-teal-900 sm:text-xl">
+                <p className="font-display text-base font-semibold text-teal-900 sm:text-lg">
                   Going to Cannes 2026?
                 </p>
                 <p className="mt-1 text-[13.5px] leading-relaxed text-[color:var(--ink-soft)]">
@@ -83,7 +83,7 @@ export default function HomePage() {
 
           <section
             id="people"
-            className="mx-auto max-w-7xl scroll-mt-20 px-5 py-10 lg:px-8 lg:py-14"
+            className="mx-auto max-w-7xl scroll-mt-20 px-5 pb-10 pt-6 lg:px-8 lg:pb-14 lg:pt-8"
           >
             {/* PeopleExplorer uses useSearchParams() so we wrap in Suspense
                 to satisfy Next 15+'s static-generation boundary requirement. */}
