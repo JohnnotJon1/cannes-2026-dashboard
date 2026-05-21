@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { MessageSquareQuote, Calendar, Building2 } from "lucide-react";
+import { MessageSquareQuote, Building2 } from "lucide-react";
 import type { PersonSignal } from "@/types";
 
 // Resolve a profile photo URL when we can. Priority:
@@ -49,7 +49,7 @@ export function PersonCard({ person }: { person: PersonSignal }) {
   const yearLabel =
     person.yearSignal === "going-this-year"
       ? { text: "Going this year", classes: "bg-teal-800 text-sand-50 border-teal-800" }
-      : { text: "Posted about last year", classes: "bg-sand-100 text-[color:var(--ink-soft)] border-[color:var(--hairline)]" };
+      : { text: "Went last year", classes: "bg-sand-100 text-[color:var(--ink-soft)] border-[color:var(--hairline)]" };
 
   const linkValid = (url?: string) => !!url && url !== "#sample" && url !== "#";
 
@@ -90,9 +90,8 @@ export function PersonCard({ person }: { person: PersonSignal }) {
 
       <div className="mt-4 flex flex-wrap gap-1.5">
         <span
-          className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[11px] font-medium ${yearLabel.classes}`}
+          className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-medium ${yearLabel.classes}`}
         >
-          <Calendar className="h-3 w-3" />
           {yearLabel.text}
         </span>
         {person.isSample && (
@@ -155,7 +154,7 @@ export function PersonRow({ person }: { person: PersonSignal }) {
   const yearLabel =
     person.yearSignal === "going-this-year"
       ? { text: "Going this year", classes: "bg-teal-800 text-sand-50 border-teal-800" }
-      : { text: "Last year", classes: "bg-sand-100 text-[color:var(--ink-soft)] border-[color:var(--hairline)]" };
+      : { text: "Went last year", classes: "bg-sand-100 text-[color:var(--ink-soft)] border-[color:var(--hairline)]" };
 
   const linkValid = (url?: string) => !!url && url !== "#sample" && url !== "#";
 
@@ -196,9 +195,8 @@ export function PersonRow({ person }: { person: PersonSignal }) {
       </div>
 
       <span
-        className={`hidden shrink-0 items-center gap-1.5 rounded-full border px-2 py-0.5 text-[11px] font-medium sm:inline-flex ${yearLabel.classes}`}
+        className={`hidden shrink-0 items-center rounded-full border px-2 py-0.5 text-[11px] font-medium sm:inline-flex ${yearLabel.classes}`}
       >
-        <Calendar className="h-3 w-3" />
         {yearLabel.text}
       </span>
 
