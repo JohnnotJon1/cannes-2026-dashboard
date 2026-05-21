@@ -168,3 +168,14 @@ export interface RefreshMetadata {
   events: { lastUpdated: string; count: number };
   people: { lastUpdated: string; count: number };
 }
+
+/**
+ * Message submitted via /contact. Never exposed publicly — surfaced
+ * only on /admin (token-gated) for John to review and reply to.
+ */
+export interface ContactMessage {
+  id: string;
+  email?: string;
+  message: string;
+  detectedAt: string;
+}

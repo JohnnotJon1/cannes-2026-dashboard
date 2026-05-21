@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { MessageSquareQuote, Building2 } from "lucide-react";
+import { MessageSquareQuote, Building2, Trash2 } from "lucide-react";
 import type { PersonSignal } from "@/types";
 
 // Resolve a profile photo URL when we can. Priority:
@@ -39,11 +39,16 @@ export function PersonCard({
   person,
   isHighlighted,
   cardRef,
+  isOwned,
+  onRemove,
 }: {
   person: PersonSignal;
   isHighlighted?: boolean;
   cardRef?: (el: HTMLElement | null) => void;
+  isOwned?: boolean;
+  onRemove?: (id: string) => Promise<void> | void;
 }) {
+  const [removing, setRemoving] = useState(false);
   const initials = person.name
     .split(" ")
     .map((p) => p[0])
@@ -153,6 +158,22 @@ export function PersonCard({
             <XLogo />
           </a>
         ) : null}
+        {isOwned && onRemove && (
+          <button
+            type="button"
+            disabled={removing}
+            onClick={async () => {
+              if (typeof window !== "undefined" &&
+                !window.confirm("Remove yourself from the Cannes 2026 list?")) return;
+              setRemoving(true);
+              try { await onRemove(person.id); } finally { setRemoving(false); }
+            }}
+            className="ml-auto inline-flex items-center gap-1 rounded-full border border-coral-200 bg-coral-50 px-2 py-0.5 text-[11px] font-medium text-coral-700 transition hover:bg-coral-100 disabled:opacity-50"
+          >
+            <Trash2 className="h-3 w-3" />
+            {removing ? "Removing…" : "Remove me"}
+          </button>
+        )}
       </div>
     </article>
   );
@@ -165,11 +186,16 @@ export function PersonRow({
   person,
   isHighlighted,
   cardRef,
+  isOwned,
+  onRemove,
 }: {
   person: PersonSignal;
   isHighlighted?: boolean;
   cardRef?: (el: HTMLElement | null) => void;
+  isOwned?: boolean;
+  onRemove?: (id: string) => Promise<void> | void;
 }) {
+  const [removing, setRemoving] = useState(false);
   const initials = person.name
     .split(" ")
     .map((p) => p[0])
@@ -279,6 +305,24 @@ export function PersonRow({
             <XLogo />
           </a>
         ) : null}
+        {isOwned && onRemove && (
+          <button
+            type="button"
+            disabled={removing}
+            onClick={async () => {
+              if (typeof window !== "undefined" &&
+                !window.confirm("Remove yourself from the Cannes 2026 list?")) return;
+              setRemoving(true);
+              try { await onRemove(person.id); } finally { setRemoving(false); }
+            }}
+            aria-label="Remove me from the list"
+            title="Remove me"
+            className="inline-flex items-center gap-1 rounded-full border border-coral-200 bg-coral-50 px-2 py-0.5 text-[11px] font-medium text-coral-700 transition hover:bg-coral-100 disabled:opacity-50"
+          >
+            <Trash2 className="h-3 w-3" />
+            <span className="hidden sm:inline">{removing ? "Removing…" : "Remove"}</span>
+          </button>
+        )}
       </div>
     </article>
   );

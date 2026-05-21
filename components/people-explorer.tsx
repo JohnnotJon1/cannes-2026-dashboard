@@ -11,6 +11,45 @@ import { STORAGE_KEYS, useLocalStorage } from "@/lib/storage";
 type Filter = "all" | "going-this-year" | "attended-last-year";
 type ViewMode = "grid" | "list";
 
+interface SubmissionReceipt {
+  id: string;
+  deleteToken: string;
+  name: string;
+  addedAt: string;
+}
+
+/** Read receipts from localStorage. SSR-safe. */
+function readReceipts(): SubmissionReceipt[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEYS.submittedReceipts);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? (parsed as SubmissionReceipt[]) : [];
+  } catch {
+    return [];
+  }
+}
+
+function writeReceipts(list: SubmissionReceipt[]): void {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem(
+      STORAGE_KEYS.submittedReceipts,
+      JSON.stringify(list)
+    );
+  } catch {
+    // Quota / disabled storage — silent failure.
+  }
+}
+
+/** Drop receipts whose id is no longer present in the server's list. */
+function pruneStaleReceipts(liveIds: Set<string>): void {
+  const list = readReceipts();
+  const next = list.filter((r) => liveIds.has(r.id));
+  if (next.length !== list.length) writeReceipts(next);
+}
+
 const TABS: { value: Filter; label: string }[] = [
   { value: "all", label: "All" },
   { value: "going-this-year", label: "Going this year" },
@@ -48,13 +87,52 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
     fetch("/api/people", { cache: "no-store" })
       .then((r) => (r.ok ? r.json() : { submitted: [] }))
       .then((d) => {
-        if (!cancelled && Array.isArray(d?.submitted)) setSubmitted(d.submitted);
+        if (cancelled || !Array.isArray(d?.submitted)) return;
+        setSubmitted(d.submitted);
+        // Prune stale receipts: any local id whose entry no longer
+        // exists (John removed it via /admin, KV expired, etc.) should
+        // drop from localStorage so the user isn't shown a phantom
+        // "Remove me" button later.
+        pruneStaleReceipts(new Set(d.submitted.map((p: PersonSignal) => p.id)));
       })
       .catch(() => {});
     return () => {
       cancelled = true;
     };
   }, []);
+
+  // Local receipts → the set of ids the current browser is allowed to
+  // self-delete. Read once on mount; mutated in place when the user
+  // clicks "Remove me". Survives page reloads.
+  const [receipts, setReceipts] = useState<SubmissionReceipt[]>([]);
+  useEffect(() => {
+    setReceipts(readReceipts());
+  }, []);
+  const ownReceiptIds = useMemo(
+    () => new Set(receipts.map((r) => r.id)),
+    [receipts]
+  );
+
+  const handleRemoveOwn = async (id: string) => {
+    const receipt = receipts.find((r) => r.id === id);
+    if (!receipt) return;
+    const res = await fetch(
+      `/api/submit/${encodeURIComponent(id)}?token=${encodeURIComponent(receipt.deleteToken)}`,
+      { method: "DELETE" }
+    );
+    if (!res.ok) {
+      alert("Couldn't remove that entry. Refresh and try again, or email John.");
+      return;
+    }
+    // Optimistic local removal: drop from the visible list and from
+    // localStorage. CDN cache flush handles the persistent layer.
+    setSubmitted((prev) => prev.filter((p) => p.id !== id));
+    setReceipts((prev) => {
+      const next = prev.filter((r) => r.id !== id);
+      writeReceipts(next);
+      return next;
+    });
+  };
 
   // Curated celebrity entries (Oprah, Stella, Demis, etc. — `p-` prefix) are
   // confirmed Cannes Lions 2026 speakers/honorees but they're not realistic
@@ -165,6 +243,8 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
           items={filtered}
           viewMode={viewMode}
           highlightId={highlightId}
+          ownReceiptIds={ownReceiptIds}
+          onRemoveOwn={handleRemoveOwn}
         />
       )}
     </div>
@@ -210,10 +290,14 @@ function PaginatedList({
   items,
   viewMode,
   highlightId,
+  ownReceiptIds,
+  onRemoveOwn,
 }: {
   items: PersonSignal[];
   viewMode: ViewMode;
   highlightId: string | null;
+  ownReceiptIds: Set<string>;
+  onRemoveOwn: (id: string) => Promise<void> | void;
 }) {
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const sentinelRef = useRef<HTMLDivElement | null>(null);
@@ -263,6 +347,8 @@ function PaginatedList({
               person={p}
               isHighlighted={p.id === highlightId}
               cardRef={setHighlightRef(p.id)}
+              isOwned={ownReceiptIds.has(p.id)}
+              onRemove={onRemoveOwn}
             />
           ))}
         </div>
@@ -274,6 +360,8 @@ function PaginatedList({
               person={p}
               isHighlighted={p.id === highlightId}
               cardRef={setHighlightRef(p.id)}
+              isOwned={ownReceiptIds.has(p.id)}
+              onRemove={onRemoveOwn}
             />
           ))}
         </div>

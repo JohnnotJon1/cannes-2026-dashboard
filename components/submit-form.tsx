@@ -3,6 +3,30 @@
 import { useRef, useState, type ChangeEvent, type DragEvent, type FormEvent } from "react";
 import { Check, ImagePlus, Loader2, X } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { STORAGE_KEYS } from "@/lib/storage";
+
+interface SubmissionReceipt {
+  id: string;
+  deleteToken: string;
+  name: string;
+  addedAt: string;
+}
+
+/** Append a receipt to the localStorage list so the user can later
+ *  delete their own card. SSR-safe: no-ops if window is undefined. */
+function persistReceipt(receipt: SubmissionReceipt) {
+  if (typeof window === "undefined") return;
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEYS.submittedReceipts);
+    const list: SubmissionReceipt[] = raw ? JSON.parse(raw) : [];
+    if (!Array.isArray(list)) return;
+    list.push(receipt);
+    window.localStorage.setItem(STORAGE_KEYS.submittedReceipts, JSON.stringify(list));
+  } catch {
+    // localStorage may be disabled / full — silent failure is fine,
+    // it only costs the user the self-delete affordance.
+  }
+}
 
 interface FormState {
   name: string;
@@ -78,7 +102,8 @@ export function SubmitForm() {
       });
       const data = (await res.json().catch(() => ({}))) as {
         ok?: boolean;
-        person?: { id: string };
+        person?: { id: string; name: string };
+        deleteToken?: string;
         error?: string;
       };
       if (!res.ok) {
@@ -86,10 +111,21 @@ export function SubmitForm() {
         setSubmitting(false);
         return;
       }
+      // Save the receipt so the user can self-delete later. We only
+      // ever see deleteToken once (right here). If we lose it, John
+      // is the only way out.
+      const id = data.person?.id ?? "";
+      if (id && data.deleteToken) {
+        persistReceipt({
+          id,
+          deleteToken: data.deleteToken,
+          name: data.person?.name ?? state.name,
+          addedAt: new Date().toISOString(),
+        });
+      }
       // Brief success flash so the user gets confirmation before the
       // redirect lands. The button stays disabled to prevent a re-click.
       setSucceeded(true);
-      const id = data.person?.id ?? "";
       setTimeout(() => {
         router.push(`/people?just-added=${encodeURIComponent(id)}`);
       }, 700);

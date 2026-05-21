@@ -114,7 +114,11 @@ export async function POST(req: NextRequest) {
   if (twitterUrl) person.twitterUrl = twitterUrl;
   if (photoUrl) person.photoUrl = photoUrl;
 
-  await addSubmission(person);
+  // Receipt token: returned in this response (the only time the
+  // submitter sees it) and stored in KV. Used to authorize a future
+  // DELETE /api/submit/[id] without exposing John's ADMIN_TOKEN.
+  const deleteToken = nanoid(24);
+  await addSubmission(person, deleteToken);
 
-  return Response.json({ ok: true, person }, { status: 201 });
+  return Response.json({ ok: true, person, deleteToken }, { status: 201 });
 }

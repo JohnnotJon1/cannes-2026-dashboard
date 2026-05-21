@@ -20,6 +20,10 @@ export const STORAGE_KEYS = {
   onboardingCompleted: `${STORAGE_NAMESPACE}:onboarding-completed`,
   extensionBannerDismissed: `${STORAGE_NAMESPACE}:extension-banner-dismissed`,
   peopleViewMode: `${STORAGE_NAMESPACE}:people-view-mode`,
+  // Receipts from /submit. Each entry is the proof-of-submission a user
+  // needs to remove themselves later. Never sent anywhere except as the
+  // ?token=... param on DELETE /api/submit/[id].
+  submittedReceipts: `${STORAGE_NAMESPACE}:submittedReceipts`,
 } as const;
 
 export function isStorageAvailable(): boolean {
