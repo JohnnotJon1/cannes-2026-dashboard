@@ -439,7 +439,7 @@ function PaginatedList({
  * a popover with a search input at the top and a vertically-scrollable
  * list of options below (sorted by count desc). Single-select.
  *
- * The popover is capped at min(60vh, 420px) so it never extends off
+ * The popover is capped at min(50vh, 330px) so it never extends off
  * the viewport on short screens. Closes on outside click, Escape, or
  * after selecting an item.
  */
@@ -552,7 +552,7 @@ function FacetSelector({
  </div>
  <ul
  className="overflow-y-auto py-1"
- style={{ maxHeight: "min(60vh, 420px)" }}
+ style={{ maxHeight: "min(50vh, 330px)" }}
  >
  {filtered.length === 0 ? (
  <li className="px-3 py-6 text-center text-[12px] text-[color:var(--muted)]">
