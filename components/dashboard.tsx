@@ -22,7 +22,6 @@ import { EventCard } from "./event-card";
 import { EventFilters } from "./event-filters";
 import { EventDetailDialog } from "./event-detail-dialog";
 import { EmptyState } from "./empty-state";
-import { DashboardStats } from "./dashboard-stats";
 import { resolveStatus } from "@/lib/filters";
 
 type Props = {
@@ -100,18 +99,10 @@ export function Dashboard({ seedEvents }: Props) {
 
   return (
     <div className="space-y-8">
-      {/* Stats ---------------------------------------------------------- */}
-      <section id="events" className="space-y-4">
-        <DashboardStats events={allEvents} statusMap={statusMap} />
-      </section>
-
-      {/* Filters -------------------------------------------------------- */}
-      <EventFilters
-        filters={filters}
-        setFilters={setFilters}
-        totalCount={allEvents.length}
-        visibleCount={visible.length}
-      />
+      {/* Search --------------------------------------------------------- */}
+      <div id="events">
+        <EventFilters filters={filters} setFilters={setFilters} />
+      </div>
 
       {/* Grid / grouped ------------------------------------------------- */}
       {visible.length === 0 ? (
