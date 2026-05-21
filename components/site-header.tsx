@@ -4,9 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { showEvents } from "@/lib/features";
 
 const NAV = [
-  { href: "/#events", label: "Events" },
+  ...(showEvents ? [{ href: "/#events", label: "Events" }] : []),
   { href: "/people", label: "Who's going" },
   { href: "/submit", label: "Add yourself" },
   // "My profile" hidden from nav while the Chrome extension is in CWS

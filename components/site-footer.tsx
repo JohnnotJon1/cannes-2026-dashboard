@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Lock } from "lucide-react";
+import { showEvents } from "@/lib/features";
 
 export function SiteFooter() {
   return (
@@ -20,9 +21,13 @@ export function SiteFooter() {
             Explore
           </h4>
           <ul className="mt-3 space-y-2 text-sm">
-            <li><Link className="hover:text-teal-700" href="/">Events</Link></li>
+            {showEvents && (
+              <li><Link className="hover:text-teal-700" href="/">Events</Link></li>
+            )}
             <li><Link className="hover:text-teal-700" href="/people">Who&apos;s going</Link></li>
-            <li><Link className="hover:text-teal-700" href="/profile">Your profile</Link></li>
+            {showEvents && (
+              <li><Link className="hover:text-teal-700" href="/profile">Your profile</Link></li>
+            )}
             <li><Link className="hover:text-teal-700" href="/contact">Support</Link></li>
           </ul>
         </div>

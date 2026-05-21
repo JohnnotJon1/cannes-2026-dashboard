@@ -18,7 +18,11 @@ const fraunces = Fraunces({
   axes: ["SOFT", "WONK", "opsz"],
 });
 
-const siteUrl = "https://cannes-2026-dashboard.vercel.app";
+// Falls back to the canonical private URL when NEXT_PUBLIC_SITE_URL
+// is unset. Each Vercel project sets its own value so OG meta resolves
+// correctly per deployment.
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://cannes-2026-dashboard.vercel.app";
 
 export const metadata: Metadata = {
   title: {
