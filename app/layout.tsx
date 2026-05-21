@@ -22,7 +22,7 @@ const siteUrl = "https://cannes-2026-dashboard.vercel.app";
 
 export const metadata: Metadata = {
   title: {
-    default: "Your Cannes Lions 2026 dashboard",
+    default: "Cannes Lions 2026 · 1,658 going",
     template: "%s · Cannes Lions 2026",
   },
   description:
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   ],
   metadataBase: new URL(siteUrl),
   openGraph: {
-    title: "Your Cannes Lions 2026 dashboard",
+    title: "Cannes Lions 2026 · 1,658 going",
     description: "See who's going + 200 events to register for in one place.",
     type: "website",
     url: siteUrl,
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cannes Lions 2026 dashboard",
+    title: "Cannes Lions 2026 · 1,658 going",
     description: "See who's going + 200 events to register for in one place.",
     images: ["/og-cannes.jpg"],
   },
