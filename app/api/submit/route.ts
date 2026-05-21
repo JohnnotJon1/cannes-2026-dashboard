@@ -8,7 +8,11 @@ export const dynamic = "force-dynamic";
 
 const LINKEDIN_RE = /^https?:\/\/(www\.)?linkedin\.com\/in\/[^\/?#]+\/?$/i;
 const TWITTER_RE = /^https?:\/\/(www\.)?(x|twitter)\.com\/[^\/?#]+\/?$/i;
-const PHOTO_RE = /^https?:\/\/.+\.(jpg|jpeg|png|webp|gif)(\?.*)?$/i;
+const PHOTO_URL_RE = /^https?:\/\/.+\.(jpg|jpeg|png|webp|gif)(\?.*)?$/i;
+const PHOTO_DATA_RE = /^data:image\/(jpeg|jpg|png|webp);base64,[A-Za-z0-9+/]+=*$/;
+// Data URL upper bound: 200 KB encoded ≈ 150 KB decoded. Client-side
+// resize at 400×400 q0.85 typically yields 30-60 KB JPEG.
+const PHOTO_MAX_LEN = 200_000;
 
 function jsonErr(status: number, error: string, hint?: string) {
   return Response.json({ error, hint }, { status });
@@ -64,7 +68,7 @@ export async function POST(req: NextRequest) {
   const role = trim(body.role, 80);
   const linkedinUrl = trim(body.linkedinUrl, 200);
   const twitterUrl = trim(body.twitterUrl, 200);
-  const photoUrl = trim(body.photoUrl, 500);
+  const photoUrl = trim(body.photoUrl, PHOTO_MAX_LEN);
 
   if (linkedinUrl && !LINKEDIN_RE.test(linkedinUrl)) {
     return jsonErr(400, "LinkedIn URL must look like https://www.linkedin.com/in/your-slug/");
@@ -72,8 +76,11 @@ export async function POST(req: NextRequest) {
   if (twitterUrl && !TWITTER_RE.test(twitterUrl)) {
     return jsonErr(400, "X / Twitter URL must look like https://x.com/your-handle");
   }
-  if (photoUrl && !PHOTO_RE.test(photoUrl)) {
-    return jsonErr(400, "Photo URL must end in .jpg, .png, or .webp.");
+  if (photoUrl && !(PHOTO_URL_RE.test(photoUrl) || PHOTO_DATA_RE.test(photoUrl))) {
+    return jsonErr(
+      400,
+      "That photo couldn't be processed. Try uploading a JPG, PNG, or WebP."
+    );
   }
 
   // yearSignal — default to going-this-year
