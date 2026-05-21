@@ -216,7 +216,7 @@ function IntroStep({
         <button
           type="button"
           onClick={onContinue}
-          className="inline-flex items-center justify-center gap-1.5 rounded-full bg-coral-500 px-5 py-2.5 text-sm font-semibold text-white shadow-[0_8px_24px_-12px_rgba(214,90,58,0.7)] transition-colors hover:bg-coral-600"
+          className="inline-flex items-center justify-center gap-1.5 rounded-full bg-coral-500 px-5 py-2.5 text-sm font-semibold text-teal-900 shadow-[0_8px_24px_-12px_rgba(184,137,90,0.7)] transition-colors hover:bg-coral-600"
         >
           Continue
           <ArrowRight className="h-4 w-4" />
@@ -337,7 +337,7 @@ function ProfileStep({
         <button
           type="button"
           onClick={save}
-          className="inline-flex items-center justify-center gap-1.5 rounded-full bg-coral-500 px-5 py-2.5 text-sm font-semibold text-white shadow-[0_8px_24px_-12px_rgba(214,90,58,0.7)] transition-colors hover:bg-coral-600"
+          className="inline-flex items-center justify-center gap-1.5 rounded-full bg-coral-500 px-5 py-2.5 text-sm font-semibold text-teal-900 shadow-[0_8px_24px_-12px_rgba(184,137,90,0.7)] transition-colors hover:bg-coral-600"
         >
           Save and finish
           <ArrowRight className="h-4 w-4" />
@@ -394,7 +394,7 @@ function SkipWarningModal({
           <button
             type="button"
             onClick={onSetUpNow}
-            className="inline-flex items-center justify-center gap-1.5 rounded-full bg-coral-500 px-4 py-2 text-[13px] font-semibold text-white transition-colors hover:bg-coral-600"
+            className="inline-flex items-center justify-center gap-1.5 rounded-full bg-coral-500 px-4 py-2 text-[13px] font-semibold text-teal-900 transition-colors hover:bg-coral-600"
           >
             Set up registration info
             <ArrowRight className="h-3.5 w-3.5" />

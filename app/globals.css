@@ -19,9 +19,12 @@
   --teal-600: #2a8a83;
   --teal-100: #d6ebe9;
 
-  --coral-600: #d65a3a;
-  --coral-500: #e87d5c;
-  --coral-100: #f9d9cd;
+  /* Champagne gold accent — replaces the prior coral. CSS variable
+     names kept (text-coral-500, etc.) to avoid a project-wide rename;
+     semantic intent is now "Cannes-Lions-trophy gold", not orange. */
+  --coral-600: #b8895a;
+  --coral-500: #d4a574;
+  --coral-100: #f5e6d0;
 
   --amber-600: #b97a1f;
   --amber-500: #d99a3b;

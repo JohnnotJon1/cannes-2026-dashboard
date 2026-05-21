@@ -47,7 +47,7 @@ export default function ExtensionPage() {
             </div>
             <a
               href="#install-options"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-coral-500 px-5 py-2.5 text-sm font-semibold text-white shadow-[0_8px_24px_-12px_rgba(214,90,58,0.7)] transition-colors hover:bg-coral-600"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-coral-500 px-5 py-2.5 text-sm font-semibold text-teal-900 shadow-[0_8px_24px_-12px_rgba(184,137,90,0.7)] transition-colors hover:bg-coral-600"
             >
               <Download className="h-4 w-4" />
               Install

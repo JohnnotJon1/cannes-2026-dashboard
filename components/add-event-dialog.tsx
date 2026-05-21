@@ -190,7 +190,7 @@ export function AddEventDialog({ onAdd }: Props) {
                 type="button"
                 onClick={submit}
                 disabled={!canSubmit}
-                className="rounded-full bg-coral-500 px-4 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-coral-600 disabled:cursor-not-allowed disabled:opacity-50"
+                className="rounded-full bg-coral-500 px-4 py-1.5 text-sm font-semibold text-teal-900 transition-colors hover:bg-coral-600 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 Save event
               </button>
