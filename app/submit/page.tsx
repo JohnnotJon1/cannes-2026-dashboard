@@ -17,8 +17,7 @@ export default function SubmitPage() {
           </h1>
           <p className="max-w-2xl text-[15px] leading-relaxed text-[color:var(--ink-soft)]">
             Drop your name, company, and LinkedIn. You&apos;ll appear on the
-            attendees page within seconds — and people you already know in
-            advertising will spot you faster.
+            attendees page within seconds.
           </p>
         </div>
 

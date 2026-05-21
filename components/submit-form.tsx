@@ -4,8 +4,6 @@ import { useState, FormEvent } from "react";
 import { Check, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-type YearSignal = "going-this-year" | "attended-last-year";
-
 interface FormState {
   name: string;
   company: string;
@@ -13,7 +11,6 @@ interface FormState {
   linkedinUrl: string;
   twitterUrl: string;
   photoUrl: string;
-  yearSignal: YearSignal;
 }
 
 const EMPTY: FormState = {
@@ -23,7 +20,6 @@ const EMPTY: FormState = {
   linkedinUrl: "",
   twitterUrl: "",
   photoUrl: "",
-  yearSignal: "going-this-year",
 };
 
 export function SubmitForm() {
@@ -45,7 +41,7 @@ export function SubmitForm() {
       const res = await fetch("/api/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(state),
+        body: JSON.stringify({ ...state, yearSignal: "going-this-year" }),
       });
       const data = (await res.json().catch(() => ({}))) as {
         ok?: boolean;
@@ -127,32 +123,6 @@ export function SubmitForm() {
           onChange={(e) => update("photoUrl", e.target.value)}
           placeholder="https://…/your-headshot.jpg"
         />
-      </Field>
-      <Field label="When are you going?" full>
-        <div className="flex flex-wrap gap-2">
-          {(
-            [
-              { v: "going-this-year", label: "Going to Cannes 2026" },
-              { v: "attended-last-year", label: "Went last year (Cannes 2025)" },
-            ] as const
-          ).map((opt) => {
-            const active = state.yearSignal === opt.v;
-            return (
-              <button
-                key={opt.v}
-                type="button"
-                onClick={() => update("yearSignal", opt.v)}
-                className={`rounded-full border px-3 py-1.5 text-[13px] font-medium transition ${
-                  active
-                    ? "border-teal-700 bg-teal-700 text-sand-50"
-                    : "border-[color:var(--hairline)] bg-white text-[color:var(--ink-soft)] hover:bg-sand-100"
-                }`}
-              >
-                {opt.label}
-              </button>
-            );
-          })}
-        </div>
       </Field>
 
       {error && (
