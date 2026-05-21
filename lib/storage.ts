@@ -19,6 +19,7 @@ export const STORAGE_KEYS = {
   privacyBannerDismissed: `${STORAGE_NAMESPACE}:privacy-banner-dismissed`,
   onboardingCompleted: `${STORAGE_NAMESPACE}:onboarding-completed`,
   extensionBannerDismissed: `${STORAGE_NAMESPACE}:extension-banner-dismissed`,
+  peopleViewMode: `${STORAGE_NAMESPACE}:people-view-mode`,
 } as const;
 
 export function isStorageAvailable(): boolean {

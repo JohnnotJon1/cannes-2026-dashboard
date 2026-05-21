@@ -1,12 +1,14 @@
 "use client";
 
-import { Search, Filter, X, RefreshCw } from "lucide-react";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Search, Filter, X, LayoutGrid, LayoutList } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { PersonSignal } from "@/types";
-import { PersonCard } from "./person-card";
+import { PersonCard, PersonRow } from "./person-card";
 import { EmptyState } from "./empty-state";
+import { STORAGE_KEYS, useLocalStorage } from "@/lib/storage";
 
 type Filter = "all" | "going-this-year" | "attended-last-year";
+type ViewMode = "grid" | "list";
 
 const TABS: { value: Filter; label: string }[] = [
   { value: "all", label: "All" },
@@ -16,40 +18,23 @@ const TABS: { value: Filter; label: string }[] = [
 
 const PAGE_SIZE = 18;
 
-// Stable seed-based shuffle so server and client agree on the initial order
-// and "refresh" predictably permutes. xmur3 + sfc32 is overkill but keeps the
-// determinism crisp.
-function seededShuffle<T>(arr: T[], seed: number): T[] {
-  const out = [...arr];
-  let s = seed >>> 0 || 1;
-  for (let i = out.length - 1; i > 0; i--) {
-    s = (s * 1664525 + 1013904223) >>> 0;
-    const j = s % (i + 1);
-    [out[i], out[j]] = [out[j], out[i]];
-  }
-  return out;
-}
-
 export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState<Filter>("all");
-  const [seed, setSeed] = useState(0); // 0 = source order, >0 = shuffled
-  const scrollAnchorRef = useRef<HTMLDivElement | null>(null);
+  const [viewMode, setViewMode] = useLocalStorage<ViewMode>(
+    STORAGE_KEYS.peopleViewMode,
+    "grid"
+  );
 
   // Curated celebrity entries (Oprah, Stella, Demis, etc. — `p-` prefix) are
   // confirmed Cannes Lions 2026 speakers/honorees but they're not realistic
   // people to bump into and ask for a meeting. Push them to the bottom of the
-  // feed so the practical, scrape-sourced names lead. Refresh shuffles each
-  // group independently — celebrities stay at the bottom even when shuffled.
+  // feed so the practical, scrape-sourced names lead.
   const ordered = useMemo(() => {
     const practical = people.filter((p) => !p.id.startsWith("p-"));
     const celebrities = people.filter((p) => p.id.startsWith("p-"));
-    if (seed === 0) return [...practical, ...celebrities];
-    return [
-      ...seededShuffle(practical, seed),
-      ...seededShuffle(celebrities, seed ^ 0x9e3779b9),
-    ];
-  }, [people, seed]);
+    return [...practical, ...celebrities];
+  }, [people]);
 
   const filtered = useMemo(() => {
     return ordered.filter((p) => {
@@ -65,18 +50,12 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
     });
   }, [ordered, search, filter]);
 
-  const refresh = useCallback(() => {
-    setSeed(Date.now());
-    scrollAnchorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, []);
-
   // PaginatedList is remounted (and its visibleCount resets) whenever any
-  // input that changes "what we're showing" changes. Cleaner than calling
-  // setState in an effect every time a filter flips.
-  const listKey = `${filter}|${search}|${seed}`;
+  // input that changes "what we're showing" changes.
+  const listKey = `${filter}|${search}|${viewMode}`;
 
   return (
-    <div className="space-y-6" ref={scrollAnchorRef}>
+    <div className="space-y-6">
       <div className="space-y-4 rounded-2xl border border-[color:var(--hairline)] bg-white/70 p-4 lg:p-5">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
           <div className="relative flex-1 lg:max-w-md">
@@ -89,20 +68,7 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
               className="!pl-9"
             />
           </div>
-          <div className="flex items-center gap-3 text-[13px] text-[color:var(--muted)]">
-            <span>
-              <strong className="text-teal-900">{filtered.length}</strong>{" "}
-              {filtered.length === 1 ? "signal" : "signals"}
-            </span>
-            <button
-              type="button"
-              onClick={refresh}
-              className="inline-flex items-center gap-1 rounded-full border border-[color:var(--hairline)] bg-sand-50 px-2.5 py-1 text-[12px] font-medium text-teal-900 hover:bg-sand-100"
-            >
-              <RefreshCw className="h-3 w-3" />
-              Refresh feed
-            </button>
-          </div>
+          <ViewToggle viewMode={viewMode} setViewMode={setViewMode} />
         </div>
         <div className="flex flex-wrap items-center gap-1.5">
           {TABS.map((t) => {
@@ -145,19 +111,58 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
           description="Try clearing the search or switching to the All view."
         />
       ) : (
-        <PaginatedList key={listKey} items={filtered} />
+        <PaginatedList key={listKey} items={filtered} viewMode={viewMode} />
       )}
     </div>
   );
 }
 
-function PaginatedList({ items }: { items: PersonSignal[] }) {
+function ViewToggle({
+  viewMode,
+  setViewMode,
+}: {
+  viewMode: ViewMode;
+  setViewMode: (v: ViewMode) => void;
+}) {
+  const btn = (mode: ViewMode, Icon: typeof LayoutGrid, label: string) => {
+    const active = viewMode === mode;
+    return (
+      <button
+        type="button"
+        onClick={() => setViewMode(mode)}
+        aria-pressed={active}
+        aria-label={label}
+        title={label}
+        className={[
+          "inline-flex h-8 w-8 items-center justify-center rounded-full transition-colors",
+          active
+            ? "bg-teal-800 text-sand-50"
+            : "text-[color:var(--ink-soft)] hover:bg-sand-100 hover:text-teal-900",
+        ].join(" ")}
+      >
+        <Icon className="h-4 w-4" />
+      </button>
+    );
+  };
+  return (
+    <div className="inline-flex shrink-0 items-center gap-1 self-start rounded-full border border-[color:var(--hairline)] bg-white p-0.5 lg:self-auto">
+      {btn("grid", LayoutGrid, "Grid view")}
+      {btn("list", LayoutList, "List view")}
+    </div>
+  );
+}
+
+function PaginatedList({
+  items,
+  viewMode,
+}: {
+  items: PersonSignal[];
+  viewMode: ViewMode;
+}) {
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const sentinelRef = useRef<HTMLDivElement | null>(null);
   const hasMore = visibleCount < items.length;
 
-  // IntersectionObserver-based infinite scroll. Watching a sentinel below
-  // the list reveals the next page when the user gets close to the bottom.
   useEffect(() => {
     if (!hasMore) return;
     const el = sentinelRef.current;
@@ -177,11 +182,19 @@ function PaginatedList({ items }: { items: PersonSignal[] }) {
   const slice = items.slice(0, visibleCount);
   return (
     <>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {slice.map((p) => (
-          <PersonCard key={p.id} person={p} />
-        ))}
-      </div>
+      {viewMode === "grid" ? (
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {slice.map((p) => (
+            <PersonCard key={p.id} person={p} />
+          ))}
+        </div>
+      ) : (
+        <div className="flex flex-col gap-2">
+          {slice.map((p) => (
+            <PersonRow key={p.id} person={p} />
+          ))}
+        </div>
+      )}
       <div
         ref={sentinelRef}
         aria-hidden

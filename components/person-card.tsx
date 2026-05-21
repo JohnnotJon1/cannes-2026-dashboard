@@ -137,3 +137,95 @@ export function PersonCard({ person }: { person: PersonSignal }) {
     </article>
   );
 }
+
+// Compact row variant used in list view. Same data as PersonCard but
+// laid out horizontally: thumbnail + name/role/company + year badge +
+// LinkedIn/X icon links. No quote.
+export function PersonRow({ person }: { person: PersonSignal }) {
+  const initials = person.name
+    .split(" ")
+    .map((p) => p[0])
+    .slice(0, 2)
+    .join("");
+
+  const photoUrl = resolvePhotoUrl(person);
+  const [photoFailed, setPhotoFailed] = useState(false);
+  const showPhoto = photoUrl && !photoFailed;
+
+  const yearLabel =
+    person.yearSignal === "going-this-year"
+      ? { text: "Going this year", classes: "bg-teal-800 text-sand-50 border-teal-800" }
+      : { text: "Last year", classes: "bg-sand-100 text-[color:var(--ink-soft)] border-[color:var(--hairline)]" };
+
+  const linkValid = (url?: string) => !!url && url !== "#sample" && url !== "#";
+
+  return (
+    <article className="card-lift flex items-center gap-4 rounded-xl border border-[color:var(--hairline)] bg-white px-3 py-2.5 shadow-[0_1px_0_rgba(13,61,58,0.04)] sm:px-4">
+      {showPhoto ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={photoUrl}
+          alt=""
+          onError={() => setPhotoFailed(true)}
+          className="h-11 w-11 shrink-0 rounded-full bg-teal-100 object-cover"
+          referrerPolicy="no-referrer"
+        />
+      ) : (
+        <div
+          className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-teal-100 font-display text-sm font-semibold text-teal-900"
+          aria-hidden
+        >
+          {initials}
+        </div>
+      )}
+
+      <div className="min-w-0 flex-1">
+        <h3 className="truncate font-display text-[15px] font-semibold leading-snug text-teal-900">
+          {person.name}
+        </h3>
+        <p className="mt-0.5 flex items-center gap-x-1.5 truncate text-[12.5px] text-[color:var(--muted)]">
+          <span className="truncate">{person.role}</span>
+          {person.role && person.company && <span aria-hidden>·</span>}
+          {person.company && (
+            <span className="inline-flex min-w-0 items-center gap-1 truncate text-[color:var(--ink-soft)]">
+              <Building2 className="h-3 w-3 shrink-0" />
+              <span className="truncate">{person.company}</span>
+            </span>
+          )}
+        </p>
+      </div>
+
+      <span
+        className={`hidden shrink-0 items-center gap-1.5 rounded-full border px-2 py-0.5 text-[11px] font-medium sm:inline-flex ${yearLabel.classes}`}
+      >
+        <Calendar className="h-3 w-3" />
+        {yearLabel.text}
+      </span>
+
+      <div className="flex shrink-0 items-center gap-3">
+        {linkValid(person.linkedinUrl) ? (
+          <a
+            href={person.linkedinUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn profile"
+            className="inline-flex items-center text-teal-700 hover:text-teal-900"
+          >
+            <LinkedInLogo />
+          </a>
+        ) : null}
+        {linkValid(person.twitterUrl) ? (
+          <a
+            href={person.twitterUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="X profile"
+            className="inline-flex items-center text-teal-700 hover:text-teal-900"
+          >
+            <XLogo />
+          </a>
+        ) : null}
+      </div>
+    </article>
+  );
+}
