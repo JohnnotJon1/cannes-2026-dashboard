@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 const NAV = [
   { href: "/#events", label: "Events" },
   { href: "/people", label: "Who's going" },
-  { href: "/profile", label: "Profile" },
+  { href: "/profile", label: "My profile" },
 ];
 
 export function SiteHeader() {

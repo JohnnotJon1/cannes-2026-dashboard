@@ -29,14 +29,6 @@ export default function HomePage() {
           <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-sand-100/95 drop-shadow-[0_1px_8px_rgba(0,0,0,0.35)] sm:text-base">
             See who&apos;s going and register for every possible party and event.
           </p>
-          <div className="mt-6 flex flex-wrap items-center gap-3">
-            <a
-              href="#events"
-              className="rounded-full bg-coral-500 px-4 py-2 text-sm font-semibold text-white hover:bg-coral-600"
-            >
-              Browse events
-            </a>
-          </div>
         </div>
       </section>
 
