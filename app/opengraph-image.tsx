@@ -22,44 +22,7 @@ export default function OpengraphImage() {
           position: "relative",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <div
-            style={{
-              width: 56,
-              height: 56,
-              borderRadius: 999,
-              background: "#fdfaf3",
-              color: "#0d3d3a",
-              fontSize: 32,
-              fontWeight: 700,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              position: "relative",
-            }}
-          >
-            C
-            <div
-              style={{
-                position: "absolute",
-                bottom: -6,
-                right: -6,
-                background: "#e87d5c",
-                color: "white",
-                fontSize: 14,
-                fontWeight: 700,
-                width: 26,
-                height: 26,
-                borderRadius: 999,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontFamily: "Helvetica, sans-serif",
-              }}
-            >
-              26
-            </div>
-          </div>
+        <div style={{ display: "flex", alignItems: "center" }}>
           <div
             style={{
               fontFamily: "Helvetica, sans-serif",

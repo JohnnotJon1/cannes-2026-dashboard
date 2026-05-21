@@ -6,14 +6,9 @@ export function SiteFooter() {
     <footer className="mt-24 border-t border-[color:var(--hairline)] bg-sand-100">
       <div className="mx-auto grid max-w-7xl gap-8 px-5 py-12 sm:grid-cols-2 lg:grid-cols-4 lg:px-8">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="grid h-9 w-9 place-items-center rounded-full bg-teal-800 text-sand-50">
-              <span className="font-display text-lg leading-none">C</span>
-            </span>
-            <span className="text-[11px] uppercase tracking-[0.16em] text-teal-900">
-              Cannes Lions 2026
-            </span>
-          </div>
+          <span className="text-[11px] uppercase tracking-[0.16em] text-teal-900">
+            Cannes Lions 2026
+          </span>
           <p className="mt-3 max-w-xs text-sm leading-6 text-[color:var(--muted)]">
             A privacy-first companion for Cannes Lions 2026. Discover events,
             track your status, see who&apos;s going.

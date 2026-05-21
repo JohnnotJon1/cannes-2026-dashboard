@@ -15,34 +15,14 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          fontFamily: "Georgia, serif",
-          fontWeight: 600,
-          fontSize: 38,
+          fontFamily: "Helvetica, sans-serif",
+          fontWeight: 700,
+          fontSize: 28,
+          letterSpacing: -1,
           borderRadius: 16,
-          position: "relative",
         }}
       >
-        C
-        <div
-          style={{
-            position: "absolute",
-            bottom: 6,
-            right: 6,
-            background: "#e87d5c",
-            color: "white",
-            fontSize: 11,
-            fontWeight: 700,
-            width: 20,
-            height: 20,
-            borderRadius: 999,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontFamily: "Helvetica, sans-serif",
-          }}
-        >
-          26
-        </div>
+        26
       </div>
     ),
     size

@@ -43,17 +43,7 @@ export function SiteHeader() {
           : "border-b border-[color:var(--hairline)] bg-sand-50/85 backdrop-blur",
       ].join(" ")}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-3.5 lg:px-8">
-        <Link
-          href="/"
-          className="group flex items-center gap-2.5"
-          onClick={() => setOpen(false)}
-        >
-          <span className="grid h-10 w-10 place-items-center rounded-full bg-teal-800 text-sand-50 shadow-sm">
-            <span className="font-display text-xl leading-none">C</span>
-          </span>
-        </Link>
-
+      <div className="mx-auto flex max-w-7xl items-center justify-end gap-6 px-5 py-3.5 lg:px-8">
         <div className="flex items-center gap-2">
           <nav className="hidden items-center gap-1 lg:flex">
             {NAV.map((item) => {
