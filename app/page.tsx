@@ -65,10 +65,10 @@ export default function HomePage() {
  <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[color:var(--hairline)] bg-white p-4 shadow-sm sm:p-5">
  <div>
  <p className="font-display text-base font-semibold text-teal-900 sm:text-lg">
- Going to Cannes 2026?
+ Are you going?
  </p>
  <p className="mt-1 text-[13.5px] leading-relaxed text-[color:var(--ink-soft)]">
- Add yourself to the list and people scanning this page will see you.
+ Add yourself to the list so others can connect.
  </p>
  </div>
  <Link
