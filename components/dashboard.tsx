@@ -9,7 +9,9 @@ import type {
   EventStatus,
   EventStatusRecord,
   StatusMap,
+  UserProfile,
 } from "@/types";
+import { EMPTY_PROFILE } from "@/types";
 import { STORAGE_KEYS, useLocalStorage } from "@/lib/storage";
 import {
   DEFAULT_FILTERS,
@@ -22,7 +24,6 @@ import { EventCard } from "./event-card";
 import { EventFilters } from "./event-filters";
 import { EventDetailDialog } from "./event-detail-dialog";
 import { EmptyState } from "./empty-state";
-import { resolveStatus } from "@/lib/filters";
 
 type Props = {
   seedEvents: CannesEvent[];
@@ -36,6 +37,10 @@ export function Dashboard({ seedEvents }: Props) {
   const [customEvents, setCustomEvents] = useLocalStorage<CustomEvent[]>(
     STORAGE_KEYS.customEvents,
     []
+  );
+  const [profile] = useLocalStorage<UserProfile>(
+    STORAGE_KEYS.profile,
+    EMPTY_PROFILE
   );
   const [filters, setFilters] = useState<FilterState>(DEFAULT_FILTERS);
   const [openId, setOpenId] = useState<string | null>(null);
@@ -130,7 +135,7 @@ export function Dashboard({ seedEvents }: Props) {
                   <EventCard
                     key={e.id}
                     event={e}
-                    status={resolveStatus(e, statusMap)}
+                    profile={profile}
                     onOpen={() => setOpenId(e.id)}
                   />
                 ))}

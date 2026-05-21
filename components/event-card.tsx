@@ -1,9 +1,9 @@
 "use client";
 
-import { MapPin, ArrowUpRight, Sparkles } from "lucide-react";
-import type { AnyEvent, EventStatus } from "@/types";
-import { StatusBadge } from "./status-badge";
+import { MapPin } from "lucide-react";
+import type { AnyEvent, UserProfile } from "@/types";
 import { formatEventDateTime } from "@/lib/filters";
+import { buildRegistrationUrl } from "@/lib/registration";
 
 function gradientFor(category: AnyEvent["category"]): string {
   switch (category) {
@@ -30,21 +30,58 @@ function categoryLabel(c: AnyEvent["category"]): string {
     .join(" ");
 }
 
+// Show a Register button only when there's actually something to register
+// for: a working URL AND a registration model that lets the user self-serve.
+// invite-only, press-only, and festival-pass-required events get a sentence
+// instead.
+function isRegisterable(event: AnyEvent): boolean {
+  if (!event.registrationUrl) return false;
+  if (event.registrationType === "invite-only") return false;
+  if (event.registrationType === "press") return false;
+  if (event.tags?.includes("festival-pass")) return false;
+  return true;
+}
+
+function noRegistrationMessage(event: AnyEvent): string {
+  if (event.nextAction) return event.nextAction;
+  switch (event.registrationType) {
+    case "invite-only":
+      return "Invite only — no public registration link.";
+    case "press":
+      return "Press only.";
+    default:
+      return "Registration page TBA.";
+  }
+}
+
 export function EventCard({
   event,
-  status,
+  profile,
   onOpen,
 }: {
   event: AnyEvent;
-  status: EventStatus;
+  profile: UserProfile;
   onOpen: () => void;
 }) {
   const isCustom = "isCustom" in event && event.isCustom;
+  const canRegister = isRegisterable(event);
+  const registerUrl = canRegister ? buildRegistrationUrl(event, profile) : null;
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      onOpen();
+    }
+  };
+
   return (
-    <button
-      type="button"
+    <article
+      role="button"
+      tabIndex={0}
       onClick={onOpen}
-      className="card-lift group relative flex flex-col overflow-hidden rounded-2xl border border-[color:var(--hairline)] bg-white text-left shadow-[0_1px_0_rgba(13,61,58,0.04)] focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-700"
+      onKeyDown={handleKeyDown}
+      aria-label={`Open details for ${event.name}`}
+      className="card-lift group relative flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-[color:var(--hairline)] bg-white text-left shadow-[0_1px_0_rgba(13,61,58,0.04)] focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-700"
     >
       <div
         className={`noise relative h-32 w-full overflow-hidden ${
@@ -61,7 +98,6 @@ export function EventCard({
               loading="lazy"
               referrerPolicy="no-referrer"
             />
-            {/* Legibility scrim so the chips + organizer text stay readable */}
             <div
               className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/15 to-black/65"
               aria-hidden
@@ -96,22 +132,25 @@ export function EventCard({
         <p className="mt-2.5 line-clamp-2 text-[13.5px] leading-relaxed text-[color:var(--ink-soft)]">
           {event.description}
         </p>
-        <div className="mt-4 flex items-center justify-between gap-2">
-          <StatusBadge status={status} />
-          <span className="inline-flex items-center gap-1 text-[12px] font-medium text-teal-700 group-hover:text-teal-900">
-            Details
-            <ArrowUpRight className="h-3.5 w-3.5" />
-          </span>
+
+        <div className="mt-auto pt-4">
+          {registerUrl ? (
+            <a
+              href={registerUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center justify-center rounded-full bg-coral-500 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-coral-600"
+            >
+              Register
+            </a>
+          ) : (
+            <p className="text-[13px] leading-relaxed text-[color:var(--ink-soft)]">
+              {noRegistrationMessage(event)}
+            </p>
+          )}
         </div>
-        {event.nextAction && status !== "registered" && status !== "attended" && (
-          <p className="mt-3 flex items-start gap-1.5 rounded-lg bg-sand-100 px-2.5 py-2 text-[12px] leading-snug text-teal-900">
-            <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-coral-600" />
-            <span>
-              <strong className="font-semibold">Next:</strong> {event.nextAction}
-            </span>
-          </p>
-        )}
       </div>
-    </button>
+    </article>
   );
 }
