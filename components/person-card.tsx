@@ -261,7 +261,12 @@ export function PersonRow({
           </span>
         ))}
 
-      <div className="flex shrink-0 items-center gap-3">
+      {/* Right cluster: icons + optional Remove pill. Reserves a stable
+          minimum width on sm+ so the column structure (name + quote + this
+          cluster) lines up across rows regardless of whether the user owns
+          the entry. Without this, owned rows compressed flex-1 columns and
+          shifted the quote leftward. */}
+      <div className="flex shrink-0 items-center justify-end gap-3 sm:min-w-[9rem]">
         {linkValid(person.linkedinUrl) ? (
           <a
             href={person.linkedinUrl}
