@@ -61,11 +61,21 @@ export function PersonCard({
 
   const linkValid = (url?: string) => !!url && url !== "#sample" && url !== "#";
 
+  // Whole-card click via stretched-link. LinkedIn wins over X; if neither
+  // is valid the card is not clickable. The "primary" anchor below carries
+  // the before:absolute before:inset-0 pseudo-element that covers the
+  // entire article; all OTHER interactive elements bump to z-10 so they
+  // remain individually clickable.
+  const liIsPrimary = linkValid(person.linkedinUrl);
+  const twIsPrimary = !liIsPrimary && linkValid(person.twitterUrl);
+  const hasPrimary = liIsPrimary || twIsPrimary;
+
   return (
     <article
       ref={cardRef}
       className={[
-        "card-lift flex h-full flex-col rounded-2xl border bg-white p-5 shadow-[0_1px_0_rgba(13,61,58,0.04)] transition",
+        "card-lift relative flex h-full flex-col rounded-2xl border bg-white p-5 shadow-[0_1px_0_rgba(13,61,58,0.04)] transition",
+        hasPrimary ? "cursor-pointer" : "",
         isHighlighted
           ? "border-coral-500 ring-2 ring-coral-500/60 ring-offset-2 ring-offset-sand-50"
           : "border-[color:var(--hairline)]",
@@ -128,7 +138,13 @@ export function PersonCard({
             href={person.linkedinUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-[12px] font-medium text-teal-700 hover:text-teal-900"
+            aria-label={`${person.name} on LinkedIn`}
+            className={[
+              "inline-flex items-center gap-1 text-[12px] font-medium text-teal-700 hover:text-teal-900",
+              liIsPrimary
+                ? "before:absolute before:inset-0 before:rounded-2xl before:content-['']"
+                : "relative z-10",
+            ].join(" ")}
           >
             <LinkedInLogo /> LinkedIn
           </a>
@@ -142,8 +158,13 @@ export function PersonCard({
             href={person.twitterUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="X profile"
-            className="inline-flex items-center text-teal-700 hover:text-teal-900"
+            aria-label={`${person.name} on X`}
+            className={[
+              "inline-flex items-center text-teal-700 hover:text-teal-900",
+              twIsPrimary
+                ? "before:absolute before:inset-0 before:rounded-2xl before:content-['']"
+                : "relative z-10",
+            ].join(" ")}
           >
             <XLogo />
           </a>
@@ -158,7 +179,7 @@ export function PersonCard({
               setRemoving(true);
               try { await onRemove(person.id); } finally { setRemoving(false); }
             }}
-            className="ml-auto inline-flex items-center gap-1 rounded-full border border-coral-200 bg-coral-50 px-2 py-0.5 text-[11px] font-medium text-coral-700 transition hover:bg-coral-100 disabled:opacity-50"
+            className="relative z-10 ml-auto inline-flex items-center gap-1 rounded-full border border-coral-200 bg-coral-50 px-2 py-0.5 text-[11px] font-medium text-coral-700 transition hover:bg-coral-100 disabled:opacity-50"
           >
             <Trash2 className="h-3 w-3" />
             {removing ? "Removing…" : "Remove me"}
@@ -198,11 +219,18 @@ export function PersonRow({
 
   const linkValid = (url?: string) => !!url && url !== "#sample" && url !== "#";
 
+  // Whole-row click via stretched-link. Same priority as PersonCard:
+  // LinkedIn wins over X; X is fallback; otherwise no row click.
+  const liIsPrimary = linkValid(person.linkedinUrl);
+  const twIsPrimary = !liIsPrimary && linkValid(person.twitterUrl);
+  const hasPrimary = liIsPrimary || twIsPrimary;
+
   return (
     <article
       ref={cardRef}
       className={[
-        "card-lift flex items-center gap-4 rounded-xl border bg-white px-3 py-2.5 shadow-[0_1px_0_rgba(13,61,58,0.04)] transition sm:px-4",
+        "card-lift relative flex items-center gap-4 rounded-xl border bg-white px-3 py-2.5 shadow-[0_1px_0_rgba(13,61,58,0.04)] transition sm:px-4",
+        hasPrimary ? "cursor-pointer" : "",
         isHighlighted
           ? "border-coral-500 ring-2 ring-coral-500/60 ring-offset-2 ring-offset-sand-50"
           : "border-[color:var(--hairline)]",
@@ -249,7 +277,7 @@ export function PersonRow({
             target="_blank"
             rel="noopener noreferrer"
             title="See post"
-            className="hidden min-w-0 flex-1 items-center gap-1.5 truncate text-[12.5px] italic text-[color:var(--muted)] transition-colors hover:text-teal-700 md:flex"
+            className="relative z-10 hidden min-w-0 flex-1 items-center gap-1.5 truncate text-[12.5px] italic text-[color:var(--muted)] transition-colors hover:text-teal-700 md:flex"
           >
             <MessageSquareQuote className="h-3.5 w-3.5 shrink-0 text-coral-500" />
             <span className="truncate">{person.sourceQuote}</span>
@@ -272,8 +300,13 @@ export function PersonRow({
             href={person.linkedinUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="LinkedIn profile"
-            className="inline-flex items-center text-teal-700 hover:text-teal-900"
+            aria-label={`${person.name} on LinkedIn`}
+            className={[
+              "inline-flex items-center text-teal-700 hover:text-teal-900",
+              liIsPrimary
+                ? "before:absolute before:inset-0 before:rounded-xl before:content-['']"
+                : "relative z-10",
+            ].join(" ")}
           >
             <LinkedInLogo />
           </a>
@@ -283,8 +316,13 @@ export function PersonRow({
             href={person.twitterUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="X profile"
-            className="inline-flex items-center text-teal-700 hover:text-teal-900"
+            aria-label={`${person.name} on X`}
+            className={[
+              "inline-flex items-center text-teal-700 hover:text-teal-900",
+              twIsPrimary
+                ? "before:absolute before:inset-0 before:rounded-xl before:content-['']"
+                : "relative z-10",
+            ].join(" ")}
           >
             <XLogo />
           </a>
@@ -301,7 +339,7 @@ export function PersonRow({
             }}
             aria-label="Remove me from the list"
             title="Remove me"
-            className="inline-flex items-center gap-1 rounded-full border border-coral-200 bg-coral-50 px-2 py-0.5 text-[11px] font-medium text-coral-700 transition hover:bg-coral-100 disabled:opacity-50"
+            className="relative z-10 inline-flex items-center gap-1 rounded-full border border-coral-200 bg-coral-50 px-2 py-0.5 text-[11px] font-medium text-coral-700 transition hover:bg-coral-100 disabled:opacity-50"
           >
             <Trash2 className="h-3 w-3" />
             <span className="hidden sm:inline">{removing ? "Removing…" : "Remove"}</span>
