@@ -16,9 +16,6 @@ export const STORAGE_KEYS = {
   statuses: `${STORAGE_NAMESPACE}:statuses`,
   customEvents: `${STORAGE_NAMESPACE}:customEvents`,
   notes: `${STORAGE_NAMESPACE}:notes`,
-  privacyBannerDismissed: `${STORAGE_NAMESPACE}:privacy-banner-dismissed`,
-  onboardingCompleted: `${STORAGE_NAMESPACE}:onboarding-completed`,
-  extensionBannerDismissed: `${STORAGE_NAMESPACE}:extension-banner-dismissed`,
   peopleViewMode: `${STORAGE_NAMESPACE}:people-view-mode`,
   // Receipts from /submit. Each entry is the proof-of-submission a user
   // needs to remove themselves later. Never sent anywhere except as the
