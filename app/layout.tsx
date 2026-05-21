@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: "%s · Cannes Lions 2026",
   },
   description:
-    "A privacy-first dashboard for Cannes Lions 2026: discover beach clubs, parties, panels, and yacht dinners. Track which ones you're registered for. See who else is going. Built for first-timers and veterans.",
+    "See who's going + 200 events to register for in one place.",
   keywords: [
     "Cannes Lions 2026",
     "Cannes advertising festival",
@@ -37,8 +37,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   openGraph: {
     title: "Your Cannes Lions 2026 dashboard",
-    description:
-      "Discover events, track registrations, see who's going. Privacy-first. Your data never leaves your browser.",
+    description: "See who's going + 200 events to register for in one place.",
     type: "website",
     url: siteUrl,
     siteName: "Cannes Lions 2026 dashboard",
@@ -46,8 +45,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Cannes Lions 2026 dashboard",
-    description:
-      "Your privacy-first Cannes Lions 2026 dashboard. Events, status tracking, who's going.",
+    description: "See who's going + 200 events to register for in one place.",
   },
 };
 
