@@ -1,6 +1,6 @@
 "use client";
 
-import { Search, Filter, X, LayoutGrid, LayoutList } from "lucide-react";
+import { Search, Filter, X, LayoutGrid, AlignJustify } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import type { PersonSignal } from "@/types";
@@ -201,7 +201,7 @@ function ViewToggle({
   return (
     <div className="inline-flex shrink-0 items-center gap-1 self-start rounded-full border border-[color:var(--hairline)] bg-white p-0.5 lg:self-auto">
       {btn("grid", LayoutGrid, "Grid view")}
-      {btn("list", LayoutList, "List view")}
+      {btn("list", AlignJustify, "List view")}
     </div>
   );
 }

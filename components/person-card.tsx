@@ -231,6 +231,25 @@ export function PersonRow({
         </p>
       </div>
 
+      {person.sourceQuote &&
+        (linkValid(person.sourcePostUrl) ? (
+          <a
+            href={person.sourcePostUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="See post"
+            className="hidden min-w-0 flex-1 items-center gap-1.5 truncate text-[12.5px] italic text-[color:var(--muted)] transition-colors hover:text-teal-700 md:flex"
+          >
+            <MessageSquareQuote className="h-3.5 w-3.5 shrink-0 text-coral-500" />
+            <span className="truncate">{person.sourceQuote}</span>
+          </a>
+        ) : (
+          <span className="hidden min-w-0 flex-1 items-center gap-1.5 truncate text-[12.5px] italic text-[color:var(--muted)] md:flex">
+            <MessageSquareQuote className="h-3.5 w-3.5 shrink-0 text-coral-500" />
+            <span className="truncate">{person.sourceQuote}</span>
+          </span>
+        ))}
+
       <span
         className={`hidden shrink-0 items-center rounded-full border px-2 py-0.5 text-[11px] font-medium sm:inline-flex ${yearLabel.classes}`}
       >
