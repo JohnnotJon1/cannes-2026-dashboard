@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 const NAV = [
   { href: "/#events", label: "Events" },
   { href: "/people", label: "Who's going" },
+  { href: "/submit", label: "Add yourself" },
   // "My profile" hidden from nav while the Chrome extension is in CWS
   // review. /profile route stays accessible by direct URL so the in-app
   // prefill (lib/registration.ts) keeps working for anyone with saved data.

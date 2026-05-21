@@ -26,15 +26,50 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
     "grid"
   );
 
+  // Self-submitted attendees (KV) layered on top of the static seed.
+  // Fetched on mount; an empty array if KV is empty or the API errors.
+  const [submitted, setSubmitted] = useState<PersonSignal[]>([]);
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/api/people", { cache: "no-store" })
+      .then((r) => (r.ok ? r.json() : { submitted: [] }))
+      .then((d) => {
+        if (!cancelled && Array.isArray(d?.submitted)) setSubmitted(d.submitted);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   // Curated celebrity entries (Oprah, Stella, Demis, etc. — `p-` prefix) are
   // confirmed Cannes Lions 2026 speakers/honorees but they're not realistic
   // people to bump into and ask for a meeting. Push them to the bottom of the
   // feed so the practical, scrape-sourced names lead.
+  //
+  // Self-submitted (`u-` prefix) lead the list so a person who just added
+  // themselves sees their card at the top.
   const ordered = useMemo(() => {
-    const practical = people.filter((p) => !p.id.startsWith("p-"));
-    const celebrities = people.filter((p) => p.id.startsWith("p-"));
+    const seedIds = new Set(people.map((p) => p.id));
+    const seenNames = new Set<string>();
+    const merged: PersonSignal[] = [];
+    for (const s of submitted) {
+      if (seedIds.has(s.id)) continue;
+      const nameKey = s.name.trim().toLowerCase();
+      if (seenNames.has(nameKey)) continue;
+      seenNames.add(nameKey);
+      merged.push(s);
+    }
+    for (const p of people) {
+      const nameKey = p.name.trim().toLowerCase();
+      if (seenNames.has(nameKey)) continue;
+      seenNames.add(nameKey);
+      merged.push(p);
+    }
+    const practical = merged.filter((p) => !p.id.startsWith("p-"));
+    const celebrities = merged.filter((p) => p.id.startsWith("p-"));
     return [...practical, ...celebrities];
-  }, [people]);
+  }, [people, submitted]);
 
   const filtered = useMemo(() => {
     return ordered.filter((p) => {

@@ -1,4 +1,5 @@
-import { ShieldCheck } from "lucide-react";
+import Link from "next/link";
+import { ShieldCheck, UserPlus } from "lucide-react";
 import { PeopleExplorer } from "@/components/people-explorer";
 import { seedPeople } from "@/lib/seed";
 import type { Metadata } from "next";
@@ -13,9 +14,18 @@ export default function PeoplePage() {
   return (
     <div className="mx-auto max-w-7xl px-5 py-8 lg:px-8 lg:py-12">
       <div className="space-y-8">
-        <h1 className="font-display text-4xl font-semibold leading-tight text-teal-900 sm:text-5xl">
-          Who&apos;s going to Cannes this year.
-        </h1>
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <h1 className="font-display text-4xl font-semibold leading-tight text-teal-900 sm:text-5xl">
+            Who&apos;s going to Cannes this year.
+          </h1>
+          <Link
+            href="/submit"
+            className="inline-flex items-center gap-2 rounded-full bg-teal-700 px-4 py-2 text-[14px] font-semibold text-sand-50 hover:bg-teal-800"
+          >
+            <UserPlus className="h-4 w-4" />
+            Going? Add yourself
+          </Link>
+        </div>
 
         <PeopleExplorer people={seedPeople} />
 
