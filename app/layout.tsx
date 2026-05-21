@@ -18,7 +18,7 @@ const fraunces = Fraunces({
   axes: ["SOFT", "WONK", "opsz"],
 });
 
-const siteUrl = "https://cannes-2026.vercel.app";
+const siteUrl = "https://cannes-2026-dashboard.vercel.app";
 
 export const metadata: Metadata = {
   title: {
@@ -41,11 +41,20 @@ export const metadata: Metadata = {
     type: "website",
     url: siteUrl,
     siteName: "Cannes Lions 2026 dashboard",
+    images: [
+      {
+        url: "/og-cannes.jpg",
+        width: 1200,
+        height: 630,
+        alt: "La Croisette at blue hour, Cannes",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Cannes Lions 2026 dashboard",
     description: "See who's going + 200 events to register for in one place.",
+    images: ["/og-cannes.jpg"],
   },
 };
 
