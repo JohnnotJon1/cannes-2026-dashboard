@@ -1,6 +1,6 @@
 "use client";
 
-import { Search, Filter, X, LayoutGrid, AlignJustify, Building2, Briefcase, UserPlus, ChevronDown, ArrowUpDown } from "lucide-react";
+import { Search, Filter, X, LayoutGrid, AlignJustify, Building2, Briefcase, UserPlus, ChevronDown, ArrowUpDown, Check } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
@@ -72,8 +72,9 @@ const PAGE_SIZE = 18;
 
 export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
  const [search, setSearch] = useState("");
- const [selectedCompany, setSelectedCompany] = useState<string | null>(null);
- const [selectedRole, setSelectedRole] = useState<string | null>(null);
+ // Multi-select facets. Empty array = no filter for that facet.
+ const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
+ const [selectedRoles, setSelectedRoles] = useState<string[]>([]);
  const [sortMode, setSortMode] = useState<SortMode>("recent");
  const [viewMode, setViewMode] = useLocalStorage<ViewMode>(
  STORAGE_KEYS.peopleViewMode,
@@ -232,8 +233,8 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
 
  const filtered = useMemo(() => {
  return ordered.filter((p) => {
- if (selectedCompany && p.company !== selectedCompany) return false;
- if (selectedRole && p.role !== selectedRole) return false;
+ if (selectedCompanies.length > 0 && !selectedCompanies.includes(p.company)) return false;
+ if (selectedRoles.length > 0 && !selectedRoles.includes(p.role)) return false;
  if (search) {
  const q = search.toLowerCase();
  const hay = [p.name, p.company, p.role, p.sourceQuote, p.signalReason]
@@ -243,18 +244,18 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
  }
  return true;
  });
- }, [ordered, search, selectedCompany, selectedRole]);
+ }, [ordered, search, selectedCompanies, selectedRoles]);
 
  // PaginatedList is remounted (and its visibleCount resets) whenever any
  // input that changes "what we're showing" changes.
- const listKey = `${search}|${viewMode}|${selectedCompany ?? ""}|${selectedRole ?? ""}|${sortMode}`;
+ const listKey = `${search}|${viewMode}|${selectedCompanies.join(",")}|${selectedRoles.join(",")}|${sortMode}`;
 
  const anyFilterActive =
- search !== "" || selectedCompany !== null || selectedRole !== null;
+ search !== "" || selectedCompanies.length > 0 || selectedRoles.length > 0;
  const clearAll = () => {
  setSearch("");
- setSelectedCompany(null);
- setSelectedRole(null);
+ setSelectedCompanies([]);
+ setSelectedRoles([]);
  };
 
  return (
@@ -283,8 +284,8 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
  icon={Building2}
  label="Company"
  values={topCompanies}
- selected={selectedCompany}
- onSelect={setSelectedCompany}
+ selected={selectedCompanies}
+ onSelect={setSelectedCompanies}
  />
  )}
  {topRoles.length > 0 && (
@@ -292,8 +293,8 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
  icon={Briefcase}
  label="Role"
  values={topRoles}
- selected={selectedRole}
- onSelect={setSelectedRole}
+ selected={selectedRoles}
+ onSelect={setSelectedRoles}
  />
  )}
  <SortSelector value={sortMode} onChange={setSortMode} />
@@ -312,8 +313,8 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
 
  {filtered.length === 0 ? (
  search.trim().length >= 2 &&
- !selectedCompany &&
- !selectedRole ? (
+ selectedCompanies.length === 0 &&
+ selectedRoles.length === 0 ? (
  // "Find Yourself" invite: the visitor typed a name (or anything 2+
  // chars), no other filters narrow the result, and we got zero
  // matches. Turn it into a self-submission opportunity.
@@ -499,8 +500,8 @@ function FacetSelector({
  icon: typeof Building2;
  label: string;
  values: [string, number][];
- selected: string | null;
- onSelect: (value: string | null) => void;
+ selected: string[];
+ onSelect: (next: string[]) => void;
 }) {
  const [open, setOpen] = useState(false);
  const [query, setQuery] = useState("");
@@ -537,16 +538,33 @@ function FacetSelector({
  return values.filter(([v]) => v.toLowerCase().includes(q));
  }, [values, query]);
 
- const handleSelect = (value: string) => {
- onSelect(value);
- setOpen(false);
- setQuery("");
+ // Toggle an entry in/out of the selection. Popover STAYS OPEN so multiple
+ // values can be checked in one session — matches LinkedIn's pattern.
+ const handleToggle = (value: string) => {
+ if (selected.includes(value)) {
+ onSelect(selected.filter((v) => v !== value));
+ } else {
+ onSelect([...selected, value]);
+ }
  };
 
  const handleClear = (e: React.MouseEvent) => {
  e.stopPropagation();
- onSelect(null);
+ onSelect([]);
  };
+
+ // Trigger label:
+ //   0 selected → "Company"
+ //   1 selected → "Acme Inc"
+ //   2+ selected → "Acme Inc +2"
+ const triggerLabel =
+ selected.length === 0
+ ? label
+ : selected.length === 1
+ ? selected[0]
+ : `${selected[0]} +${selected.length - 1}`;
+
+ const hasSelection = selected.length > 0;
 
  return (
  <div ref={wrapperRef} className="relative">
@@ -555,16 +573,14 @@ function FacetSelector({
  onClick={() => setOpen((o) => !o)}
  className={[
  "inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-[12.5px] font-medium transition-colors",
- selected
+ hasSelection
  ? "border-teal-800 bg-teal-800 text-sand-50"
  : "border-[color:var(--hairline)] bg-white text-[color:var(--ink-soft)] hover:border-teal-700 hover:text-teal-900",
  ].join(" ")}
  >
  <Icon className="h-3.5 w-3.5" />
- <span className="max-w-[12rem] truncate">
- {selected ?? label}
- </span>
- {selected ? (
+ <span className="max-w-[12rem] truncate">{triggerLabel}</span>
+ {hasSelection ? (
  <span
  role="button"
  aria-label={`Clear ${label.toLowerCase()} filter`}
@@ -583,8 +599,8 @@ function FacetSelector({
  className="absolute left-0 top-full z-30 mt-2 w-80 max-w-[calc(100vw-2rem)] rounded-2xl border border-[color:var(--hairline)] bg-white shadow-xl shadow-teal-900/10"
  role="dialog"
  >
- <div className="border-b border-[color:var(--hairline)] p-2">
- <div className="relative">
+ <div className="flex items-center gap-2 border-b border-[color:var(--hairline)] p-2">
+ <div className="relative flex-1">
  <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-[color:var(--muted)]" />
  <input
  ref={inputRef}
@@ -595,6 +611,15 @@ function FacetSelector({
  className="w-full !pl-8 !text-[13px]"
  />
  </div>
+ {hasSelection && (
+ <button
+ type="button"
+ onClick={() => onSelect([])}
+ className="shrink-0 rounded-full px-2 py-1 text-[11.5px] font-medium text-teal-800 hover:bg-sand-50"
+ >
+ Clear ({selected.length})
+ </button>
+ )}
  </div>
  <ul
  className="overflow-y-auto py-1"
@@ -606,20 +631,31 @@ function FacetSelector({
  </li>
  ) : (
  filtered.map(([value, count]) => {
- const isActive = selected === value;
+ const isChecked = selected.includes(value);
  return (
  <li key={value}>
  <button
  type="button"
- onClick={() => handleSelect(value)}
+ onClick={() => handleToggle(value)}
  className={[
- "flex w-full items-center justify-between gap-2 px-3 py-1.5 text-left text-[13px] transition-colors",
- isActive
+ "flex w-full items-center gap-2 px-3 py-1.5 text-left text-[13px] transition-colors",
+ isChecked
  ? "bg-teal-50 text-teal-900"
  : "text-[color:var(--ink-soft)] hover:bg-sand-50 hover:text-teal-900",
  ].join(" ")}
  >
- <span className="truncate">{value}</span>
+ <span
+ aria-hidden
+ className={[
+ "inline-flex h-4 w-4 shrink-0 items-center justify-center rounded border transition-colors",
+ isChecked
+ ? "border-teal-800 bg-teal-800 text-sand-50"
+ : "border-[color:var(--hairline)] bg-white",
+ ].join(" ")}
+ >
+ {isChecked && <Check className="h-3 w-3" strokeWidth={3} />}
+ </span>
+ <span className="flex-1 truncate">{value}</span>
  <span className="shrink-0 text-[11.5px] text-[color:var(--muted)]">
  {count}
  </span>
