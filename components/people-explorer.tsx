@@ -1,6 +1,6 @@
 "use client";
 
-import { Search, Filter, X, LayoutGrid, AlignJustify, Building2, Briefcase, UserPlus } from "lucide-react";
+import { Search, Filter, X, LayoutGrid, AlignJustify, Building2, Briefcase, UserPlus, ChevronDown } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
@@ -9,11 +9,6 @@ import { PersonCard, PersonRow } from "./person-card";
 import { EmptyState } from "./empty-state";
 import { STORAGE_KEYS, useLocalStorage } from "@/lib/storage";
 
-// How many top-N entries to surface in each filter pill row.
-const TOP_COMPANIES = 20;
-const TOP_ROLES = 15;
-
-type Filter = "all" | "going-this-year" | "attended-last-year";
 type ViewMode = "grid" | "list";
 
 interface SubmissionReceipt {
@@ -55,17 +50,10 @@ function pruneStaleReceipts(liveIds: Set<string>): void {
  if (next.length !== list.length) writeReceipts(next);
 }
 
-const TABS: { value: Filter; label: string }[] = [
- { value: "all", label: "All" },
- { value: "going-this-year", label: "Going this year" },
- { value: "attended-last-year", label: "Last year's crew" },
-];
-
 const PAGE_SIZE = 18;
 
 export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
  const [search, setSearch] = useState("");
- const [filter, setFilter] = useState<Filter>("all");
  const [selectedCompany, setSelectedCompany] = useState<string | null>(null);
  const [selectedRole, setSelectedRole] = useState<string | null>(null);
  const [viewMode, setViewMode] = useLocalStorage<ViewMode>(
@@ -180,9 +168,8 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
  counts.set(c, (counts.get(c) ?? 0) + 1);
  }
  return [...counts.entries()]
- .filter(([, n]) => n >= 2) // only show companies with 2+ people to avoid a long tail of singletons
- .sort((a, b) => b[1] - a[1])
- .slice(0, TOP_COMPANIES);
+ .filter(([, n]) => n >= 2) // hide single-person companies (mostly scrape noise)
+ .sort((a, b) => b[1] - a[1]);
  }, [ordered]);
 
  const topRoles = useMemo(() => {
@@ -194,13 +181,11 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
  }
  return [...counts.entries()]
  .filter(([, n]) => n >= 2)
- .sort((a, b) => b[1] - a[1])
- .slice(0, TOP_ROLES);
+ .sort((a, b) => b[1] - a[1]);
  }, [ordered]);
 
  const filtered = useMemo(() => {
  return ordered.filter((p) => {
- if (filter !== "all" && p.yearSignal !== filter) return false;
  if (selectedCompany && p.company !== selectedCompany) return false;
  if (selectedRole && p.role !== selectedRole) return false;
  if (search) {
@@ -212,17 +197,16 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
  }
  return true;
  });
- }, [ordered, search, filter, selectedCompany, selectedRole]);
+ }, [ordered, search, selectedCompany, selectedRole]);
 
  // PaginatedList is remounted (and its visibleCount resets) whenever any
  // input that changes "what we're showing" changes.
- const listKey = `${filter}|${search}|${viewMode}|${selectedCompany ?? ""}|${selectedRole ?? ""}`;
+ const listKey = `${search}|${viewMode}|${selectedCompany ?? ""}|${selectedRole ?? ""}`;
 
  const anyFilterActive =
- search !== "" || filter !== "all" || selectedCompany !== null || selectedRole !== null;
+ search !== "" || selectedCompany !== null || selectedRole !== null;
  const clearAll = () => {
  setSearch("");
- setFilter("all");
  setSelectedCompany(null);
  setSelectedRole(null);
  };
@@ -243,62 +227,45 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
  </div>
  <ViewToggle viewMode={viewMode} setViewMode={setViewMode} />
  </div>
- <div className="flex flex-wrap items-center gap-1.5">
- {TABS.map((t) => {
- const active = filter === t.value;
- return (
- <button
- type="button"
- key={t.value}
- onClick={() => setFilter(t.value)}
- className={[
- "rounded-full border px-2.5 py-1 text-[12px] font-medium transition-colors",
- active
- ? "bg-teal-800 text-sand-50 border-teal-800"
- : "bg-white text-[color:var(--ink-soft)] border-[color:var(--hairline)] hover:border-teal-700 hover:text-teal-900",
- ].join(" ")}
- >
- {t.label}
- </button>
- );
- })}
+ {/* Filter dropdowns: searchable, vertically-scrollable popovers
+ instead of horizontally-scrolling pill strips. */}
+ {(topCompanies.length > 0 || topRoles.length > 0) && (
+ <div className="flex flex-wrap items-center justify-between gap-2">
+ <div className="flex flex-wrap items-center gap-2">
+ {topCompanies.length > 0 && (
+ <FacetSelector
+ icon={Building2}
+ label="Company"
+ values={topCompanies}
+ selected={selectedCompany}
+ onSelect={setSelectedCompany}
+ />
+ )}
+ {topRoles.length > 0 && (
+ <FacetSelector
+ icon={Briefcase}
+ label="Role"
+ values={topRoles}
+ selected={selectedRole}
+ onSelect={setSelectedRole}
+ />
+ )}
+ </div>
  {anyFilterActive && (
  <button
  type="button"
  onClick={clearAll}
- className="ml-1 inline-flex items-center gap-1 rounded-full border border-[color:var(--hairline)] bg-sand-50 px-2.5 py-1 text-[12px] font-medium text-teal-900 hover:bg-sand-100"
+ className="inline-flex items-center gap-1 rounded-full border border-[color:var(--hairline)] bg-sand-50 px-2.5 py-1 text-[12px] font-medium text-teal-900 hover:bg-sand-100"
  >
  <X className="h-3 w-3" /> Clear
  </button>
  )}
  </div>
-
- {/* Top-N company pill row */}
- {topCompanies.length > 0 && (
- <FacetPillRow
- icon={Building2}
- label="Company"
- options={topCompanies}
- selected={selectedCompany}
- onSelect={(value) => setSelectedCompany(value)}
- />
- )}
-
- {/* Top-N role pill row */}
- {topRoles.length > 0 && (
- <FacetPillRow
- icon={Briefcase}
- label="Role"
- options={topRoles}
- selected={selectedRole}
- onSelect={(value) => setSelectedRole(value)}
- />
  )}
  </div>
 
  {filtered.length === 0 ? (
  search.trim().length >= 2 &&
- filter === "all" &&
  !selectedCompany &&
  !selectedRole ? (
  // "Find Yourself" invite: the visitor typed a name (or anything 2+
@@ -468,56 +435,156 @@ function PaginatedList({
 }
 
 /**
- * Horizontally-scrolling row of filter pills for a single facet
- * (Company or Role). Click a pill to single-select; click again to
- * clear. Counts shown in muted text so the label leads.
+ * LinkedIn-style searchable filter dropdown. Click the trigger to open
+ * a popover with a search input at the top and a vertically-scrollable
+ * list of options below (sorted by count desc). Single-select.
+ *
+ * The popover is capped at min(60vh, 420px) so it never extends off
+ * the viewport on short screens. Closes on outside click, Escape, or
+ * after selecting an item.
  */
-function FacetPillRow({
+function FacetSelector({
  icon: Icon,
  label,
- options,
+ values,
  selected,
  onSelect,
 }: {
  icon: typeof Building2;
  label: string;
- options: [string, number][];
+ values: [string, number][];
  selected: string | null;
  onSelect: (value: string | null) => void;
 }) {
+ const [open, setOpen] = useState(false);
+ const [query, setQuery] = useState("");
+ const wrapperRef = useRef<HTMLDivElement | null>(null);
+ const inputRef = useRef<HTMLInputElement | null>(null);
+
+ // Outside-click + Escape close.
+ useEffect(() => {
+ if (!open) return;
+ const onMouseDown = (e: MouseEvent) => {
+ if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
+ setOpen(false);
+ }
+ };
+ const onKey = (e: KeyboardEvent) => {
+ if (e.key === "Escape") setOpen(false);
+ };
+ document.addEventListener("mousedown", onMouseDown);
+ document.addEventListener("keydown", onKey);
+ return () => {
+ document.removeEventListener("mousedown", onMouseDown);
+ document.removeEventListener("keydown", onKey);
+ };
+ }, [open]);
+
+ // Autofocus the search input on open.
+ useEffect(() => {
+ if (open) inputRef.current?.focus();
+ }, [open]);
+
+ const filtered = useMemo(() => {
+ const q = query.trim().toLowerCase();
+ if (!q) return values;
+ return values.filter(([v]) => v.toLowerCase().includes(q));
+ }, [values, query]);
+
+ const handleSelect = (value: string) => {
+ onSelect(value);
+ setOpen(false);
+ setQuery("");
+ };
+
+ const handleClear = (e: React.MouseEvent) => {
+ e.stopPropagation();
+ onSelect(null);
+ };
+
  return (
- <div className="flex items-center gap-2 -mx-1 overflow-x-auto pb-0.5 pl-1 [scrollbar-width:thin]">
- <span className="inline-flex shrink-0 items-center gap-1 text-[11px] font-semibold uppercase tracking-wider text-[color:var(--muted)]">
- <Icon className="h-3 w-3" />
- {label}
- </span>
- {options.map(([value, count]) => {
- const active = selected === value;
- return (
+ <div ref={wrapperRef} className="relative">
  <button
  type="button"
- key={value}
- onClick={() => onSelect(active ? null : value)}
- title={active ? `Clear ${label.toLowerCase()} filter` : `Show only ${value}`}
+ onClick={() => setOpen((o) => !o)}
  className={[
- "inline-flex shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-1 text-[12px] font-medium transition-colors",
- active
- ? "bg-teal-800 text-sand-50 border-teal-800"
- : "bg-white text-[color:var(--ink-soft)] border-[color:var(--hairline)] hover:border-teal-700 hover:text-teal-900",
+ "inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-[12.5px] font-medium transition-colors",
+ selected
+ ? "border-teal-800 bg-teal-800 text-sand-50"
+ : "border-[color:var(--hairline)] bg-white text-[color:var(--ink-soft)] hover:border-teal-700 hover:text-teal-900",
  ].join(" ")}
  >
- <span className="truncate max-w-[14rem]">{value}</span>
+ <Icon className="h-3.5 w-3.5" />
+ <span className="max-w-[12rem] truncate">
+ {selected ?? label}
+ </span>
+ {selected ? (
  <span
+ role="button"
+ aria-label={`Clear ${label.toLowerCase()} filter`}
+ onClick={handleClear}
+ className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-white/15 hover:bg-white/30"
+ >
+ <X className="h-3 w-3" />
+ </span>
+ ) : (
+ <ChevronDown className="h-3.5 w-3.5 opacity-70" />
+ )}
+ </button>
+
+ {open && (
+ <div
+ className="absolute left-0 top-full z-30 mt-2 w-80 max-w-[calc(100vw-2rem)] rounded-2xl border border-[color:var(--hairline)] bg-white shadow-xl shadow-teal-900/10"
+ role="dialog"
+ >
+ <div className="border-b border-[color:var(--hairline)] p-2">
+ <div className="relative">
+ <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-[color:var(--muted)]" />
+ <input
+ ref={inputRef}
+ type="search"
+ value={query}
+ onChange={(e) => setQuery(e.target.value)}
+ placeholder={`Search ${label.toLowerCase()}s…`}
+ className="w-full !pl-8 !text-[13px]"
+ />
+ </div>
+ </div>
+ <ul
+ className="overflow-y-auto py-1"
+ style={{ maxHeight: "min(60vh, 420px)" }}
+ >
+ {filtered.length === 0 ? (
+ <li className="px-3 py-6 text-center text-[12px] text-[color:var(--muted)]">
+ No matches. Try a different term.
+ </li>
+ ) : (
+ filtered.map(([value, count]) => {
+ const isActive = selected === value;
+ return (
+ <li key={value}>
+ <button
+ type="button"
+ onClick={() => handleSelect(value)}
  className={[
- "text-[11px]",
- active ? "text-sand-50/80" : "text-[color:var(--muted)]",
+ "flex w-full items-center justify-between gap-2 px-3 py-1.5 text-left text-[13px] transition-colors",
+ isActive
+ ? "bg-teal-50 text-teal-900"
+ : "text-[color:var(--ink-soft)] hover:bg-sand-50 hover:text-teal-900",
  ].join(" ")}
  >
+ <span className="truncate">{value}</span>
+ <span className="shrink-0 text-[11.5px] text-[color:var(--muted)]">
  {count}
  </span>
  </button>
+ </li>
  );
- })}
+ })
+ )}
+ </ul>
+ </div>
+ )}
  </div>
  );
 }
