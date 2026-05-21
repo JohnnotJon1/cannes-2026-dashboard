@@ -9,7 +9,13 @@ export interface FilterState {
   search: string;
   categories: EventCategory[];
   statuses: EventStatus[];
-  dateRange: "all" | "festival-week" | "weekend" | "weekday";
+  /**
+   * Either "all" or an ISO date key in YYYY-MM-DD form (UTC). When a
+   * date is selected, an event is shown if its [startDate, endDate]
+   * range includes that day — so multi-day events appear under every
+   * day they cover.
+   */
+  dateRange: string;
 }
 
 export const DEFAULT_FILTERS: FilterState = {
@@ -18,6 +24,12 @@ export const DEFAULT_FILTERS: FilterState = {
   statuses: [],
   dateRange: "all",
 };
+
+function utcDayKey(d: Date): string {
+  return `${d.getUTCFullYear()}-${(d.getUTCMonth() + 1)
+    .toString()
+    .padStart(2, "0")}-${d.getUTCDate().toString().padStart(2, "0")}`;
+}
 
 export function resolveStatus(
   event: AnyEvent,
@@ -55,11 +67,13 @@ export function filterEvents(
       if (!filters.statuses.includes(status)) return false;
     }
     if (filters.dateRange !== "all") {
-      const d = new Date(event.startDate);
-      const day = d.getUTCDay(); // 0=Sun ... 6=Sat
-      if (filters.dateRange === "weekend" && day !== 0 && day !== 6) return false;
-      if (filters.dateRange === "weekday" && (day === 0 || day === 6)) return false;
-      // "festival-week" is always inside our seed window, no-op here.
+      const start = new Date(event.startDate);
+      const end = event.endDate ? new Date(event.endDate) : start;
+      const startKey = utcDayKey(start);
+      const endKey = utcDayKey(end);
+      const pick = filters.dateRange;
+      // Multi-day events show on every day they overlap.
+      if (pick < startKey || pick > endKey) return false;
     }
     return true;
   });

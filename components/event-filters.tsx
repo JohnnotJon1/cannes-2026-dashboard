@@ -1,6 +1,6 @@
 "use client";
 
-import { Search, X } from "lucide-react";
+import { Search } from "lucide-react";
 import {
   EVENT_CATEGORIES,
   EVENT_STATUSES,
@@ -16,10 +16,16 @@ type Props = {
   visibleCount: number;
 };
 
-const DATE_OPTIONS: { value: FilterState["dateRange"]; label: string }[] = [
-  { value: "all", label: "Whole week" },
-  { value: "weekday", label: "Mon–Fri" },
-  { value: "weekend", label: "Sat–Sun" },
+// Cannes Lions 2026 runs Mon Jun 22 – Fri Jun 26. We also show
+// Sun Jun 21 for pre-Cannes events.
+const DATE_OPTIONS: { value: string; label: string }[] = [
+  { value: "all", label: "All" },
+  { value: "2026-06-21", label: "Sun 21" },
+  { value: "2026-06-22", label: "Mon 22" },
+  { value: "2026-06-23", label: "Tue 23" },
+  { value: "2026-06-24", label: "Wed 24" },
+  { value: "2026-06-25", label: "Thu 25" },
+  { value: "2026-06-26", label: "Fri 26" },
 ];
 
 export function EventFilters({
@@ -44,12 +50,6 @@ export function EventFilters({
         : [...prev.statuses, s],
     }));
 
-  const hasFilters =
-    filters.search !== "" ||
-    filters.categories.length > 0 ||
-    filters.statuses.length > 0 ||
-    filters.dateRange !== "all";
-
   return (
     <div className="space-y-4 rounded-2xl border border-[color:var(--hairline)] bg-white/70 p-4 lg:p-5">
       <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
@@ -65,26 +65,8 @@ export function EventFilters({
             className="!pl-9"
           />
         </div>
-        <div className="flex items-center gap-3 text-[13px] text-[color:var(--muted)]">
-          <span>
-            <strong className="text-teal-900">{visibleCount}</strong> of {totalCount} events
-          </span>
-          {hasFilters && (
-            <button
-              type="button"
-              onClick={() =>
-                setFilters({
-                  search: "",
-                  categories: [],
-                  statuses: [],
-                  dateRange: "all",
-                })
-              }
-              className="inline-flex items-center gap-1 rounded-full border border-[color:var(--hairline)] bg-sand-50 px-2.5 py-1 text-[12px] font-medium text-teal-900 hover:bg-sand-100"
-            >
-              <X className="h-3 w-3" /> Clear
-            </button>
-          )}
+        <div className="text-[13px] text-[color:var(--muted)]">
+          <strong className="text-teal-900">{visibleCount}</strong> of {totalCount} events
         </div>
       </div>
 
