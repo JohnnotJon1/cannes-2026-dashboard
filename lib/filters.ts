@@ -115,17 +115,40 @@ export function groupEventsByDay(events: AnyEvent[]): {
 }
 
 export function formatEventDateTime(event: AnyEvent): string {
-  const d = new Date(event.startDate);
-  const datePart = d.toLocaleDateString("en-US", {
+  const start = new Date(event.startDate);
+  const end = event.endDate ? new Date(event.endDate) : null;
+
+  // Multi-day events: show the span instead of a specific start time.
+  // Avoids events like "ADWEEK House" (all week) appearing as a single
+  // "Sun, Jun 21 · 8:00 AM" line when they're actually running 21–26.
+  if (end) {
+    const startKey = utcDayKey(start);
+    const endKey = utcDayKey(end);
+    if (startKey !== endKey) {
+      const startStr = start.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        timeZone: "UTC",
+      });
+      const endStr = end.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        timeZone: "UTC",
+      });
+      return `${startStr} – ${endStr}`;
+    }
+  }
+
+  const datePart = start.toLocaleDateString("en-US", {
     weekday: "short",
     month: "short",
     day: "numeric",
     timeZone: "UTC",
   });
   const hasTime =
-    d.getUTCHours() !== 0 || d.getUTCMinutes() !== 0;
+    start.getUTCHours() !== 0 || start.getUTCMinutes() !== 0;
   if (!hasTime) return datePart;
-  const timePart = d.toLocaleTimeString("en-US", {
+  const timePart = start.toLocaleTimeString("en-US", {
     hour: "numeric",
     minute: "2-digit",
     timeZone: "UTC",

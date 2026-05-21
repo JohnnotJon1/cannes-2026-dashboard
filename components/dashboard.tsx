@@ -51,7 +51,25 @@ export function Dashboard({ seedEvents }: Props) {
     [allEvents, filters, statusMap]
   );
 
-  const grouped = useMemo(() => groupEventsByDay(visible), [visible]);
+  const grouped = useMemo(() => {
+    // When a specific day is picked, collapse the per-day grouping
+    // into one section with the SELECTED day's label. Multi-day events
+    // that overlap that day will appear here instead of under their
+    // (potentially earlier) start date — fixes the confusing case
+    // where picking "Tue 23" still showed all-week events under a
+    // "Sunday, June 21" heading.
+    if (filters.dateRange === "all") {
+      return groupEventsByDay(visible);
+    }
+    const d = new Date(filters.dateRange + "T12:00:00Z");
+    const label = d.toLocaleDateString("en-US", {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+      timeZone: "UTC",
+    });
+    return [{ dayKey: filters.dateRange, label, events: visible }];
+  }, [visible, filters.dateRange]);
 
   const setStatus = (eventId: string, status: EventStatus) => {
     setStatusMap((prev) => {
