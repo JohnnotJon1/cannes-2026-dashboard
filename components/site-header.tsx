@@ -83,10 +83,10 @@ export function SiteHeader() {
  active
  ? overlay
  ? "text-coral-500 [text-shadow:0_2px_8px_rgba(0,0,0,0.55)]"
- : "rounded-full bg-teal-800 px-3.5 py-1.5 text-sand-50"
+ : "text-coral-600"
  : overlay
  ? "text-sand-50 [text-shadow:0_2px_8px_rgba(0,0,0,0.7)] hover:text-coral-300"
- : "rounded-full px-3.5 py-1.5 text-[color:var(--ink-soft)] hover:bg-sand-100 hover:text-teal-900",
+ : "text-[color:var(--ink-soft)] hover:text-teal-900",
  ].join(" ")}
  >
  {item.label}
