@@ -40,7 +40,7 @@ export default function HomePage() {
  </>
  ) : (
  <>
- <h1 className="max-w-3xl font-display text-4xl font-semibold leading-[1.05] tracking-tight drop-shadow-[0_2px_18px_rgba(0,0,0,0.35)] sm:text-5xl lg:text-6xl">
+ <h1 className="font-display text-5xl font-semibold leading-[1.05] tracking-tight drop-shadow-[0_2px_18px_rgba(0,0,0,0.35)] sm:text-6xl lg:whitespace-nowrap lg:text-7xl">
  Who&apos;s going to <span className="text-coral-500">Cannes 2026</span>?
  </h1>
  <p className="mt-4 max-w-2xl text-[15px] font-medium leading-relaxed text-sand-50 drop-shadow-[0_1px_10px_rgba(0,0,0,0.55)] sm:text-base">
