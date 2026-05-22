@@ -8,9 +8,11 @@ import type { PersonSignal } from "@/types";
 import { PersonCard, PersonRow } from "./person-card";
 import { EmptyState } from "./empty-state";
 import { STORAGE_KEYS, useLocalStorage } from "@/lib/storage";
+import { classifySide, type Side } from "@/lib/side";
 
 type ViewMode = "grid" | "list";
 type SortMode = "recent" | "alpha";
+type SideFilter = "all" | Side;
 
 const SORT_OPTIONS: { key: SortMode; label: string }[] = [
  { key: "recent", label: "Recently added" },
@@ -76,6 +78,7 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
  const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
  const [selectedRoles, setSelectedRoles] = useState<string[]>([]);
  const [sortMode, setSortMode] = useState<SortMode>("recent");
+ const [sideFilter, setSideFilter] = useState<SideFilter>("all");
  const [viewMode, setViewMode] = useLocalStorage<ViewMode>(
  STORAGE_KEYS.peopleViewMode,
  "grid"
@@ -233,6 +236,7 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
 
  const filtered = useMemo(() => {
  return ordered.filter((p) => {
+ if (sideFilter !== "all" && classifySide(p) !== sideFilter) return false;
  if (selectedCompanies.length > 0 && !selectedCompanies.includes(p.company)) return false;
  if (selectedRoles.length > 0 && !selectedRoles.includes(p.role)) return false;
  if (search) {
@@ -244,18 +248,22 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
  }
  return true;
  });
- }, [ordered, search, selectedCompanies, selectedRoles]);
+ }, [ordered, search, selectedCompanies, selectedRoles, sideFilter]);
 
  // PaginatedList is remounted (and its visibleCount resets) whenever any
  // input that changes "what we're showing" changes.
- const listKey = `${search}|${viewMode}|${selectedCompanies.join(",")}|${selectedRoles.join(",")}|${sortMode}`;
+ const listKey = `${search}|${viewMode}|${selectedCompanies.join(",")}|${selectedRoles.join(",")}|${sortMode}|${sideFilter}`;
 
  const anyFilterActive =
- search !== "" || selectedCompanies.length > 0 || selectedRoles.length > 0;
+ search !== "" ||
+ selectedCompanies.length > 0 ||
+ selectedRoles.length > 0 ||
+ sideFilter !== "all";
  const clearAll = () => {
  setSearch("");
  setSelectedCompanies([]);
  setSelectedRoles([]);
+ setSideFilter("all");
  };
 
  return (
@@ -298,6 +306,7 @@ export function PeopleExplorer({ people }: { people: PersonSignal[] }) {
  />
  )}
  <SortSelector value={sortMode} onChange={setSortMode} />
+ <SideToggle value={sideFilter} onChange={setSideFilter} />
  </div>
  {anyFilterActive && (
  <button
@@ -750,6 +759,53 @@ function SortSelector({
  })}
  </div>
  )}
+ </div>
+ );
+}
+
+/**
+ * Three-way side toggle: All / Vendor-side / Brand-side. Single-select.
+ * Active pill is filled teal; inactive pills sit transparent on a hairline
+ * container. Sits to the right of SortSelector in the filter row.
+ */
+function SideToggle({
+ value,
+ onChange,
+}: {
+ value: SideFilter;
+ onChange: (next: SideFilter) => void;
+}) {
+ const options: { key: SideFilter; label: string }[] = [
+ { key: "all", label: "All" },
+ { key: "vendor", label: "Vendor-side" },
+ { key: "brand", label: "Brand-side" },
+ ];
+ return (
+ <div
+ role="radiogroup"
+ aria-label="Filter by industry side"
+ className="inline-flex items-center rounded-full border border-[color:var(--hairline)] bg-white p-0.5"
+ >
+ {options.map((opt) => {
+ const active = opt.key === value;
+ return (
+ <button
+ key={opt.key}
+ type="button"
+ role="radio"
+ aria-checked={active}
+ onClick={() => onChange(opt.key)}
+ className={[
+ "rounded-full px-3 py-1 text-[12.5px] font-medium transition-colors",
+ active
+ ? "bg-teal-800 text-sand-50"
+ : "text-[color:var(--ink-soft)] hover:text-teal-900",
+ ].join(" ")}
+ >
+ {opt.label}
+ </button>
+ );
+ })}
  </div>
  );
 }
