@@ -34,17 +34,38 @@ function isActive(itemHref: string, pathname: string | null): boolean {
 export function SiteHeader() {
  const pathname = usePathname();
  const [open, setOpen] = useState(false);
+ const [scrolled, setScrolled] = useState(false);
+ const isHome = pathname === "/";
+ // Overlay mode: header is transparent so the hero photo bleeds to
+ // the top of the viewport. Each nav pill gets its own dark frosted
+ // backdrop in this mode so the text stays readable on ANY region of
+ // the photo (the previous "white text + drop-shadow only" approach
+ // failed on the lighter buildings + sky in the top-right corner).
+ // Switches to the solid sand bar after scrolling past ~55% of vh,
+ // or whenever the mobile drawer is open.
+ const overlay = isHome && !scrolled && !open;
 
- // Always render the header as a frosted sand bar — the previous
- // "transparent over hero" overlay mode was making the nav pills
- // unreadable against the lighter parts of the Croisette photo.
- // The hero still bleeds up under the header via -mt-[68px] in
- // app/page.tsx, so the photo edge-to-top effect is preserved, just
- // dimly visible through the backdrop-blur.
+ useEffect(() => {
+ if (!isHome) {
+ setScrolled(false);
+ return;
+ }
+ const onScroll = () => {
+ setScrolled(window.scrollY > window.innerHeight * 0.55);
+ };
+ onScroll();
+ window.addEventListener("scroll", onScroll, { passive: true });
+ return () => window.removeEventListener("scroll", onScroll);
+ }, [isHome]);
 
  return (
  <header
- className="sticky top-0 z-30 border-b border-[color:var(--hairline)] bg-sand-50/85 backdrop-blur"
+ className={[
+ "sticky top-0 z-30 transition-colors duration-200",
+ overlay
+ ? "bg-transparent"
+ : "border-b border-[color:var(--hairline)] bg-sand-50/85 backdrop-blur",
+ ].join(" ")}
  >
  <div className="mx-auto flex max-w-7xl items-center justify-end gap-6 px-5 py-3.5 lg:px-8">
  <div className="flex items-center gap-2">
@@ -60,7 +81,11 @@ export function SiteHeader() {
  className={[
  "rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors",
  active
- ? "bg-teal-800 text-sand-50"
+ ? overlay
+ ? "bg-teal-800 text-sand-50 shadow-lg shadow-teal-900/30"
+ : "bg-teal-800 text-sand-50"
+ : overlay
+ ? "bg-black/35 text-sand-50 ring-1 ring-white/15 backdrop-blur-md hover:bg-black/50"
  : "text-[color:var(--ink-soft)] hover:bg-sand-100 hover:text-teal-900",
  ].join(" ")}
  >
@@ -74,7 +99,12 @@ export function SiteHeader() {
  <button
  type="button"
  onClick={() => setOpen((v) => !v)}
- className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--hairline)] text-teal-900 transition-colors lg:hidden"
+ className={[
+ "inline-flex h-10 w-10 items-center justify-center rounded-full transition-colors lg:hidden",
+ overlay
+ ? "bg-black/35 text-sand-50 ring-1 ring-white/15 backdrop-blur-md"
+ : "border border-[color:var(--hairline)] text-teal-900",
+ ].join(" ")}
  aria-label={open ? "Close menu" : "Open menu"}
  >
  {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
