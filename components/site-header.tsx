@@ -6,20 +6,30 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { showEvents } from "@/lib/features";
 
-const NAV = [
- ...(showEvents ? [{ href: "/#events", label: "Events" }] : []),
- // "Who's going" is hidden on the public deploy because the homepage
- // already IS the people list (see app/page.tsx). On the private deploy
- // it stays as a separate nav item pointing at /people.
- ...(showEvents ? [{ href: "/people", label: "Who's going" }] : []),
- // "Add yourself" is hidden on the public deploy too, the sub-hero
- // band in app/page.tsx (events-off) already surfaces it prominently,
- // and the nav variant would duplicate that CTA on first paint.
- ...(showEvents ? [{ href: "/submit", label: "Add yourself" }] : []),
- // "My profile" hidden from nav while the Chrome extension is in CWS
- // review. /profile route stays accessible by direct URL so the in-app
- // prefill (lib/registration.ts) keeps working for anyone with saved data.
-];
+// Per-mode nav. Private deploy keeps the original three-item nav; public
+// deploy gets a focused two-tab toggle between the people list (home) and
+// the open-registration events page.
+const NAV = showEvents
+ ? [
+ { href: "/#events", label: "Events" },
+ { href: "/people", label: "Who's going" },
+ { href: "/submit", label: "Add yourself" },
+ ]
+ : [
+ { href: "/#people", label: "Who's going" },
+ { href: "/events", label: "Events" },
+ ];
+
+// Active-state check that handles hash-anchor hrefs. `usePathname()` strips
+// the hash so a naive startsWith match against "/#events" never fires;
+// strip the hash from the target before comparing, and use exact match for
+// the root path so "/" doesn't light up on every page.
+function isActive(itemHref: string, pathname: string | null): boolean {
+ if (!pathname) return false;
+ const target = itemHref.split("#")[0] || "/";
+ if (target === "/") return pathname === "/";
+ return pathname.startsWith(target);
+}
 
 export function SiteHeader() {
  const pathname = usePathname();
@@ -59,7 +69,7 @@ export function SiteHeader() {
  {NAV.map((item) => {
  // pathname is just the route (no hash), so /#events naturally
  // never matches, Events stays unhighlighted on the home page.
- const active = !!pathname?.startsWith(item.href);
+ const active = isActive(item.href, pathname);
  return (
  <Link
  key={item.href}
@@ -101,7 +111,7 @@ export function SiteHeader() {
  <nav className="border-t border-[color:var(--hairline)] bg-sand-50 px-5 py-3 lg:hidden">
  <ul className="flex flex-col gap-1">
  {NAV.map((item) => {
- const active = !!pathname?.startsWith(item.href);
+ const active = isActive(item.href, pathname);
  return (
  <li key={item.href}>
  <Link
