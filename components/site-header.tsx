@@ -34,34 +34,17 @@ function isActive(itemHref: string, pathname: string | null): boolean {
 export function SiteHeader() {
  const pathname = usePathname();
  const [open, setOpen] = useState(false);
- const [scrolled, setScrolled] = useState(false);
- const isHome = pathname === "/";
- // Overlay mode = transparent header sitting over the hero photo. Only
- // active on the home page when not scrolled past the hero and the
- // mobile menu isn't expanded.
- const overlay = isHome && !scrolled && !open;
 
- useEffect(() => {
- if (!isHome) {
- setScrolled(false);
- return;
- }
- const onScroll = () => {
- setScrolled(window.scrollY > window.innerHeight * 0.55);
- };
- onScroll();
- window.addEventListener("scroll", onScroll, { passive: true });
- return () => window.removeEventListener("scroll", onScroll);
- }, [isHome]);
+ // Always render the header as a frosted sand bar — the previous
+ // "transparent over hero" overlay mode was making the nav pills
+ // unreadable against the lighter parts of the Croisette photo.
+ // The hero still bleeds up under the header via -mt-[68px] in
+ // app/page.tsx, so the photo edge-to-top effect is preserved, just
+ // dimly visible through the backdrop-blur.
 
  return (
  <header
- className={[
- "sticky top-0 z-30 transition-colors duration-200",
- overlay
- ? "bg-transparent"
- : "border-b border-[color:var(--hairline)] bg-sand-50/85 backdrop-blur",
- ].join(" ")}
+ className="sticky top-0 z-30 border-b border-[color:var(--hairline)] bg-sand-50/85 backdrop-blur"
  >
  <div className="mx-auto flex max-w-7xl items-center justify-end gap-6 px-5 py-3.5 lg:px-8">
  <div className="flex items-center gap-2">
@@ -78,8 +61,6 @@ export function SiteHeader() {
  "rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors",
  active
  ? "bg-teal-800 text-sand-50"
- : overlay
- ? "text-sand-50 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)] hover:bg-white/15"
  : "text-[color:var(--ink-soft)] hover:bg-sand-100 hover:text-teal-900",
  ].join(" ")}
  >
@@ -93,12 +74,7 @@ export function SiteHeader() {
  <button
  type="button"
  onClick={() => setOpen((v) => !v)}
- className={[
- "inline-flex h-10 w-10 items-center justify-center rounded-full border transition-colors lg:hidden",
- overlay
- ? "border-white/30 text-sand-50 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]"
- : "border-[color:var(--hairline)] text-teal-900",
- ].join(" ")}
+ className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--hairline)] text-teal-900 transition-colors lg:hidden"
  aria-label={open ? "Close menu" : "Open menu"}
  >
  {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
