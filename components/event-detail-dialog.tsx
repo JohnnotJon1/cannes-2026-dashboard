@@ -256,7 +256,7 @@ function EventDetailBody({
 function prettyType(t: AnyEvent["registrationType"]) {
   switch (t) {
     case "open":
-      return "Open RSVP. Anyone can register.";
+      return "Public event. Anyone can join.";
     case "invite-only":
       return "Invite-only. Rep or warm intro required.";
     case "application":

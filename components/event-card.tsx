@@ -142,7 +142,7 @@ export function EventCard({
  onClick={(e) => e.stopPropagation()}
  className="inline-flex items-center justify-center rounded-full bg-coral-500 px-4 py-2 text-sm font-semibold text-teal-900 shadow-sm transition-colors hover:bg-coral-600"
  >
- Register
+ Learn more
  </a>
  ) : (
  <p className="text-[13px] leading-relaxed text-[color:var(--ink-soft)]">

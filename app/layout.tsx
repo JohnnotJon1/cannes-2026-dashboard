@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s · Cannes Lions 2026",
   },
   description:
-    "See who's going + 200 events to register for in one place.",
+    "See who's going + 100+ events all in one place.",
   keywords: [
     "Cannes Lions 2026",
     "Cannes advertising festival",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   openGraph: {
     title: "Cannes Lions 2026 · 1,608 going",
-    description: "See who's going + 200 events to register for in one place.",
+    description: "See who's going + 100+ events all in one place.",
     type: "website",
     url: siteUrl,
     siteName: "Cannes Lions 2026 dashboard",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Cannes Lions 2026 · 1,608 going",
-    description: "See who's going + 200 events to register for in one place.",
+    description: "See who's going + 100+ events all in one place.",
     images: ["/og-cannes.jpg"],
   },
 };
