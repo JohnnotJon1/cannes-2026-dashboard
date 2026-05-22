@@ -69,7 +69,7 @@ export function SiteHeader() {
  >
  <div className="mx-auto flex max-w-7xl items-center justify-end gap-6 px-5 py-3.5 lg:px-8">
  <div className="flex items-center gap-2">
- <nav className="hidden items-center gap-1 lg:flex">
+ <nav className="hidden items-center gap-5 lg:flex">
  {NAV.map((item) => {
  // pathname is just the route (no hash), so /#events naturally
  // never matches, Events stays unhighlighted on the home page.
@@ -79,14 +79,14 @@ export function SiteHeader() {
  key={item.href}
  href={item.href}
  className={[
- "rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors",
+ "text-base font-semibold transition-colors",
  active
  ? overlay
- ? "bg-teal-800 text-sand-50 shadow-lg shadow-teal-900/30"
- : "bg-teal-800 text-sand-50"
+ ? "text-coral-500 [text-shadow:0_2px_8px_rgba(0,0,0,0.55)]"
+ : "rounded-full bg-teal-800 px-3.5 py-1.5 text-sand-50"
  : overlay
- ? "bg-black/35 text-sand-50 ring-1 ring-white/15 backdrop-blur-md hover:bg-black/50"
- : "text-[color:var(--ink-soft)] hover:bg-sand-100 hover:text-teal-900",
+ ? "text-sand-50 [text-shadow:0_2px_8px_rgba(0,0,0,0.7)] hover:text-coral-300"
+ : "rounded-full px-3.5 py-1.5 text-[color:var(--ink-soft)] hover:bg-sand-100 hover:text-teal-900",
  ].join(" ")}
  >
  {item.label}
@@ -102,7 +102,7 @@ export function SiteHeader() {
  className={[
  "inline-flex h-10 w-10 items-center justify-center rounded-full transition-colors lg:hidden",
  overlay
- ? "bg-black/35 text-sand-50 ring-1 ring-white/15 backdrop-blur-md"
+ ? "text-sand-50 [filter:drop-shadow(0_2px_4px_rgba(0,0,0,0.6))]"
  : "border border-[color:var(--hairline)] text-teal-900",
  ].join(" ")}
  aria-label={open ? "Close menu" : "Open menu"}
