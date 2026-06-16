@@ -5,17 +5,22 @@ import { MessageSquareQuote, Building2, Trash2 } from "lucide-react";
 import type { PersonSignal } from "@/types";
 
 // Resolve a profile photo URL when we can. Priority:
-//   1. Explicit `photoUrl` (pulled from LinkedIn via Apify, or curated manually)
-//   2. Twitter avatar via unavatar.io (for X-sourced entries)
-//   3. null → initials fallback rendered by the card
-function resolvePhotoUrl(person: PersonSignal): string | null {
-  if (person.photoUrl) return person.photoUrl;
+//   1. A stable explicit `photoUrl` (curated/hosted, e.g. pbs.twimg.com)
+//   2. Twitter avatar via unavatar.io — reliable and self-refreshing
+//   3. A LinkedIn signed URL as a last resort. These media.licdn.com URLs
+//      expire after ~30 days (403), so we only reach for one when there is
+//      no Twitter handle; onError still falls back to initials.
+//   4. null → initials fallback rendered by the card
+export function resolvePhotoUrl(person: PersonSignal): string | null {
+  const isExpiring = (u?: string) => !!u && u.includes("media.licdn.com");
+  if (person.photoUrl && !isExpiring(person.photoUrl)) return person.photoUrl;
   if (person.twitterUrl) {
     const m = person.twitterUrl.match(/(?:twitter\.com|x\.com)\/([^/?#]+)/i);
     if (m && m[1] && !/^(home|explore|search|i|hashtag)$/i.test(m[1])) {
       return `https://unavatar.io/twitter/${m[1]}?fallback=false`;
     }
   }
+  if (person.photoUrl) return person.photoUrl;
   return null;
 }
 

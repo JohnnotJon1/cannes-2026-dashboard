@@ -10,7 +10,8 @@
     "signalReason": "2026 Cannes LionHeart honoree, announced by Cannes Lions",
     "yearSignal": "going-this-year",
     "detectedAt": "2026-05-17T09:00:00Z",
-    "photoUrl": "https://media.licdn.com/dms/image/v2/C5603AQFIGlMnMVBkMA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1517400053659?e=1781136000&v=beta&t=3d95x3GXp2mDYm1AkEcEDIGP8qTVXbxz8PogtObllXY"
+    "photoUrl": "https://media.licdn.com/dms/image/v2/C5603AQFIGlMnMVBkMA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1517400053659?e=1781136000&v=beta&t=3d95x3GXp2mDYm1AkEcEDIGP8qTVXbxz8PogtObllXY",
+    "twitterUrl": "https://x.com/Oprah"
   },
   {
     "id": "p-stella-mccartney",
@@ -23,7 +24,8 @@
     "signalReason": "Confirmed speaker at Cannes Lions 2026",
     "yearSignal": "going-this-year",
     "detectedAt": "2026-05-17T09:00:00Z",
-    "photoUrl": ""
+    "photoUrl": "",
+    "twitterUrl": "https://x.com/StellaMcCartney"
   },
   {
     "id": "p-demis-hassabis",
@@ -36,7 +38,8 @@
     "signalReason": "Confirmed keynote at Cannes Lions 2026",
     "yearSignal": "going-this-year",
     "detectedAt": "2026-05-17T09:00:00Z",
-    "photoUrl": "https://media.licdn.com/dms/image/v2/D4E03AQHDlCnuxugKuA/profile-displayphoto-shrink_100_100/B4EZSKW58BHAAU-/0/1737488048398?e=1781136000&v=beta&t=hHpxLWJ9hhYLM-k-aTwZGFcC7fe7nbNk1mYsuUXeUpk"
+    "photoUrl": "https://media.licdn.com/dms/image/v2/D4E03AQHDlCnuxugKuA/profile-displayphoto-shrink_100_100/B4EZSKW58BHAAU-/0/1737488048398?e=1781136000&v=beta&t=hHpxLWJ9hhYLM-k-aTwZGFcC7fe7nbNk1mYsuUXeUpk",
+    "twitterUrl": "https://x.com/demishassabis"
   },
   {
     "id": "p-fidji-simo",
@@ -62,7 +65,8 @@
     "signalReason": "Confirmed speaker at Cannes Lions 2026",
     "yearSignal": "going-this-year",
     "detectedAt": "2026-05-17T09:00:00Z",
-    "photoUrl": "https://media.licdn.com/dms/image/v2/D5603AQFbviuVVyirvg/profile-displayphoto-scale_100_100/B56Z1UYlkcKYAc-/0/1775237227018?e=1781136000&v=beta&t=ghW0vDl9iNjleO3hSe5QtM_TcRUK_Be8xIsHOhlwJwE"
+    "photoUrl": "https://media.licdn.com/dms/image/v2/D5603AQFbviuVVyirvg/profile-displayphoto-scale_100_100/B56Z1UYlkcKYAc-/0/1775237227018?e=1781136000&v=beta&t=ghW0vDl9iNjleO3hSe5QtM_TcRUK_Be8xIsHOhlwJwE",
+    "twitterUrl": "https://x.com/mosseri"
   },
   {
     "id": "p-grace-kao",
@@ -152,7 +156,8 @@
     "signalReason": "Speaking at LIONS Creators, Cannes Lions 2026",
     "yearSignal": "going-this-year",
     "detectedAt": "2026-05-17T09:00:00Z",
-    "photoUrl": "https://media.licdn.com/dms/image/v2/C4E03AQH96CUsov8Qew/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1661790881457?e=1781136000&v=beta&t=aezToj4y2SWDHTwDkf3QfNXUmNnv2hnzIhbVE2md-qo"
+    "photoUrl": "https://media.licdn.com/dms/image/v2/C4E03AQH96CUsov8Qew/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1661790881457?e=1781136000&v=beta&t=aezToj4y2SWDHTwDkf3QfNXUmNnv2hnzIhbVE2md-qo",
+    "twitterUrl": "https://x.com/melrobbins"
   },
   {
     "id": "p-dhar-mann",
@@ -165,7 +170,8 @@
     "signalReason": "Speaking at LIONS Creators, Cannes Lions 2026",
     "yearSignal": "going-this-year",
     "detectedAt": "2026-05-17T09:00:00Z",
-    "photoUrl": "https://media.licdn.com/dms/image/v2/D5603AQExM6Avq3wX-w/profile-displayphoto-crop_800_800/B56Zxy9uTaKAAM-/0/1771455309383?e=1781136000&v=beta&t=_zwXflKtAYVv4CSWqgNxEe_MzCh7bRxBMUSeWDx_IEQ"
+    "photoUrl": "https://media.licdn.com/dms/image/v2/D5603AQExM6Avq3wX-w/profile-displayphoto-crop_800_800/B56Zxy9uTaKAAM-/0/1771455309383?e=1781136000&v=beta&t=_zwXflKtAYVv4CSWqgNxEe_MzCh7bRxBMUSeWDx_IEQ",
+    "twitterUrl": "https://x.com/dharmann"
   },
   {
     "id": "p-jessica-williams",

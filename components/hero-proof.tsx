@@ -1,60 +1,78 @@
 import type { PersonSignal } from "@/types";
+import { HeroAvatar } from "@/components/hero-avatar";
 
 /**
- * Hero proof block: a glass-morphic chip with the total going count +
- * a small overlapping avatar stack of 5 attendees with photos. Lives
- * inside the events-off hero on the public deploy.
- *
- * Selection of avatars is deterministic at build time, the first 5
- * non-`p-` prefix entries (matches PeopleExplorer's ordering rules)
- * that have a photoUrl. The hero photo is dark, so each avatar gets
- * a sand-50 ring for legibility.
+ * Hero proof block: a glass-morphic chip with the total going count + a small
+ * overlapping avatar stack. The featured faces are a curated set of marquee
+ * 2026 attendees (resolved via unavatar.io/twitter so they never expire); we
+ * top up to 5 with any other Twitter-resolvable attendee. Each avatar degrades
+ * to a clean initials chip on load error (see HeroAvatar), so the stack can
+ * never show a broken image again.
  */
+
+// Recognizable confirmed 2026 names, each with a verified Twitter handle in the
+// data so unavatar resolves a real face.
+const FEATURED_NAMES = [
+  "Oprah Winfrey",
+  "Demis Hassabis",
+  "Adam Mosseri",
+  "Stella McCartney",
+  "Dhar Mann",
+  "Mel Robbins",
+  "Steven Bartlett",
+];
+
+function hasTwitter(p: PersonSignal): boolean {
+  return /(?:twitter\.com|x\.com)\/[^/?#]+/i.test(p.twitterUrl || "");
+}
+
+function pickFeatured(people: PersonSignal[]): PersonSignal[] {
+  const byName = new Map(people.map((p) => [p.name, p]));
+  const featured: PersonSignal[] = [];
+  const used = new Set<string>();
+
+  for (const name of FEATURED_NAMES) {
+    const p = byName.get(name);
+    if (p && hasTwitter(p) && !used.has(p.id)) {
+      featured.push(p);
+      used.add(p.id);
+    }
+    if (featured.length === 5) return featured;
+  }
+  // Top up with any other Twitter-resolvable attendee (stable faces).
+  for (const p of people) {
+    if (featured.length === 5) break;
+    if (!used.has(p.id) && hasTwitter(p)) {
+      featured.push(p);
+      used.add(p.id);
+    }
+  }
+  return featured;
+}
+
 export function HeroProof({ people }: { people: PersonSignal[] }) {
- const total = people.length.toLocaleString("en-US");
- const featured = people
- .filter((p) => !p.id.startsWith("p-") && p.photoUrl)
- .slice(0, 5);
+  const total = people.length.toLocaleString("en-US");
+  const featured = pickFeatured(people);
 
- if (featured.length === 0) {
- // Defensive: if no photos in the seed (shouldn't happen), still
- // show the count chip with no stack.
- return (
- <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-1.5 text-[12px] font-medium text-sand-50 backdrop-blur-sm">
- <span className="relative inline-flex h-2 w-2">
- <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-300 opacity-75" />
- <span className="relative inline-flex h-2 w-2 rounded-full bg-teal-300" />
- </span>
- {total} going
- </div>
- );
- }
+  return (
+    <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-3">
+      {/* Glass chip with live dot + total count */}
+      <div className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-1.5 text-[12px] font-medium text-sand-50 backdrop-blur-sm">
+        <span className="relative inline-flex h-2 w-2">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-300 opacity-75" />
+          <span className="relative inline-flex h-2 w-2 rounded-full bg-teal-300" />
+        </span>
+        {total} going
+      </div>
 
- return (
- <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-3">
- {/* Glass chip with live dot + total count */}
- <div className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-1.5 text-[12px] font-medium text-sand-50 backdrop-blur-sm">
- <span className="relative inline-flex h-2 w-2">
- <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-300 opacity-75" />
- <span className="relative inline-flex h-2 w-2 rounded-full bg-teal-300" />
- </span>
- {total} going
- </div>
-
- {/* Avatar stack */}
- <div className="flex -space-x-2">
- {featured.map((p) => (
- // eslint-disable-next-line @next/next/no-img-element
- <img
- key={p.id}
- src={p.photoUrl}
- alt={p.name}
- title={`${p.name} · ${p.company}`}
- referrerPolicy="no-referrer"
- className="h-8 w-8 rounded-full object-cover ring-2 ring-sand-50 shadow"
- />
- ))}
- </div>
- </div>
- );
+      {/* Avatar stack */}
+      {featured.length > 0 && (
+        <div className="flex -space-x-2">
+          {featured.map((p) => (
+            <HeroAvatar key={p.id} person={p} />
+          ))}
+        </div>
+      )}
+    </div>
+  );
 }
